@@ -1,0 +1,189 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --lightningcss-light: initial;
+  --lightningcss-dark: ;
+  color-scheme: dark;
+  /* AIWeekend Dark Theme: Deep Purple/Navy + Neon Accents */
+  --background-0: #0a0e17;
+  --background: #0a0e17;
+  --background-100: #0f1320;
+  --background-150: #141829;
+  --background-200: #1a1f32;
+  --background-300: #252d42;
+  --foreground: #f0f2f8;
+  --link: #06b6d4;
+  --popover: var(--background);
+  --popover-foreground: var(--foreground);
+  --primary: #a78bfa;
+  --primary-foreground: #0a0e17;
+  --secondary: #2d1b4e;
+  --secondary-foreground: #e9d5ff;
+  --muted: #4c1d95;
+  --muted-foreground: #d8b4fe;
+  --accent: #10b981;
+  --accent-foreground: #0a0e17;
+  --destructive: #f87171;
+  --destructive-foreground: #fafafa;
+  --border: #3d2463;
+  --input: #2d1b4e;
+  --ring: #8b5cf6;
+  --chart-1: #a78bfa;
+  --chart-2: #d946ef;
+  --chart-3: #ec4899;
+  --chart-4: #06b6d4;
+  --chart-5: #10b981;
+  
+  /* Nova (Amplifier) - Pink to Cyan Gradient */
+  --nova-primary: #ec4899;
+  --nova-secondary: #06b6d4;
+  --nova-dark: #3d1e4a;
+  --nova-light: #f472b6;
+  
+  /* Atlas (Documentarian) - Deep Purple */
+  --atlas-primary: #7c3aed;
+  --atlas-secondary: #a855f7;
+  --atlas-dark: #2e1065;
+  --atlas-light: #c4b5fd;
+  
+  /* Phoenix (Visionary) - Mint to Pink Split */
+  --phoenix-primary: #14b8a6;
+  --phoenix-secondary: #ec4899;
+  --phoenix-dark: #0d3d36;
+  --phoenix-light: #5eead4;
+  --sidebar: var(--lightningcss-light, #fafafa) var(--lightningcss-dark, #171717);
+  --sidebar-foreground: var(--lightningcss-light, #0a0a0a) var(--lightningcss-dark, #fafafa);
+  --sidebar-primary: var(--lightningcss-light, #171717) var(--lightningcss-dark, #1447e6);
+  --sidebar-primary-foreground: #fafafa;
+  --sidebar-accent: var(--lightningcss-light, #f5f5f5) var(--lightningcss-dark, #262626);
+  --sidebar-accent-foreground: var(--lightningcss-light, #171717) var(--lightningcss-dark, #fafafa);
+  --sidebar-border: var(--lightningcss-light, #e5e5e5) var(--lightningcss-dark, #282828);
+  --sidebar-ring: var(--lightningcss-light, #a1a1a1) var(--lightningcss-dark, #525252);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --radius: .625rem;
+  --shadow-x: 0;
+  --shadow-y: 1px;
+  --shadow-blur: 3px;
+  --shadow-spread: 0px;
+  --shadow-opacity: .1;
+  --shadow-color: #000;
+  --shadow-2xs: 0 1px 3px 0px #0000000d;
+  --shadow-xs: 0 1px 2px 0px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+@theme inline {
+  --font-sans: 'Nunito', 'Nunito Fallback', system-ui;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius: 0.625rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-in {
+  animation: fade-in 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-slide-up {
+  animation: slide-up 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+.gradient-animated {
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
+}

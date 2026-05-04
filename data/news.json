@@ -1,0 +1,282 @@
+[
+  {
+    "id": 1,
+    "city": "Santiago",
+    "headline": {
+      "es": "Parques de Santiago Celebran la Llegada del Otono",
+      "en": "Parques de Santiago Celebran la Llegada del Otono"
+    },
+    "summary": {
+      "es": "Los principales parques de la capital abren sus puertas con actividades familiares y recorridos guiados para disfrutar de los colores del otono.",
+      "en": "Los principales parques de la capital abren sus puertas con actividades familiares y recorridos guiados para disfrutar de los colores del otono."
+    },
+    "category": "Comunidad",
+    "date": "2026-04-25"
+  },
+  {
+    "id": 2,
+    "city": "Buenos Aires",
+    "headline": {
+      "es": "Festival de Tango Gratuito en San Telmo",
+      "en": "Festival de Tango Gratuito en San Telmo"
+    },
+    "summary": {
+      "es": "Milongas al aire libre regresan al corazon de San Telmo celebrando la tradicion porteña con clases y shows en vivo.",
+      "en": "Milongas al aire libre regresan al corazon de San Telmo celebrando la tradicion porteña con clases y shows en vivo."
+    },
+    "category": "Cultura",
+    "date": "2026-04-24"
+  },
+  {
+    "id": 3,
+    "city": "Lima",
+    "headline": {
+      "es": "Iniciativa Gastronomica Une a Comunidades",
+      "en": "Iniciativa Gastronomica Une a Comunidades"
+    },
+    "summary": {
+      "es": "Chefs locales lanzan programa de cocinas comunitarias llevando la tradicion culinaria peruana a barrios vulnerables.",
+      "en": "Chefs locales lanzan programa de cocinas comunitarias llevando la tradicion culinaria peruana a barrios vulnerables."
+    },
+    "category": "Sociedad",
+    "date": "2026-04-25"
+  },
+  {
+    "id": 4,
+    "city": "Bogota",
+    "headline": {
+      "es": "Ciclovias Dominicales se Expanden a Nuevas Zonas",
+      "en": "Ciclovias Dominicales se Expanden a Nuevas Zonas"
+    },
+    "summary": {
+      "es": "La red de ciclovias se amplía conectando mas barrios y promoviendo la movilidad sostenible en la capital colombiana.",
+      "en": "La red de ciclovias se amplía conectando mas barrios y promoviendo la movilidad sostenible en la capital colombiana."
+    },
+    "category": "Movilidad",
+    "date": "2026-04-23"
+  },
+  {
+    "id": 5,
+    "city": "Mexico City",
+    "headline": {
+      "es": "Murales Comunitarios Transforman Colonias",
+      "en": "Murales Comunitarios Transforman Colonias"
+    },
+    "summary": {
+      "es": "Artistas locales y vecinos colaboran en la creacion de murales que cuentan historias de las comunidades.",
+      "en": "Artistas locales y vecinos colaboran en la creacion de murales que cuentan historias de las comunidades."
+    },
+    "category": "Arte",
+    "date": "2026-04-24"
+  },
+  {
+    "id": 6,
+    "city": "Madrid",
+    "headline": {
+      "es": "Huertos Urbanos Florecen en la Capital",
+      "en": "Huertos Urbanos Florecen en la Capital"
+    },
+    "summary": {
+      "es": "Mas de 50 nuevos huertos comunitarios abren en Madrid, acercando la agricultura sostenible a los barrios.",
+      "en": "Mas de 50 nuevos huertos comunitarios abren en Madrid, acercando la agricultura sostenible a los barrios."
+    },
+    "category": "Medio Ambiente",
+    "date": "2026-04-25"
+  },
+  {
+    "id": 7,
+    "city": "Barcelona",
+    "headline": {
+      "es": "Bibliotecas al Aire Libre en las Playas",
+      "en": "Bibliotecas al Aire Libre en las Playas"
+    },
+    "summary": {
+      "es": "Puntos de lectura gratuitos se instalan en las playas barcelonesas promoviendo la cultura y la desconexion digital.",
+      "en": "Puntos de lectura gratuitos se instalan en las playas barcelonesas promoviendo la cultura y la desconexion digital."
+    },
+    "category": "Cultura",
+    "date": "2026-04-22"
+  },
+  {
+    "id": 8,
+    "city": "Miami",
+    "headline": {
+      "es": "Comunidad Latina Organiza Festival de Bienestar",
+      "en": "Comunidad Latina Organiza Festival de Bienestar"
+    },
+    "summary": {
+      "es": "Un fin de semana dedicado a la salud mental y el bienestar reune a familias con yoga, meditacion y talleres gratuitos.",
+      "en": "Un fin de semana dedicado a la salud mental y el bienestar reune a familias con yoga, meditacion y talleres gratuitos."
+    },
+    "category": "Bienestar",
+    "date": "2026-04-25"
+  },
+  {
+    "id": 9,
+    "city": "Nueva York",
+    "headline": {
+      "es": "Iniciativa de Arte Comunitario en el Bronx",
+      "en": "Iniciativa de Arte Comunitario en el Bronx"
+    },
+    "summary": {
+      "es": "Artistas y residentes colaboran en murales gigantes que transforman espacios urbanos con historias locales.",
+      "en": "Artistas y residentes colaboran en murales gigantes que transforman espacios urbanos con historias locales."
+    },
+    "category": "Arte",
+    "date": "2026-04-24"
+  },
+  {
+    "id": 10,
+    "city": "Londres",
+    "headline": {
+      "es": "Festival de Musica Callejera en Camden",
+      "en": "Festival de Musica Callejera en Camden"
+    },
+    "summary": {
+      "es": "Musicos locales y artistas se reúnen para celebrar la creatividad urbana con conciertos gratuitos.",
+      "en": "Musicos locales y artistas se reúnen para celebrar la creatividad urbana con conciertos gratuitos."
+    },
+    "category": "Musica",
+    "date": "2026-04-25"
+  },
+  {
+    "id": 11,
+    "city": "Paris",
+    "headline": {
+      "es": "Iniciativa de Bienestar Mental en Marais",
+      "en": "Iniciativa de Bienestar Mental en Marais"
+    },
+    "summary": {
+      "es": "Grupos comunitarios lanzan programa de meditacion y mindfulness en espacios públicos parisinos.",
+      "en": "Grupos comunitarios lanzan programa de meditacion y mindfulness en espacios públicos parisinos."
+    },
+    "category": "Bienestar",
+    "date": "2026-04-24"
+  },
+  {
+    "id": 12,
+    "city": "Berlin",
+    "headline": {
+      "es": "Espacios Comunitarios Recuperan Barrios Historicos",
+      "en": "Espacios Comunitarios Recuperan Barrios Historicos"
+    },
+    "summary": {
+      "es": "Antiguos edificios se transforman en centros culturales y espacios de encuentro para la comunidad berlinesa.",
+      "en": "Antiguos edificios se transforman en centros culturales y espacios de encuentro para la comunidad berlinesa."
+    },
+    "category": "Comunidad",
+    "date": "2026-04-25"
+  },
+  {
+    "id": 13,
+    "city": "Amsterdam",
+    "headline": {
+      "es": "Ciclovias Ampliadas Conectan Ciudadanos",
+      "en": "Ciclovias Ampliadas Conectan Ciudadanos"
+    },
+    "summary": {
+      "es": "La red de bicicletas se expande promoviendo la movilidad sostenible y conexion comunitaria.",
+      "en": "La red de bicicletas se expande promoviendo la movilidad sostenible y conexion comunitaria."
+    },
+    "category": "Movilidad",
+    "date": "2026-04-23"
+  },
+  {
+    "id": 14,
+    "city": "Tokyo",
+    "headline": {
+      "es": "Jardines Comunitarios Florecen en Shinjuku",
+      "en": "Jardines Comunitarios Florecen en Shinjuku"
+    },
+    "summary": {
+      "es": "Residentes crean espacios verdes en medio de la ciudad, promoviendo la conexion con la naturaleza.",
+      "en": "Residentes crean espacios verdes en medio de la ciudad, promoviendo la conexion con la naturaleza."
+    },
+    "category": "Medio Ambiente",
+    "date": "2026-04-25"
+  },
+  {
+    "id": 15,
+    "city": "Bangkok",
+    "headline": {
+      "es": "Mercados Nocturnos Celebran Tradicion Local",
+      "en": "Mercados Nocturnos Celebran Tradicion Local"
+    },
+    "summary": {
+      "es": "Vendedores y artesanos locales se reunen en mercados culturales para compartir tradiciones tailandesas.",
+      "en": "Vendedores y artesanos locales se reunen en mercados culturales para compartir tradiciones tailandesas."
+    },
+    "category": "Cultura",
+    "date": "2026-04-24"
+  },
+  {
+    "id": 16,
+    "city": "Estambul",
+    "headline": {
+      "es": "Proyecto de Murales Une Oriente y Occidente",
+      "en": "Proyecto de Murales Une Oriente y Occidente"
+    },
+    "summary": {
+      "es": "Artistas de ambos lados del Bosforo colaboran en iniciativa de arte publico que celebra la diversidad.",
+      "en": "Artistas de ambos lados del Bosforo colaboran en iniciativa de arte publico que celebra la diversidad."
+    },
+    "category": "Arte",
+    "date": "2026-04-25"
+  },
+  {
+    "id": 17,
+    "city": "Dubai",
+    "headline": {
+      "es": "Festival de Bienestar Global en Marina",
+      "en": "Festival de Bienestar Global en Marina"
+    },
+    "summary": {
+      "es": "Evento internacional reune practicantes de yoga, meditacion y bienestar de toda la region.",
+      "en": "Evento internacional reune practicantes de yoga, meditacion y bienestar de toda la region."
+    },
+    "category": "Bienestar",
+    "date": "2026-04-25"
+  },
+  {
+    "id": 18,
+    "city": "Sydney",
+    "headline": {
+      "es": "Iniciativa Oceanica Conecta Comunidades Costeras",
+      "en": "Iniciativa Oceanica Conecta Comunidades Costeras"
+    },
+    "summary": {
+      "es": "Programas de conservacion marina involucran a residentes en la proteccion de ecosistemas locales.",
+      "en": "Programas de conservacion marina involucran a residentes en la proteccion de ecosistemas locales."
+    },
+    "category": "Medio Ambiente",
+    "date": "2026-04-24"
+  },
+  {
+    "id": 19,
+    "city": "Toronto",
+    "headline": {
+      "es": "Festival Multicultural Celebra Diversidad",
+      "en": "Festival Multicultural Celebra Diversidad"
+    },
+    "summary": {
+      "es": "Comunidades de todo el mundo se reúnen para compartir musica, comida y tradiciones en Toronto.",
+      "en": "Comunidades de todo el mundo se reúnen para compartir musica, comida y tradiciones en Toronto."
+    },
+    "category": "Cultura",
+    "date": "2026-04-25"
+  },
+  {
+    "id": 20,
+    "city": "Ciudad de Mexico",
+    "headline": {
+      "es": "Caminos de Memoria Honran Historia Local",
+      "en": "Caminos de Memoria Honran Historia Local"
+    },
+    "summary": {
+      "es": "Recorridos guiados por residentes revelan historias ocultas y tradiciones de barrios emblemáticos.",
+      "en": "Recorridos guiados por residentes revelan historias ocultas y tradiciones de barrios emblemáticos."
+    },
+    "category": "Historia",
+    "date": "2026-04-24"
+  }
+]

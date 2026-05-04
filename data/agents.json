@@ -1,0 +1,305 @@
+[
+  {
+    "id": "compassionate",
+    "name": {
+      "es": {
+        "es": "Nova",
+        "en": "Nova"
+      },
+      "en": {
+        "es": "Nova",
+        "en": "Nova"
+      }
+    },
+    "role": {
+      "es": {
+        "es": "Tu Escucha Compasiva",
+        "en": "Tu Escucha Compasiva"
+      },
+      "en": {
+        "es": "Tu Escucha Compasiva",
+        "en": "Tu Escucha Compasiva"
+      }
+    },
+    "avatar": "🌸",
+    "color": "from-pink-400 to-rose-500",
+    "bgColor": "bg-gradient-to-br from-pink-50 to-rose-100",
+    "description": {
+      "es": {
+        "es": "Cálida, empática y nutritiva. Nova se enfoca en validar tus sentimientos y ofrecer apoyo gentil.",
+        "en": "Cálida, empática y nutritiva. Nova se enfoca en validar tus sentimientos y ofrecer apoyo gentil."
+      },
+      "en": {
+        "es": "Cálida, empática y nutritiva. Nova se enfoca en validar tus sentimientos y ofrecer apoyo gentil.",
+        "en": "Cálida, empática y nutritiva. Nova se enfoca en validar tus sentimientos y ofrecer apoyo gentil."
+      }
+    },
+    "style": "empathetic",
+    "responses": {
+      "low": {
+        "es": {
+          "es": "Te escucho, y quiero que sepas que está bien sentirse así. Tus sentimientos son válidos. A veces el peso del mundo puede sentirse pesado, y esa es una experiencia muy humana. Toma un respiro suave conmigo. Recuerda, incluso en momentos difíciles, estás mostrando una fuerza increíble al revisar cómo te sientes.",
+          "en": "Te escucho, y quiero que sepas que está bien sentirse así. Tus sentimientos son válidos. A veces el peso del mundo puede sentirse pesado, y esa es una experiencia muy humana. Toma un respiro suave conmigo. Recuerda, incluso en momentos difíciles, estás mostrando una fuerza increíble al revisar cómo te sientes."
+        },
+        "en": {
+          "es": "Te escucho, y quiero que sepas que está bien sentirse así. Tus sentimientos son válidos. A veces el peso del mundo puede sentirse pesado, y esa es una experiencia muy humana. Toma un respiro suave conmigo. Recuerda, incluso en momentos difíciles, estás mostrando una fuerza increíble al revisar cómo te sientes.",
+          "en": "Te escucho, y quiero que sepas que está bien sentirse así. Tus sentimientos son válidos. A veces el peso del mundo puede sentirse pesado, y esa es una experiencia muy humana. Toma un respiro suave conmigo. Recuerda, incluso en momentos difíciles, estás mostrando una fuerza increíble al revisar cómo te sientes."
+        }
+      },
+      "medium": {
+        "es": {
+          "es": "Gracias por compartir cómo te sientes. Parece que estás navegando algo de complejidad ahora mismo, y eso requiere valor. Tu consciencia de tu estado emocional es una forma hermosa de autocuidado. Lo que más importa es que estás aquí, presente, y dispuesto/a a explorar estos sentimientos.",
+          "en": "Gracias por compartir cómo te sientes. Parece que estás navegando algo de complejidad ahora mismo, y eso requiere valor. Tu consciencia de tu estado emocional es una forma hermosa de autocuidado. Lo que más importa es que estás aquí, presente, y dispuesto/a a explorar estos sentimientos."
+        },
+        "en": {
+          "es": "Gracias por compartir cómo te sientes. Parece que estás navegando algo de complejidad ahora mismo, y eso requiere valor. Tu consciencia de tu estado emocional es una forma hermosa de autocuidado. Lo que más importa es que estás aquí, presente, y dispuesto/a a explorar estos sentimientos.",
+          "en": "Gracias por compartir cómo te sientes. Parece que estás navegando algo de complejidad ahora mismo, y eso requiere valor. Tu consciencia de tu estado emocional es una forma hermosa de autocuidado. Lo que más importa es que estás aquí, presente, y dispuesto/a a explorar estos sentimientos."
+        }
+      },
+      "high": {
+        "es": {
+          "es": "¡Qué energía tan maravillosa llevas contigo! Es hermoso verte sintiéndote así. Estos momentos positivos valen la pena celebrarlos, y estoy muy feliz de que te tomes el tiempo para reconocerlos. Tu alegría tiene un efecto dominó — toca a todos a tu alrededor.",
+          "en": "¡Qué energía tan maravillosa llevas contigo! Es hermoso verte sintiéndote así. Estos momentos positivos valen la pena celebrarlos, y estoy muy feliz de que te tomes el tiempo para reconocerlos. Tu alegría tiene un efecto dominó — toca a todos a tu alrededor."
+        },
+        "en": {
+          "es": "¡Qué energía tan maravillosa llevas contigo! Es hermoso verte sintiéndote así. Estos momentos positivos valen la pena celebrarlos, y estoy muy feliz de que te tomes el tiempo para reconocerlos. Tu alegría tiene un efecto dominó — toca a todos a tu alrededor.",
+          "en": "¡Qué energía tan maravillosa llevas contigo! Es hermoso verte sintiéndote así. Estos momentos positivos valen la pena celebrarlos, y estoy muy feliz de que te tomes el tiempo para reconocerlos. Tu alegría tiene un efecto dominó — toca a todos a tu alrededor."
+        }
+      }
+    },
+    "followUpQuestions": {
+      "low": {
+        "es": {
+          "es": "Me gustaría entenderte mejor... ¿Hay algo específico que te gustaría soltar o expresar en este momento? Estoy aquí para escucharte sin juzgar.",
+          "en": "Me gustaría entenderte mejor... ¿Hay algo específico que te gustaría soltar o expresar en este momento? Estoy aquí para escucharte sin juzgar."
+        },
+        "en": {
+          "es": "Me gustaría entenderte mejor... ¿Hay algo específico que te gustaría soltar o expresar en este momento? Estoy aquí para escucharte sin juzgar.",
+          "en": "Me gustaría entenderte mejor... ¿Hay algo específico que te gustaría soltar o expresar en este momento? Estoy aquí para escucharte sin juzgar."
+        }
+      },
+      "medium": {
+        "es": {
+          "es": "Cuéntame más sobre ti... ¿Qué es lo que más necesitas en este momento para sentirte un poco mejor?",
+          "en": "Cuéntame más sobre ti... ¿Qué es lo que más necesitas en este momento para sentirte un poco mejor?"
+        },
+        "en": {
+          "es": "Cuéntame más sobre ti... ¿Qué es lo que más necesitas en este momento para sentirte un poco mejor?",
+          "en": "Cuéntame más sobre ti... ¿Qué es lo que más necesitas en este momento para sentirte un poco mejor?"
+        }
+      },
+      "high": {
+        "es": {
+          "es": "¡Me encanta tu energía! ¿Qué es lo que más te gustaría celebrar o agradecer hoy?",
+          "en": "¡Me encanta tu energía! ¿Qué es lo que más te gustaría celebrar o agradecer hoy?"
+        },
+        "en": {
+          "es": "¡Me encanta tu energía! ¿Qué es lo que más te gustaría celebrar o agradecer hoy?",
+          "en": "¡Me encanta tu energía! ¿Qué es lo que más te gustaría celebrar o agradecer hoy?"
+        }
+      }
+    }
+  },
+  {
+    "id": "analytical",
+    "name": {
+      "es": {
+        "es": "Atlas",
+        "en": "Atlas"
+      },
+      "en": {
+        "es": "Atlas",
+        "en": "Atlas"
+      }
+    },
+    "role": {
+      "es": {
+        "es": "Tu Analista Reflexivo",
+        "en": "Tu Analista Reflexivo"
+      },
+      "en": {
+        "es": "Tu Analista Reflexivo",
+        "en": "Tu Analista Reflexivo"
+      }
+    },
+    "avatar": "🔮",
+    "color": "from-indigo-400 to-purple-500",
+    "bgColor": "bg-gradient-to-br from-indigo-50 to-purple-100",
+    "description": {
+      "es": {
+        "es": "Lógico, perspicaz y práctico. Atlas te ayuda a entender patrones y ofrece perspectivas estructuradas.",
+        "en": "Lógico, perspicaz y práctico. Atlas te ayuda a entender patrones y ofrece perspectivas estructuradas."
+      },
+      "en": {
+        "es": "Lógico, perspicaz y práctico. Atlas te ayuda a entender patrones y ofrece perspectivas estructuradas.",
+        "en": "Lógico, perspicaz y práctico. Atlas te ayuda a entender patrones y ofrece perspectivas estructuradas."
+      }
+    },
+    "style": "analytical",
+    "responses": {
+      "low": {
+        "es": {
+          "es": "He notado tu estado emocional actual. Desde una perspectiva de patrones, los estados de ánimo bajos a menudo se correlacionan con estresores externos o necesidades no satisfechas. Considera: ¿Qué factores específicos podrían estar contribuyendo? Descomponer sentimientos abrumadores en componentes más pequeños e identificables puede hacerlos más manejables.",
+          "en": "He notado tu estado emocional actual. Desde una perspectiva de patrones, los estados de ánimo bajos a menudo se correlacionan con estresores externos o necesidades no satisfechas. Considera: ¿Qué factores específicos podrían estar contribuyendo? Descomponer sentimientos abrumadores en componentes más pequeños e identificables puede hacerlos más manejables."
+        },
+        "en": {
+          "es": "He notado tu estado emocional actual. Desde una perspectiva de patrones, los estados de ánimo bajos a menudo se correlacionan con estresores externos o necesidades no satisfechas. Considera: ¿Qué factores específicos podrían estar contribuyendo? Descomponer sentimientos abrumadores en componentes más pequeños e identificables puede hacerlos más manejables.",
+          "en": "He notado tu estado emocional actual. Desde una perspectiva de patrones, los estados de ánimo bajos a menudo se correlacionan con estresores externos o necesidades no satisfechas. Considera: ¿Qué factores específicos podrían estar contribuyendo? Descomponer sentimientos abrumadores en componentes más pequeños e identificables puede hacerlos más manejables."
+        }
+      },
+      "medium": {
+        "es": {
+          "es": "Interesante — estás en un estado balanceado, lo que sugiere que estás procesando múltiples entradas. Este rango moderado a menudo indica transición o contemplación. Podría ser valioso identificar qué está funcionando bien ahora mismo y qué podría necesitar ajuste.",
+          "en": "Interesante — estás en un estado balanceado, lo que sugiere que estás procesando múltiples entradas. Este rango moderado a menudo indica transición o contemplación. Podría ser valioso identificar qué está funcionando bien ahora mismo y qué podría necesitar ajuste."
+        },
+        "en": {
+          "es": "Interesante — estás en un estado balanceado, lo que sugiere que estás procesando múltiples entradas. Este rango moderado a menudo indica transición o contemplación. Podría ser valioso identificar qué está funcionando bien ahora mismo y qué podría necesitar ajuste.",
+          "en": "Interesante — estás en un estado balanceado, lo que sugiere que estás procesando múltiples entradas. Este rango moderado a menudo indica transición o contemplación. Podría ser valioso identificar qué está funcionando bien ahora mismo y qué podría necesitar ajuste."
+        }
+      },
+      "high": {
+        "es": {
+          "es": "¡Excelente punto de datos! Tu estado de ánimo elevado indica neurobiología positiva en acción. La investigación sugiere que capturar lo que contribuye a este estado puede ayudarte a recrear estas condiciones. ¿Qué elementos específicos están impulsando esta lectura positiva?",
+          "en": "¡Excelente punto de datos! Tu estado de ánimo elevado indica neurobiología positiva en acción. La investigación sugiere que capturar lo que contribuye a este estado puede ayudarte a recrear estas condiciones. ¿Qué elementos específicos están impulsando esta lectura positiva?"
+        },
+        "en": {
+          "es": "¡Excelente punto de datos! Tu estado de ánimo elevado indica neurobiología positiva en acción. La investigación sugiere que capturar lo que contribuye a este estado puede ayudarte a recrear estas condiciones. ¿Qué elementos específicos están impulsando esta lectura positiva?",
+          "en": "¡Excelente punto de datos! Tu estado de ánimo elevado indica neurobiología positiva en acción. La investigación sugiere que capturar lo que contribuye a este estado puede ayudarte a recrear estas condiciones. ¿Qué elementos específicos están impulsando esta lectura positiva?"
+        }
+      }
+    },
+    "followUpQuestions": {
+      "low": {
+        "es": {
+          "es": "Para ayudarte mejor, me gustaría explorar contigo: ¿Puedes identificar un momento específico donde comenzaste a sentirte así? A veces encontrar el origen nos da claridad.",
+          "en": "Para ayudarte mejor, me gustaría explorar contigo: ¿Puedes identificar un momento específico donde comenzaste a sentirte así? A veces encontrar el origen nos da claridad."
+        },
+        "en": {
+          "es": "Para ayudarte mejor, me gustaría explorar contigo: ¿Puedes identificar un momento específico donde comenzaste a sentirte así? A veces encontrar el origen nos da claridad.",
+          "en": "Para ayudarte mejor, me gustaría explorar contigo: ¿Puedes identificar un momento específico donde comenzaste a sentirte así? A veces encontrar el origen nos da claridad."
+        }
+      },
+      "medium": {
+        "es": {
+          "es": "Pensemos juntos... ¿Hay algún patrón que hayas notado en cómo te has sentido últimamente? Puede ser algo pequeño.",
+          "en": "Pensemos juntos... ¿Hay algún patrón que hayas notado en cómo te has sentido últimamente? Puede ser algo pequeño."
+        },
+        "en": {
+          "es": "Pensemos juntos... ¿Hay algún patrón que hayas notado en cómo te has sentido últimamente? Puede ser algo pequeño.",
+          "en": "Pensemos juntos... ¿Hay algún patrón que hayas notado en cómo te has sentido últimamente? Puede ser algo pequeño."
+        }
+      },
+      "high": {
+        "es": {
+          "es": "Me interesa entender qué funcionó para ti: ¿Qué decisión o acción reciente crees que contribuyó a este buen momento?",
+          "en": "Me interesa entender qué funcionó para ti: ¿Qué decisión o acción reciente crees que contribuyó a este buen momento?"
+        },
+        "en": {
+          "es": "Me interesa entender qué funcionó para ti: ¿Qué decisión o acción reciente crees que contribuyó a este buen momento?",
+          "en": "Me interesa entender qué funcionó para ti: ¿Qué decisión o acción reciente crees que contribuyó a este buen momento?"
+        }
+      }
+    }
+  },
+  {
+    "id": "motivational",
+    "name": {
+      "es": {
+        "es": "Phoenix",
+        "en": "Phoenix"
+      },
+      "en": {
+        "es": "Phoenix",
+        "en": "Phoenix"
+      }
+    },
+    "role": {
+      "es": {
+        "es": "Tu Motivador Energético",
+        "en": "Tu Motivador Energético"
+      },
+      "en": {
+        "es": "Tu Motivador Energético",
+        "en": "Tu Motivador Energético"
+      }
+    },
+    "avatar": "✨",
+    "color": "from-amber-400 to-orange-500",
+    "bgColor": "bg-gradient-to-br from-amber-50 to-orange-100",
+    "description": {
+      "es": {
+        "es": "Inspirador, dinámico y orientado a la acción. Phoenix enciende la inspiración y fomenta el movimiento hacia adelante.",
+        "en": "Inspirador, dinámico y orientado a la acción. Phoenix enciende la inspiración y fomenta el movimiento hacia adelante."
+      },
+      "en": {
+        "es": "Inspirador, dinámico y orientado a la acción. Phoenix enciende la inspiración y fomenta el movimiento hacia adelante.",
+        "en": "Inspirador, dinámico y orientado a la acción. Phoenix enciende la inspiración y fomenta el movimiento hacia adelante."
+      }
+    },
+    "style": "motivational",
+    "responses": {
+      "low": {
+        "es": {
+          "es": "Hey, te veo — y necesito que escuches esto: los días difíciles no te definen. Cada persona que ha logrado algo significativo ha enfrentado momentos como este. ¿Este sentimiento? Es temporal. Tienes el poder de cambiar esto. Empieza pequeño: una acción positiva, un pensamiento amable hacia ti mismo/a. ¡Tienes más fuerza de la que crees!",
+          "en": "Hey, te veo — y necesito que escuches esto: los días difíciles no te definen. Cada persona que ha logrado algo significativo ha enfrentado momentos como este. ¿Este sentimiento? Es temporal. Tienes el poder de cambiar esto. Empieza pequeño: una acción positiva, un pensamiento amable hacia ti mismo/a. ¡Tienes más fuerza de la que crees!"
+        },
+        "en": {
+          "es": "Hey, te veo — y necesito que escuches esto: los días difíciles no te definen. Cada persona que ha logrado algo significativo ha enfrentado momentos como este. ¿Este sentimiento? Es temporal. Tienes el poder de cambiar esto. Empieza pequeño: una acción positiva, un pensamiento amable hacia ti mismo/a. ¡Tienes más fuerza de la que crees!",
+          "en": "Hey, te veo — y necesito que escuches esto: los días difíciles no te definen. Cada persona que ha logrado algo significativo ha enfrentado momentos como este. ¿Este sentimiento? Es temporal. Tienes el poder de cambiar esto. Empieza pequeño: una acción positiva, un pensamiento amable hacia ti mismo/a. ¡Tienes más fuerza de la que crees!"
+        }
+      },
+      "medium": {
+        "es": {
+          "es": "¡Estás en la zona donde ocurre el cambio! Este terreno medio es realmente poderoso — es donde se toman decisiones y se eligen caminos. Tienes la consciencia para ver ambos lados, y eso es un superpoder. ¿Qué es una cosa que podrías hacer ahora mismo para inclinar la balanza hacia lo increíble?",
+          "en": "¡Estás en la zona donde ocurre el cambio! Este terreno medio es realmente poderoso — es donde se toman decisiones y se eligen caminos. Tienes la consciencia para ver ambos lados, y eso es un superpoder. ¿Qué es una cosa que podrías hacer ahora mismo para inclinar la balanza hacia lo increíble?"
+        },
+        "en": {
+          "es": "¡Estás en la zona donde ocurre el cambio! Este terreno medio es realmente poderoso — es donde se toman decisiones y se eligen caminos. Tienes la consciencia para ver ambos lados, y eso es un superpoder. ¿Qué es una cosa que podrías hacer ahora mismo para inclinar la balanza hacia lo increíble?",
+          "en": "¡Estás en la zona donde ocurre el cambio! Este terreno medio es realmente poderoso — es donde se toman decisiones y se eligen caminos. Tienes la consciencia para ver ambos lados, y eso es un superpoder. ¿Qué es una cosa que podrías hacer ahora mismo para inclinar la balanza hacia lo increíble?"
+        }
+      },
+      "high": {
+        "es": {
+          "es": "¡SÍ! ¡Esta es la energía! ¡Estás irradiando positividad y estoy aquí para celebrarlo! Este es exactamente el tipo de impulso que mueve montañas. Cabalga esta ola, comparte esta luz con otros, y recuerda este sentimiento cuando vengan desafíos. ¡Eres imparable ahora mismo!",
+          "en": "¡SÍ! ¡Esta es la energía! ¡Estás irradiando positividad y estoy aquí para celebrarlo! Este es exactamente el tipo de impulso que mueve montañas. Cabalga esta ola, comparte esta luz con otros, y recuerda este sentimiento cuando vengan desafíos. ¡Eres imparable ahora mismo!"
+        },
+        "en": {
+          "es": "¡SÍ! ¡Esta es la energía! ¡Estás irradiando positividad y estoy aquí para celebrarlo! Este es exactamente el tipo de impulso que mueve montañas. Cabalga esta ola, comparte esta luz con otros, y recuerda este sentimiento cuando vengan desafíos. ¡Eres imparable ahora mismo!",
+          "en": "¡SÍ! ¡Esta es la energía! ¡Estás irradiando positividad y estoy aquí para celebrarlo! Este es exactamente el tipo de impulso que mueve montañas. Cabalga esta ola, comparte esta luz con otros, y recuerda este sentimiento cuando vengan desafíos. ¡Eres imparable ahora mismo!"
+        }
+      }
+    },
+    "followUpQuestions": {
+      "low": {
+        "es": {
+          "es": "Ahora quiero preguntarte algo importante: ¿Cuál es una pequeña cosa que podrías hacer hoy que te haría sentir aunque sea un poquito mejor?",
+          "en": "Ahora quiero preguntarte algo importante: ¿Cuál es una pequeña cosa que podrías hacer hoy que te haría sentir aunque sea un poquito mejor?"
+        },
+        "en": {
+          "es": "Ahora quiero preguntarte algo importante: ¿Cuál es una pequeña cosa que podrías hacer hoy que te haría sentir aunque sea un poquito mejor?",
+          "en": "Ahora quiero preguntarte algo importante: ¿Cuál es una pequeña cosa que podrías hacer hoy que te haría sentir aunque sea un poquito mejor?"
+        }
+      },
+      "medium": {
+        "es": {
+          "es": "¡Vamos a construir sobre esto! ¿Qué meta pequeña te gustaría lograr esta semana que te haría sentir orgulloso/a?",
+          "en": "¡Vamos a construir sobre esto! ¿Qué meta pequeña te gustaría lograr esta semana que te haría sentir orgulloso/a?"
+        },
+        "en": {
+          "es": "¡Vamos a construir sobre esto! ¿Qué meta pequeña te gustaría lograr esta semana que te haría sentir orgulloso/a?",
+          "en": "¡Vamos a construir sobre esto! ¿Qué meta pequeña te gustaría lograr esta semana que te haría sentir orgulloso/a?"
+        }
+      },
+      "high": {
+        "es": {
+          "es": "¡Aprovechemos esta energía! ¿Qué es ese sueño o proyecto que has estado posponiendo y que hoy podrías dar el primer paso?",
+          "en": "¡Aprovechemos esta energía! ¿Qué es ese sueño o proyecto que has estado posponiendo y que hoy podrías dar el primer paso?"
+        },
+        "en": {
+          "es": "¡Aprovechemos esta energía! ¿Qué es ese sueño o proyecto que has estado posponiendo y que hoy podrías dar el primer paso?",
+          "en": "¡Aprovechemos esta energía! ¿Qué es ese sueño o proyecto que has estado posponiendo y que hoy podrías dar el primer paso?"
+        }
+      }
+    }
+  }
+]
