@@ -111,7 +111,7 @@ export default function HarvestPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-6 bg-background">
+      <div className="min-h-screen flex items-center justify-center p-6 bg-transparent">
         <div className="text-center space-y-4">
           <Sprout className="w-12 h-12 text-primary mx-auto animate-pulse" />
           <p className="text-muted-foreground">Recolectando semillas emocionales...</p>
