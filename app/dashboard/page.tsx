@@ -41,7 +41,7 @@ export default function DashboardPage() {
   const totalImprovement = avgFinalMood - avgInitialMood
 
   return (
-    <div className="min-h-screen bg-background p-6">
+    <div className="min-h-screen bg-transparent p-6">
       <div className="max-w-4xl mx-auto space-y-8">
         <div className="space-y-2">
           <h1 className="text-4xl font-bold text-foreground">{t('dashboard.title')}</h1>
