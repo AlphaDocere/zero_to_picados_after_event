@@ -1,15 +1,16 @@
 "use client"
 
-import { PenLine } from "lucide-react"
+import { PenLine, Sparkles } from "lucide-react"
 import { Textarea } from "@/components/ui/textarea"
 import { useTranslation } from "@/contexts/LanguageContext"
 
 interface OpinionInputProps {
   value: string
   onChange: (value: string) => void
+  dynamicEmotions?: { label: string; emoji: string }[]
 }
 
-const emotionTags = [
+const defaultEmotionTags = [
   { label: "Esperanzado/a", emoji: "🌟" },
   { label: "Preocupado/a", emoji: "😟" },
   { label: "Inspirado/a", emoji: "💡" },
@@ -18,10 +19,16 @@ const emotionTags = [
   { label: "Energico/a", emoji: "⚡" },
 ]
 
-export function OpinionInput({ value, onChange }: OpinionInputProps) {
+export function OpinionInput({ value, onChange, dynamicEmotions }: OpinionInputProps) {
   const { t } = useTranslation()
   const characterCount = value.length
   const maxCharacters = 500
+
+  const emotionTags = dynamicEmotions && dynamicEmotions.length > 0 
+    ? dynamicEmotions 
+    : defaultEmotionTags
+
+  const isPersonalized = dynamicEmotions && dynamicEmotions.length > 0
 
   return (
     <div className="space-y-6">
@@ -50,9 +57,17 @@ export function OpinionInput({ value, onChange }: OpinionInputProps) {
       </div>
 
       <div className="space-y-3">
-        <p className="text-xs font-medium text-muted-foreground text-center">
-          O selecciona como te sientes:
-        </p>
+        <div className="flex items-center justify-center gap-2">
+          <p className="text-xs font-medium text-muted-foreground">
+            O selecciona cómo te sientes:
+          </p>
+          {isPersonalized && (
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-medium">
+              <Sparkles className="w-3 h-3" />
+              Personalizado
+            </span>
+          )}
+        </div>
         <div className="flex flex-wrap justify-center gap-2">
           {emotionTags.map((tag) => (
             <button
