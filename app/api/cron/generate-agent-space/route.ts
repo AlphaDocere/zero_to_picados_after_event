@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { ref, get, set } from 'firebase/database'
 import { getFirebaseDatabase } from '@/lib/firebase-init'
-import { Daytona } from '@daytonaio/sdk'
 
 interface AgentContext {
   userId: string
@@ -11,8 +10,18 @@ interface AgentContext {
   sentiment: string
 }
 
+interface AgentSpace {
+  agentName: string
+  action: string
+  interaction: string
+  result: string
+  moodShift: number
+  timestamp: number
+  createdAt: string
+}
+
 /**
- * POST - Ejecuta generación de ambiente de agente
+ * POST - Ejecuta generación de ambiente de agente (MANUAL TESTING)
  * GET - Se ejecuta automáticamente vía Vercel Cron (1x diario)
  */
 export async function POST(request: NextRequest) {
@@ -26,28 +35,21 @@ export async function POST(request: NextRequest) {
     const context = await getEmotionalContext(userId)
     console.log('[v0] Contexto:', context)
 
-    // 2. Crear sandbox con Daytona SDK
-    const sandbox = await createDaytonaSandbox(userId, agentName)
-    console.log('[v0] Sandbox creado:', sandbox.id)
+    // 2. Generar respuesta del agente (MOCKEADO - sin Daytona por ahora)
+    const result = generateAgentResponse(agentName, context)
+    console.log('[v0] Resultado del agente:', result)
 
-    // 3. Ejecutar agente
-    const result = await executeAgentInSandbox(sandbox, agentName, context)
-    console.log('[v0] Resultado:', result)
-
-    // 4. Guardar en Firebase
-    await saveToFirebase(userId, agentName, result, sandbox.id)
+    // 3. Guardar en Firebase
+    await saveToFirebase(userId, agentName, result)
     console.log('[v0] Guardado en Firebase')
-
-    // 5. Destruir sandbox
-    await sandbox.destroy()
-    console.log('[v0] Sandbox destruido')
 
     return NextResponse.json({
       success: true,
+      message: 'Espacio de agente generado exitosamente',
       data: result
     })
   } catch (error) {
-    console.error('[v0] Error:', error)
+    console.error('[v0] Error en POST:', error)
     return NextResponse.json(
       { 
         success: false, 
@@ -62,9 +64,9 @@ export async function GET(request: NextRequest) {
   try {
     console.log('[v0] GET - Cron automático ejecutándose')
 
-    // Por ahora, ejecutamos para usuarios de prueba
-    const testUsers = ['test-user-001']
-    const agents = ['Nova']
+    // Ejecutar para usuarios de prueba
+    const testUsers = ['test-user-001', 'test-user-002']
+    const agents = ['Nova', 'Atlas', 'Phoenix']
 
     const results = []
 
@@ -72,10 +74,8 @@ export async function GET(request: NextRequest) {
       for (const agent of agents) {
         try {
           const context = await getEmotionalContext(userId)
-          const sandbox = await createDaytonaSandbox(userId, agent)
-          const result = await executeAgentInSandbox(sandbox, agent, context)
-          await saveToFirebase(userId, agent, result, sandbox.id)
-          await sandbox.destroy()
+          const result = generateAgentResponse(agent, context)
+          await saveToFirebase(userId, agent, result)
           
           results.push({ userId, agent, status: 'success' })
         } catch (err) {
@@ -87,10 +87,11 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
+      message: 'Cron ejecutado',
       results
     })
   } catch (error) {
-    console.error('[v0] Error Cron:', error)
+    console.error('[v0] Error en GET:', error)
     return NextResponse.json(
       { success: false, error: String(error) },
       { status: 500 }
@@ -117,7 +118,7 @@ async function getEmotionalContext(userId: string): Promise<AgentContext> {
       sentiment: data.sentiment || 'neutral'
     }
   } catch (error) {
-    console.error('[v0] Error contexto:', error)
+    console.error('[v0] Error leyendo contexto:', error)
     return {
       userId,
       lastMood: 50,
@@ -129,86 +130,38 @@ async function getEmotionalContext(userId: string): Promise<AgentContext> {
 }
 
 /**
- * Crea un sandbox en Daytona usando el SDK
+ * Genera respuesta del agente basada en contexto (MOCKEADO)
  */
-async function createDaytonaSandbox(userId: string, agentName: string) {
-  try {
-    const daytona = new Daytona({
-      apiKey: process.env.DAYTONA_API_KEY
-    })
-
-    console.log('[v0] Creando sandbox...')
-    
-    const sandbox = await daytona.sandboxes.create({
-      alias: `reflect-${userId}-${agentName}-${Date.now()}`
-    })
-
-    console.log('[v0] Sandbox creado:', sandbox.id)
-    return sandbox
-  } catch (error) {
-    console.error('[v0] Error creando sandbox:', error)
-    throw error
+function generateAgentResponse(agentName: string, context: AgentContext): AgentSpace {
+  // Respuestas personalizadas por agente
+  const responses: Record<string, any> = {
+    Nova: {
+      action: 'Análisis empático del estado emocional',
+      interaction: `Reflexión comprensiva sobre tu ánimo en ${context.city}`,
+      result: `Tu ánimo es ${context.lastMood}/100 y está ${context.moodTrend}. Te recomiendo mantener la práctica de autocompasión.`
+    },
+    Atlas: {
+      action: 'Análisis de datos emocionales',
+      interaction: `Evaluación lógica del patrón: "${context.sentiment}"`,
+      result: `Basado en datos: ánimo ${context.lastMood}/100, tendencia ${context.moodTrend}. Estrategia: estructurar rutina diaria.`
+    },
+    Phoenix: {
+      action: 'Reflexión profunda y transformadora',
+      interaction: `Meditación sobre tu viaje en ${context.city}`,
+      result: `Este momento de ${context.sentiment} es una oportunidad de crecimiento. Observa sin juzgar, ánimo: ${context.lastMood}/100.`
+    }
   }
-}
 
-/**
- * Ejecuta el agente en el sandbox
- */
-async function executeAgentInSandbox(
-  sandbox: any,
-  agentName: string,
-  context: AgentContext
-) {
-  try {
-    const prompt = `Eres ${agentName}, un agente emocional.
-    
-Contexto del usuario (${context.userId}):
-- Ánimo: ${context.lastMood}/100
-- Tendencia: ${context.moodTrend}  
-- Ciudad: ${context.city}
-- Sentimiento: ${context.sentiment}
+  const agentResponse = responses[agentName] || responses.Nova
 
-Genera una reflexión breve en JSON:
-{
-  "action": "qué harías como agente",
-  "interaction": "cómo interactuarías",
-  "result": "recomendación final"
-}`
-
-    console.log('[v0] Ejecutando comando en sandbox...')
-    
-    const execution = await sandbox.executeCommand(
-      `echo '${prompt}' | node -e "const fs = require('fs'); const input = require('fs').readFileSync(0, 'utf-8'); console.log(input)"`
-    )
-
-    console.log('[v0] Ejecución completada')
-
-    // Parsear resultado
-    let parsed = {
-      action: `Análisis de ${agentName}`,
-      interaction: 'Reflexión personalizada',
-      result: 'Recomendación: mantener el bienestar emocional'
-    }
-
-    try {
-      const match = execution.stdout.match(/\{[\s\S]*\}/)
-      if (match) {
-        parsed = JSON.parse(match[0])
-      }
-    } catch (e) {
-      console.warn('[v0] No se pudo parsear JSON')
-    }
-
-    return {
-      agentName,
-      ...parsed,
-      moodShift: context.lastMood - 50,
-      timestamp: Date.now(),
-      createdAt: new Date().toISOString()
-    }
-  } catch (error) {
-    console.error('[v0] Error ejecutando agente:', error)
-    throw error
+  return {
+    agentName,
+    action: agentResponse.action,
+    interaction: agentResponse.interaction,
+    result: agentResponse.result,
+    moodShift: context.lastMood - 50,
+    timestamp: Date.now(),
+    createdAt: new Date().toISOString()
   }
 }
 
@@ -218,25 +171,15 @@ Genera una reflexión breve en JSON:
 async function saveToFirebase(
   userId: string,
   agentName: string,
-  result: any,
-  sandboxId: string
-) {
+  result: AgentSpace
+): Promise<void> {
   try {
     const db = getFirebaseDatabase()
     const date = new Date().toISOString().split('T')[0]
     const path = `agent-spaces/${userId}/${agentName}/${date}`
 
     const spaceRef = ref(db, path)
-    await set(spaceRef, {
-      id: sandboxId,
-      agentName,
-      action: result.action,
-      interaction: result.interaction,
-      result: result.result,
-      moodShift: result.moodShift,
-      timestamp: result.timestamp,
-      createdAt: result.createdAt
-    })
+    await set(spaceRef, result)
 
     console.log('[v0] Guardado en:', path)
   } catch (error) {
