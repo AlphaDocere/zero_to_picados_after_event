@@ -22,12 +22,17 @@ export function Web3Testament() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    setLoading(true)
-    const history = getCheckInHistory()
-    const stats = getCheckInStats()
-    setEntries(history.reverse())
-    setStats(stats)
-    setLoading(false)
+    try {
+      setLoading(true)
+      const history = getCheckInHistory()
+      const statsData = getCheckInStats()
+      setEntries(history.reverse())
+      setStats(statsData)
+    } catch (error) {
+      console.error('[v0] Error loading testament data:', error)
+    } finally {
+      setLoading(false)
+    }
   }, [])
 
   if (loading) {

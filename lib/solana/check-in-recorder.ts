@@ -1,10 +1,7 @@
 /**
- * Solana Check-In Recorder
- * Registra cada check-in como una transacción en la blockchain de Solana
- * Usa Memo Program para almacenar datos de forma simple y económica
+ * Solana Check-In Recorder - MVP Version
+ * Almacena datos localmente y está listo para blockchain después
  */
-
-import { Connection, PublicKey, Transaction, SystemProgram, LAMPORTS_PER_SOL } from '@solana/web3.js'
 
 export interface CheckInRecord {
   city: string
@@ -16,131 +13,52 @@ export interface CheckInRecord {
   timestamp: number
 }
 
-export interface SolanaCheckInResponse {
-  success: boolean
-  signature?: string
-  error?: string
+export interface CheckInEntry extends CheckInRecord {
+  signature: string
+  recordedAt: string
 }
 
+const STORAGE_KEY = 'reflect_web3_check_ins'
+
 /**
- * Registra un check-in en Solana blockchain
- * Guarda la información codificada en una transacción Memo
+ * Guarda un check-in en localStorage (MVP)
+ * Listo para migrar a Solana blockchain después
  */
-export async function recordCheckInOnSolana(
-  checkInData: CheckInRecord,
-  connection: Connection,
-  wallet: PublicKey,
-  signTransaction: (tx: Transaction) => Promise<Transaction>
-): Promise<SolanaCheckInResponse> {
-  try {
-    // Preparar datos para la transacción
-    const memoData = JSON.stringify({
-      type: 'CHECK_IN',
-      ...checkInData,
-      walletAddress: wallet.toString(),
-    })
-
-    // Crear transacción simple (sin Memo Program por ahora, solo como tx vacía con metadatos)
-    const transaction = new Transaction()
-    transaction.add(
-      SystemProgram.transfer({
-        fromPubkey: wallet,
-        toPubkey: wallet, // Self-transfer para crear huella
-        lamports: 5000, // Mínimo para crear la transacción
-      })
-    )
-
-    // Agregar descripción a la transacción
-    transaction.recentBlockhash = (
-      await connection.getLatestBlockhash()
-    ).blockhash
-    transaction.feePayer = wallet
-
-    // Firmar transacción
-    const signedTransaction = await signTransaction(transaction)
-
-    // Enviar transacción
-    const signature = await connection.sendRawTransaction(
-      signedTransaction.serialize()
-    )
-
-    // Esperar confirmación
-    await connection.confirmTransaction(signature, 'confirmed')
-
-    // Guardar en localStorage como respaldo
-    saveCheckInLocally(checkInData, signature)
-
-    return {
-      success: true,
-      signature,
-    }
-  } catch (error) {
-    console.error('[Solana] Error registering check-in:', error)
-    // Guardar localmente aunque falle en blockchain
-    saveCheckInLocally(checkInData, 'local-' + Date.now())
-
-    return {
-      success: false,
-      error: error instanceof Error ? error.message : 'Unknown error',
-    }
+export function recordCheckInLocally(
+  checkInData: Omit<CheckInRecord, 'timestamp'>
+): CheckInEntry {
+  const entry: CheckInEntry = {
+    ...checkInData,
+    timestamp: Date.now(),
+    recordedAt: new Date().toISOString(),
+    signature: generateSignature(),
   }
+
+  // Guardar en localStorage
+  const stored = localStorage.getItem(STORAGE_KEY)
+  const entries = stored ? JSON.parse(stored) : []
+  entries.push(entry)
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(entries))
+
+  return entry
 }
 
 /**
- * Guarda el check-in en localStorage como respaldo
+ * Obtiene el historial de check-ins
  */
-function saveCheckInLocally(checkInData: CheckInRecord, signature: string) {
-  try {
-    const stored = localStorage.getItem('solana_check_ins')
-    const checkIns = stored ? JSON.parse(stored) : []
-
-    checkIns.push({
-      ...checkInData,
-      signature,
-      recordedAt: new Date().toISOString(),
-    })
-
-    // Guardar últimas 100 transacciones
-    localStorage.setItem(
-      'solana_check_ins',
-      JSON.stringify(checkIns.slice(-100))
-    )
-  } catch (e) {
-    console.warn('[Solana] Could not save locally:', e)
-  }
+export function getCheckInHistory(): CheckInEntry[] {
+  if (typeof window === 'undefined') return []
+  const stored = localStorage.getItem(STORAGE_KEY)
+  return stored ? JSON.parse(stored) : []
 }
 
 /**
- * Obtiene el historial de check-ins del localStorage
- */
-export function getCheckInHistory(): CheckInRecord[] {
-  try {
-    const stored = localStorage.getItem('solana_check_ins')
-    return stored ? JSON.parse(stored) : []
-  } catch {
-    return []
-  }
-}
-
-/**
- * Obtiene un check-in específico por firma
- */
-export function getCheckInBySignature(signature: string): CheckInRecord | null {
-  try {
-    const history = getCheckInHistory()
-    return history.find((ci: any) => ci.signature === signature) || null
-  } catch {
-    return null
-  }
-}
-
-/**
- * Obtiene estadísticas del historial
+ * Obtiene estadísticas de check-ins
  */
 export function getCheckInStats() {
-  const history = getCheckInHistory()
+  const entries = getCheckInHistory()
 
-  if (history.length === 0) {
+  if (entries.length === 0) {
     return {
       totalCheckIns: 0,
       averageMoodShift: 0,
@@ -149,27 +67,47 @@ export function getCheckInStats() {
     }
   }
 
-  const totalCheckIns = history.length
-  const averageMoodShift =
-    history.reduce((sum: number, ci: any) => sum + ci.moodShift, 0) /
-    totalCheckIns
-  const bestMoodDay = history.reduce((best: any, ci: any) =>
-    ci.moodShift > (best?.moodShift || -100) ? ci : best
+  const totalMoodShift = entries.reduce((sum, e) => sum + e.moodShift, 0)
+  const averageMoodShift = (totalMoodShift / entries.length).toFixed(1)
+
+  const bestMoodDay = entries.reduce((best, current) =>
+    current.moodShift > (best?.moodShift || -Infinity) ? current : best
   )
 
-  // Contar agentes usados
-  const agentCounts: Record<string, number> = {}
-  history.forEach((ci: any) => {
-    agentCounts[ci.agentUsed] = (agentCounts[ci.agentUsed] || 0) + 1
-  })
+  const agentCounts = entries.reduce(
+    (acc, e) => {
+      acc[e.agentUsed] = (acc[e.agentUsed] || 0) + 1
+      return acc
+    },
+    {} as Record<string, number>
+  )
+
   const favoriteAgent = Object.entries(agentCounts).sort(
     ([, a], [, b]) => b - a
-  )[0]?.[0]
+  )[0]?.[0] as 'compassionate' | 'analytical' | 'reflective' | null
 
   return {
-    totalCheckIns,
-    averageMoodShift: averageMoodShift.toFixed(1),
+    totalCheckIns: entries.length,
+    averageMoodShift,
     bestMoodDay,
     favoriteAgent,
+  }
+}
+
+/**
+ * Genera una firma simulada para MVP
+ * Se reemplazará con firma real de Solana después
+ */
+function generateSignature(): string {
+  return 'SOL_' + Math.random().toString(36).substring(2, 15) +
+    Math.random().toString(36).substring(2, 15)
+}
+
+/**
+ * Limpia todo el historial (útil para testing)
+ */
+export function clearCheckInHistory(): void {
+  if (typeof window !== 'undefined') {
+    localStorage.removeItem(STORAGE_KEY)
   }
 }
