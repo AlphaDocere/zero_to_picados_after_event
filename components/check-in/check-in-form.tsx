@@ -148,7 +148,7 @@ export function CheckInForm() {
 
   if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-6 bg-background">
+      <div className="min-h-screen flex items-center justify-center p-6 bg-transparent">
         <div className="w-full max-w-md text-center space-y-6 animate-in fade-in">
           <div className="p-8 rounded-2xl bg-gradient-to-br from-red-900/20 via-red-800/10 to-red-900/20 border-2 border-red-500/40 shadow-lg shadow-red-500/10">
             <h2 className="text-2xl font-bold text-red-400 mb-3">Error de Conexión</h2>
@@ -181,7 +181,7 @@ export function CheckInForm() {
 
   if (!session || loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-6 bg-background">
+      <div className="min-h-screen flex items-center justify-center p-6 bg-transparent">
         <div className="w-full max-w-md text-center space-y-8 animate-in fade-in">
           <div className="flex justify-center">
             <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 via-pink-500 to-purple-600 animate-pulse flex items-center justify-center shadow-lg shadow-purple-500/30" />
@@ -206,7 +206,7 @@ export function CheckInForm() {
   if (isSubmitted) {
     const moodChange = finalMood - initialMood
     return (
-      <div className="min-h-screen flex items-center justify-center p-6 bg-background">
+      <div className="min-h-screen flex items-center justify-center p-6 bg-transparent">
         <div className="w-full max-w-md text-center space-y-8 animate-in fade-in">
           <div className="relative">
             <div className="w-28 h-28 mx-auto rounded-2xl bg-gradient-to-br from-purple-500 via-pink-500 to-purple-600 flex items-center justify-center shadow-2xl shadow-purple-500/50 animate-pulse">
@@ -353,7 +353,7 @@ export function CheckInForm() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="min-h-screen flex flex-col bg-transparent">
       <header className="sticky top-0 z-10 bg-background/80 backdrop-blur-xl border-b border-border/50 px-6 py-4 shadow-lg">
         <div className="max-w-md mx-auto flex items-center justify-between">
           <button
