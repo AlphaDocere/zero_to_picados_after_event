@@ -50,7 +50,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="bg-background dark" style={{ backgroundColor: '#0a0e17' }}>
-      <body className={`${nunito.variable} font-sans antialiased bg-background`} style={{ backgroundColor: '#0a0e17' }}>
+      <body className={`${nunito.variable} font-sans antialiased bg-background pt-14 sm:pt-16`} style={{ backgroundColor: '#0a0e17' }}>
         <SolanaWalletProvider>
           <LanguageProvider>
             <RootNav />
