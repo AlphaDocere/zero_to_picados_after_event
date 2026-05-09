@@ -12,14 +12,12 @@
     },
     "category": "Comunidad",
     "date": "2026-04-25",
-    "url": "https://www.latercera.com/que-pasa/noticia/parques-de-santiago/",
-    "source": "La Tercera",
     "moodAffinity": "low",
     "moodTags": ["calma", "naturaleza", "familia"],
     "emoji": "🍂"
   },
   {
-    "id": 21,
+    "id": 2,
     "city": "Santiago",
     "headline": {
       "es": "Startup Chilena Revoluciona la Energía Solar Comunitaria",
@@ -31,14 +29,12 @@
     },
     "category": "Innovación",
     "date": "2026-04-28",
-    "url": "https://www.emol.com/noticias/Tecnologia/",
-    "source": "Emol",
     "moodAffinity": "high",
     "moodTags": ["innovación", "energía", "logro"],
     "emoji": "☀️"
   },
   {
-    "id": 22,
+    "id": 3,
     "city": "Santiago",
     "headline": {
       "es": "Programa de Meditación Gratuita en Cerro Santa Lucía",
@@ -50,14 +46,80 @@
     },
     "category": "Bienestar",
     "date": "2026-05-02",
-    "url": "https://www.latercera.com/tendencias/",
-    "source": "La Tercera",
     "moodAffinity": "low",
     "moodTags": ["meditación", "paz", "bienestar"],
     "emoji": "🧘"
   },
   {
-    "id": 2,
+    "id": 4,
+    "city": "Santiago",
+    "headline": {
+      "es": "Maratón Solidaria Recorre el Centro de Santiago",
+      "en": "Charity Marathon Runs Through Downtown Santiago"
+    },
+    "summary": {
+      "es": "Miles de corredores participan en la carrera benéfica que recauda fondos para comedores comunitarios de la Región Metropolitana.",
+      "en": "Thousands of runners participate in the charity race raising funds for community kitchens in the Metropolitan Region."
+    },
+    "category": "Deporte",
+    "date": "2026-05-06",
+    "moodAffinity": "high",
+    "moodTags": ["energía", "solidaridad", "logro"],
+    "emoji": "🏃"
+  },
+  {
+    "id": 5,
+    "city": "Santiago",
+    "headline": {
+      "es": "Feria del Libro Independiente Abre en Barrio Lastarria",
+      "en": "Independent Book Fair Opens in Barrio Lastarria"
+    },
+    "summary": {
+      "es": "Editoriales independientes chilenas presentan nuevas voces literarias con lecturas, talleres y firmas de autores emergentes.",
+      "en": "Chilean independent publishers showcase new literary voices with readings, workshops and emerging author signings."
+    },
+    "category": "Cultura",
+    "date": "2026-04-30",
+    "moodAffinity": "medium",
+    "moodTags": ["conocimiento", "creatividad", "descubrimiento"],
+    "emoji": "📖"
+  },
+  {
+    "id": 6,
+    "city": "Santiago",
+    "headline": {
+      "es": "Red de Huertos Escolares Crece en Comunas Vulnerables",
+      "en": "School Garden Network Grows in Vulnerable Districts"
+    },
+    "summary": {
+      "es": "Estudiantes aprenden sobre alimentación saludable cultivando verduras orgánicas en sus propios colegios con apoyo municipal.",
+      "en": "Students learn about healthy eating by growing organic vegetables at their own schools with municipal support."
+    },
+    "category": "Educación",
+    "date": "2026-05-04",
+    "moodAffinity": "medium",
+    "moodTags": ["educación", "crecimiento", "comunidad"],
+    "emoji": "🌱"
+  },
+  {
+    "id": 7,
+    "city": "Santiago",
+    "headline": {
+      "es": "Concierto Gratuito al Atardecer en el Parque Bicentenario",
+      "en": "Free Sunset Concert at Bicentenario Park"
+    },
+    "summary": {
+      "es": "Orquesta juvenil interpreta clásicos latinoamericanos al aire libre mientras familias disfrutan de la puesta de sol.",
+      "en": "Youth orchestra performs Latin American classics outdoors while families enjoy the sunset."
+    },
+    "category": "Música",
+    "date": "2026-05-07",
+    "moodAffinity": "low",
+    "moodTags": ["paz", "música", "conexión"],
+    "emoji": "🎶"
+  },
+  {
+    "id": 10,
     "city": "Buenos Aires",
     "headline": {
       "es": "Festival de Tango Gratuito en San Telmo",
@@ -69,14 +131,12 @@
     },
     "category": "Cultura",
     "date": "2026-04-24",
-    "url": "https://www.infobae.com/cultura/",
-    "source": "Infobae",
     "moodAffinity": "high",
     "moodTags": ["celebración", "cultura", "arte"],
     "emoji": "💃"
   },
   {
-    "id": 23,
+    "id": 11,
     "city": "Buenos Aires",
     "headline": {
       "es": "Red de Bibliotecas Populares Crece en Barrios del Sur",
@@ -88,14 +148,12 @@
     },
     "category": "Educación",
     "date": "2026-05-01",
-    "url": "https://www.lanacion.com.ar/sociedad/",
-    "source": "La Nación",
     "moodAffinity": "medium",
     "moodTags": ["educación", "comunidad", "conocimiento"],
     "emoji": "📚"
   },
   {
-    "id": 24,
+    "id": 12,
     "city": "Buenos Aires",
     "headline": {
       "es": "Voluntarios Transforman Plazas Abandonadas en Jardines",
@@ -107,14 +165,63 @@
     },
     "category": "Comunidad",
     "date": "2026-04-30",
-    "url": "https://www.clarin.com/ciudades/",
-    "source": "Clarín",
     "moodAffinity": "low",
     "moodTags": ["solidaridad", "naturaleza", "esperanza"],
     "emoji": "🌱"
   },
   {
-    "id": 3,
+    "id": 13,
+    "city": "Buenos Aires",
+    "headline": {
+      "es": "Hackathon de Impacto Social Reúne a 500 Programadores",
+      "en": "Social Impact Hackathon Gathers 500 Developers"
+    },
+    "summary": {
+      "es": "Desarrolladores de toda Argentina se unen en un maratón de 48 horas para crear soluciones tecnológicas a problemas sociales.",
+      "en": "Developers from across Argentina unite in a 48-hour marathon to create tech solutions for social problems."
+    },
+    "category": "Tecnología",
+    "date": "2026-05-05",
+    "moodAffinity": "high",
+    "moodTags": ["innovación", "energía", "colaboración"],
+    "emoji": "💻"
+  },
+  {
+    "id": 14,
+    "city": "Buenos Aires",
+    "headline": {
+      "es": "Terapia con Perros Llega a Hospitales Públicos",
+      "en": "Dog Therapy Arrives at Public Hospitals"
+    },
+    "summary": {
+      "es": "Programa piloto lleva perros entrenados a hospitales para acompañar a pacientes en recuperación, reduciendo estrés y ansiedad.",
+      "en": "Pilot program brings trained dogs to hospitals to accompany recovering patients, reducing stress and anxiety."
+    },
+    "category": "Salud",
+    "date": "2026-04-27",
+    "moodAffinity": "low",
+    "moodTags": ["cuidado", "ternura", "bienestar"],
+    "emoji": "🐕"
+  },
+  {
+    "id": 15,
+    "city": "Buenos Aires",
+    "headline": {
+      "es": "Festival Gastronómico Celebra la Diversidad Porteña",
+      "en": "Food Festival Celebrates Buenos Aires Diversity"
+    },
+    "summary": {
+      "es": "Cocineros de 20 comunidades migrantes comparten sus recetas tradicionales en una feria que celebra la multiculturalidad.",
+      "en": "Cooks from 20 migrant communities share their traditional recipes at a fair celebrating multiculturalism."
+    },
+    "category": "Gastronomía",
+    "date": "2026-05-03",
+    "moodAffinity": "medium",
+    "moodTags": ["diversidad", "sabor", "conexión"],
+    "emoji": "🥘"
+  },
+  {
+    "id": 20,
     "city": "Lima",
     "headline": {
       "es": "Iniciativa Gastronómica Une a Comunidades",
@@ -126,14 +233,12 @@
     },
     "category": "Sociedad",
     "date": "2026-04-25",
-    "url": "https://elcomercio.pe/gastronomia/",
-    "source": "El Comercio",
     "moodAffinity": "medium",
     "moodTags": ["comunidad", "tradición", "conexión"],
     "emoji": "🍲"
   },
   {
-    "id": 25,
+    "id": 21,
     "city": "Lima",
     "headline": {
       "es": "Jóvenes Limeños Crean App para Conectar Adultos Mayores",
@@ -145,14 +250,12 @@
     },
     "category": "Tecnología",
     "date": "2026-05-03",
-    "url": "https://rpp.pe/tecnologia/",
-    "source": "RPP",
     "moodAffinity": "low",
     "moodTags": ["solidaridad", "cuidado", "conexión"],
     "emoji": "🤝"
   },
   {
-    "id": 26,
+    "id": 22,
     "city": "Lima",
     "headline": {
       "es": "Festival de Innovación Social Reúne a Emprendedores",
@@ -164,14 +267,63 @@
     },
     "category": "Innovación",
     "date": "2026-05-05",
-    "url": "https://gestion.pe/tecnologia/",
-    "source": "Gestión",
     "moodAffinity": "high",
     "moodTags": ["innovación", "logro", "energía"],
     "emoji": "🚀"
   },
   {
-    "id": 4,
+    "id": 23,
+    "city": "Lima",
+    "headline": {
+      "es": "Miraflores Inaugura Sendero de Arte Público Frente al Mar",
+      "en": "Miraflores Opens Public Art Trail by the Sea"
+    },
+    "summary": {
+      "es": "Esculturas y murales de artistas peruanos decoran el nuevo paseo costero que conecta Miraflores con Barranco.",
+      "en": "Sculptures and murals by Peruvian artists decorate the new coastal walkway connecting Miraflores with Barranco."
+    },
+    "category": "Arte",
+    "date": "2026-04-29",
+    "moodAffinity": "medium",
+    "moodTags": ["creatividad", "belleza", "inspiración"],
+    "emoji": "🎨"
+  },
+  {
+    "id": 24,
+    "city": "Lima",
+    "headline": {
+      "es": "Yoga al Amanecer en el Malecón de Lima",
+      "en": "Sunrise Yoga at Lima's Malecón"
+    },
+    "summary": {
+      "es": "Clases gratuitas de yoga frente al océano Pacífico atraen a cientos de limeños que buscan empezar el día con calma.",
+      "en": "Free yoga classes facing the Pacific Ocean attract hundreds of Lima residents seeking a calm start to their day."
+    },
+    "category": "Bienestar",
+    "date": "2026-05-01",
+    "moodAffinity": "low",
+    "moodTags": ["paz", "bienestar", "serenidad"],
+    "emoji": "🧘"
+  },
+  {
+    "id": 25,
+    "city": "Lima",
+    "headline": {
+      "es": "Carrera de Colores Recorre el Centro Histórico",
+      "en": "Color Run Goes Through the Historic Center"
+    },
+    "summary": {
+      "es": "Miles de participantes corren entre nubes de colores celebrando la alegría y la vida activa en las calles de Lima.",
+      "en": "Thousands of participants run through clouds of color celebrating joy and active living in Lima's streets."
+    },
+    "category": "Deporte",
+    "date": "2026-05-07",
+    "moodAffinity": "high",
+    "moodTags": ["alegría", "energía", "celebración"],
+    "emoji": "🎊"
+  },
+  {
+    "id": 30,
     "city": "Bogota",
     "headline": {
       "es": "Ciclovías Dominicales se Expanden a Nuevas Zonas",
@@ -183,14 +335,12 @@
     },
     "category": "Movilidad",
     "date": "2026-04-23",
-    "url": "https://www.infobae.com/colombia/2025/07/06/ciclovia-de-bogota-tendra-dos-nuevos-tramos/",
-    "source": "Infobae Colombia",
     "moodAffinity": "high",
     "moodTags": ["actividad", "progreso", "libertad"],
     "emoji": "🚴"
   },
   {
-    "id": 27,
+    "id": 31,
     "city": "Bogota",
     "headline": {
       "es": "Huertos Comunitarios Florecen en Localidades Populares",
@@ -202,14 +352,12 @@
     },
     "category": "Comunidad",
     "date": "2026-04-29",
-    "url": "https://www.eltiempo.com/bogota/",
-    "source": "El Tiempo",
     "moodAffinity": "low",
     "moodTags": ["cuidado", "naturaleza", "comunidad"],
     "emoji": "🌿"
   },
   {
-    "id": 28,
+    "id": 32,
     "city": "Bogota",
     "headline": {
       "es": "Colectivo de Arte Urbano Transforma el Centro Histórico",
@@ -221,318 +369,63 @@
     },
     "category": "Arte",
     "date": "2026-05-04",
-    "url": "https://www.semana.com/cultura/",
-    "source": "Semana",
     "moodAffinity": "medium",
     "moodTags": ["creatividad", "expresión", "cultura"],
     "emoji": "🎨"
   },
   {
-    "id": 5,
-    "city": "Mexico City",
+    "id": 33,
+    "city": "Bogota",
     "headline": {
-      "es": "Murales Comunitarios Transforman Colonias",
-      "en": "Community Murals Transform Neighborhoods"
+      "es": "Festival de Cine al Aire Libre en el Parque Simón Bolívar",
+      "en": "Open-Air Film Festival at Simón Bolívar Park"
     },
     "summary": {
-      "es": "Artistas locales y vecinos colaboran en la creación de murales que cuentan historias de las comunidades.",
-      "en": "Local artists and neighbors collaborate on murals that tell community stories."
-    },
-    "category": "Arte",
-    "date": "2026-04-24",
-    "url": "https://www.jornada.com.mx/cultura",
-    "source": "La Jornada",
-    "moodAffinity": "medium",
-    "moodTags": ["creatividad", "comunidad", "expresión"],
-    "emoji": "🎨"
-  },
-  {
-    "id": 6,
-    "city": "Madrid",
-    "headline": {
-      "es": "Huertos Urbanos Florecen en la Capital",
-      "en": "Urban Gardens Flourish in the Capital"
-    },
-    "summary": {
-      "es": "Más de 50 nuevos huertos comunitarios abren en Madrid, acercando la agricultura sostenible a los barrios.",
-      "en": "Over 50 new community gardens open in Madrid, bringing sustainable agriculture to neighborhoods."
-    },
-    "category": "Medio Ambiente",
-    "date": "2026-04-25",
-    "url": "https://elpais.com/espana/madrid/",
-    "source": "El País",
-    "moodAffinity": "medium",
-    "moodTags": ["naturaleza", "sostenibilidad", "crecimiento"],
-    "emoji": "🌻"
-  },
-  {
-    "id": 7,
-    "city": "Barcelona",
-    "headline": {
-      "es": "Bibliotecas al Aire Libre en las Playas",
-      "en": "Open-Air Libraries on the Beaches"
-    },
-    "summary": {
-      "es": "Puntos de lectura gratuitos se instalan en las playas barcelonesas promoviendo la cultura y la desconexión digital.",
-      "en": "Free reading spots are set up on Barcelona beaches promoting culture and digital disconnection."
+      "es": "Proyecciones gratuitas de cine colombiano e internacional reúnen a miles de bogotanos bajo las estrellas cada fin de semana.",
+      "en": "Free screenings of Colombian and international films gather thousands of Bogotans under the stars every weekend."
     },
     "category": "Cultura",
-    "date": "2026-04-22",
-    "url": "https://www.lavanguardia.com/local/barcelona",
-    "source": "La Vanguardia",
-    "moodAffinity": "low",
-    "moodTags": ["calma", "desconexión", "lectura"],
-    "emoji": "📖"
-  },
-  {
-    "id": 8,
-    "city": "Miami",
-    "headline": {
-      "es": "Comunidad Latina Organiza Festival de Bienestar",
-      "en": "Latino Community Organizes Wellness Festival"
-    },
-    "summary": {
-      "es": "Un fin de semana dedicado a la salud mental y el bienestar reúne a familias con yoga, meditación y talleres gratuitos.",
-      "en": "A weekend dedicated to mental health and wellness brings families together with yoga, meditation and free workshops."
-    },
-    "category": "Bienestar",
-    "date": "2026-04-25",
-    "url": "https://worldhappinessfest.com/",
-    "source": "World Happiness Fest",
-    "moodAffinity": "low",
-    "moodTags": ["bienestar", "salud mental", "comunidad"],
-    "emoji": "🧘"
-  },
-  {
-    "id": 9,
-    "city": "Nueva York",
-    "headline": {
-      "es": "Iniciativa de Arte Comunitario en el Bronx",
-      "en": "Community Art Initiative in the Bronx"
-    },
-    "summary": {
-      "es": "Artistas y residentes colaboran en murales gigantes que transforman espacios urbanos con historias locales.",
-      "en": "Artists and residents collaborate on giant murals that transform urban spaces with local stories."
-    },
-    "category": "Arte",
-    "date": "2026-04-24",
-    "url": "https://www.nytimes.com/section/arts",
-    "source": "NY Times",
+    "date": "2026-05-02",
     "moodAffinity": "medium",
-    "moodTags": ["creatividad", "transformación", "comunidad"],
-    "emoji": "🎭"
+    "moodTags": ["entretenimiento", "conexión", "descubrimiento"],
+    "emoji": "🎬"
   },
   {
-    "id": 10,
-    "city": "Londres",
+    "id": 34,
+    "city": "Bogota",
     "headline": {
-      "es": "Festival de Música Callejera en Camden",
-      "en": "Street Music Festival in Camden"
+      "es": "Programa de Música para Jóvenes en Riesgo Social",
+      "en": "Music Program for At-Risk Youth"
     },
     "summary": {
-      "es": "Músicos locales y artistas se reúnen para celebrar la creatividad urbana con conciertos gratuitos.",
-      "en": "Local musicians and artists gather to celebrate urban creativity with free concerts."
+      "es": "Fundación ofrece instrumentos y clases gratuitas a adolescentes de Ciudad Bolívar, transformando vidas a través del arte.",
+      "en": "Foundation provides free instruments and classes to teenagers from Ciudad Bolívar, transforming lives through art."
     },
-    "category": "Música",
-    "date": "2026-04-25",
-    "url": "https://www.theguardian.com/music",
-    "source": "The Guardian",
-    "moodAffinity": "high",
-    "moodTags": ["música", "celebración", "energía"],
+    "category": "Educación",
+    "date": "2026-04-27",
+    "moodAffinity": "low",
+    "moodTags": ["esperanza", "transformación", "cuidado"],
     "emoji": "🎵"
   },
   {
-    "id": 11,
-    "city": "Paris",
+    "id": 35,
+    "city": "Bogota",
     "headline": {
-      "es": "Iniciativa de Bienestar Mental en Marais",
-      "en": "Mental Wellness Initiative in Marais"
+      "es": "Hackathon Climático Busca Soluciones para Bogotá",
+      "en": "Climate Hackathon Seeks Solutions for Bogotá"
     },
     "summary": {
-      "es": "Grupos comunitarios lanzan programa de meditación y mindfulness en espacios públicos parisinos.",
-      "en": "Community groups launch a meditation and mindfulness program in Parisian public spaces."
+      "es": "Equipos interdisciplinarios compiten desarrollando tecnologías verdes para combatir la contaminación y mejorar el aire capitalino.",
+      "en": "Interdisciplinary teams compete developing green technologies to combat pollution and improve the capital's air quality."
     },
-    "category": "Bienestar",
-    "date": "2026-04-24",
-    "url": "https://www.lemonde.fr/sante/",
-    "source": "Le Monde",
-    "moodAffinity": "low",
-    "moodTags": ["paz", "meditación", "autocuidado"],
-    "emoji": "🕊️"
-  },
-  {
-    "id": 12,
-    "city": "Berlin",
-    "headline": {
-      "es": "Espacios Comunitarios Recuperan Barrios Históricos",
-      "en": "Community Spaces Recover Historic Neighborhoods"
-    },
-    "summary": {
-      "es": "Antiguos edificios se transforman en centros culturales y espacios de encuentro para la comunidad berlinesa.",
-      "en": "Old buildings are transformed into cultural centers and meeting spaces for the Berlin community."
-    },
-    "category": "Comunidad",
-    "date": "2026-04-25",
-    "url": "https://www.dw.com/es/cultura/",
-    "source": "DW",
-    "moodAffinity": "medium",
-    "moodTags": ["historia", "comunidad", "transformación"],
-    "emoji": "🏛️"
-  },
-  {
-    "id": 13,
-    "city": "Amsterdam",
-    "headline": {
-      "es": "Ciclovías Ampliadas Conectan Ciudadanos",
-      "en": "Expanded Bike Lanes Connect Citizens"
-    },
-    "summary": {
-      "es": "La red de bicicletas se expande promoviendo la movilidad sostenible y conexión comunitaria.",
-      "en": "The bicycle network expands, promoting sustainable mobility and community connection."
-    },
-    "category": "Movilidad",
-    "date": "2026-04-23",
-    "url": "https://www.dutchnews.nl/",
-    "source": "Dutch News",
+    "category": "Innovación",
+    "date": "2026-05-06",
     "moodAffinity": "high",
-    "moodTags": ["libertad", "movimiento", "progreso"],
-    "emoji": "🚲"
+    "moodTags": ["innovación", "propósito", "energía"],
+    "emoji": "🌍"
   },
   {
-    "id": 14,
-    "city": "Tokyo",
-    "headline": {
-      "es": "Jardines Comunitarios Florecen en Shinjuku",
-      "en": "Community Gardens Flourish in Shinjuku"
-    },
-    "summary": {
-      "es": "Residentes crean espacios verdes en medio de la ciudad, promoviendo la conexión con la naturaleza.",
-      "en": "Residents create green spaces in the middle of the city, promoting connection with nature."
-    },
-    "category": "Medio Ambiente",
-    "date": "2026-04-25",
-    "url": "https://www.japantimes.co.jp/environment/",
-    "source": "Japan Times",
-    "moodAffinity": "low",
-    "moodTags": ["naturaleza", "serenidad", "armonía"],
-    "emoji": "🌸"
-  },
-  {
-    "id": 15,
-    "city": "Bangkok",
-    "headline": {
-      "es": "Mercados Nocturnos Celebran Tradición Local",
-      "en": "Night Markets Celebrate Local Tradition"
-    },
-    "summary": {
-      "es": "Vendedores y artesanos locales se reúnen en mercados culturales para compartir tradiciones tailandesas.",
-      "en": "Local vendors and artisans gather at cultural markets to share Thai traditions."
-    },
-    "category": "Cultura",
-    "date": "2026-04-24",
-    "url": "https://www.bangkokpost.com/life/social-and-lifestyle",
-    "source": "Bangkok Post",
-    "moodAffinity": "medium",
-    "moodTags": ["tradición", "descubrimiento", "sabor"],
-    "emoji": "🏮"
-  },
-  {
-    "id": 16,
-    "city": "Estambul",
-    "headline": {
-      "es": "Proyecto de Murales Une Oriente y Occidente",
-      "en": "Mural Project Unites East and West"
-    },
-    "summary": {
-      "es": "Artistas de ambos lados del Bósforo colaboran en iniciativa de arte público que celebra la diversidad.",
-      "en": "Artists from both sides of the Bosphorus collaborate on a public art initiative celebrating diversity."
-    },
-    "category": "Arte",
-    "date": "2026-04-25",
-    "url": "https://www.dailysabah.com/arts",
-    "source": "Daily Sabah",
-    "moodAffinity": "medium",
-    "moodTags": ["diversidad", "unión", "creatividad"],
-    "emoji": "🌉"
-  },
-  {
-    "id": 17,
-    "city": "Dubai",
-    "headline": {
-      "es": "Festival de Bienestar Global en Marina",
-      "en": "Global Wellness Festival at Marina"
-    },
-    "summary": {
-      "es": "Evento internacional reúne practicantes de yoga, meditación y bienestar de toda la región.",
-      "en": "International event brings together yoga, meditation and wellness practitioners from across the region."
-    },
-    "category": "Bienestar",
-    "date": "2026-04-25",
-    "url": "https://gulfnews.com/lifestyle/health-fitness",
-    "source": "Gulf News",
-    "moodAffinity": "low",
-    "moodTags": ["bienestar", "paz", "conexión global"],
-    "emoji": "✨"
-  },
-  {
-    "id": 18,
-    "city": "Sydney",
-    "headline": {
-      "es": "Iniciativa Oceánica Conecta Comunidades Costeras",
-      "en": "Ocean Initiative Connects Coastal Communities"
-    },
-    "summary": {
-      "es": "Programas de conservación marina involucran a residentes en la protección de ecosistemas locales.",
-      "en": "Marine conservation programs involve residents in protecting local ecosystems."
-    },
-    "category": "Medio Ambiente",
-    "date": "2026-04-24",
-    "url": "https://www.smh.com.au/environment",
-    "source": "Sydney Morning Herald",
-    "moodAffinity": "medium",
-    "moodTags": ["naturaleza", "propósito", "comunidad"],
-    "emoji": "🌊"
-  },
-  {
-    "id": 19,
-    "city": "Toronto",
-    "headline": {
-      "es": "Festival Multicultural Celebra Diversidad",
-      "en": "Multicultural Festival Celebrates Diversity"
-    },
-    "summary": {
-      "es": "Comunidades de todo el mundo se reúnen para compartir música, comida y tradiciones en Toronto.",
-      "en": "Communities from around the world gather to share music, food and traditions in Toronto."
-    },
-    "category": "Cultura",
-    "date": "2026-04-25",
-    "url": "https://www.thestar.com/life/",
-    "source": "Toronto Star",
-    "moodAffinity": "high",
-    "moodTags": ["diversidad", "celebración", "alegría"],
-    "emoji": "🎊"
-  },
-  {
-    "id": 20,
-    "city": "Ciudad de Mexico",
-    "headline": {
-      "es": "Caminos de Memoria Honran Historia Local",
-      "en": "Memory Paths Honor Local History"
-    },
-    "summary": {
-      "es": "Recorridos guiados por residentes revelan historias ocultas y tradiciones de barrios emblemáticos.",
-      "en": "Resident-led guided tours reveal hidden stories and traditions of iconic neighborhoods."
-    },
-    "category": "Historia",
-    "date": "2026-04-24",
-    "url": "https://www.milenio.com/cultura",
-    "source": "Milenio",
-    "moodAffinity": "medium",
-    "moodTags": ["memoria", "identidad", "descubrimiento"],
-    "emoji": "🗿"
-  },
-  {
-    "id": 29,
+    "id": 40,
     "city": "Mendoza",
     "headline": {
       "es": "Ruta del Vino Abre Nuevos Senderos de Trekking",
@@ -544,14 +437,12 @@
     },
     "category": "Turismo",
     "date": "2026-05-01",
-    "url": "https://www.losandes.com.ar/turismo/",
-    "source": "Los Andes",
     "moodAffinity": "high",
     "moodTags": ["aventura", "naturaleza", "disfrute"],
     "emoji": "🍷"
   },
   {
-    "id": 30,
+    "id": 41,
     "city": "Mendoza",
     "headline": {
       "es": "Talleres de Arte al Aire Libre en el Parque San Martín",
@@ -563,14 +454,12 @@
     },
     "category": "Arte",
     "date": "2026-04-28",
-    "url": "https://www.losandes.com.ar/cultura/",
-    "source": "Los Andes",
     "moodAffinity": "low",
     "moodTags": ["creatividad", "calma", "expresión"],
     "emoji": "🎨"
   },
   {
-    "id": 31,
+    "id": 42,
     "city": "Mendoza",
     "headline": {
       "es": "Programa de Voluntariado Ambiental en la Precordillera",
@@ -582,10 +471,59 @@
     },
     "category": "Medio Ambiente",
     "date": "2026-05-03",
-    "url": "https://www.mdzol.com/sociedad/",
-    "source": "MDZ Online",
     "moodAffinity": "medium",
     "moodTags": ["propósito", "naturaleza", "comunidad"],
     "emoji": "🌲"
+  },
+  {
+    "id": 43,
+    "city": "Mendoza",
+    "headline": {
+      "es": "Festival de la Vendimia Electrónica Sorprende con Fusión Cultural",
+      "en": "Electronic Harvest Festival Surprises with Cultural Fusion"
+    },
+    "summary": {
+      "es": "DJs locales mezclan folclore cuyano con música electrónica en una celebración que fusiona tradición y modernidad.",
+      "en": "Local DJs mix Cuyo folklore with electronic music in a celebration fusing tradition and modernity."
+    },
+    "category": "Música",
+    "date": "2026-05-05",
+    "moodAffinity": "high",
+    "moodTags": ["celebración", "energía", "creatividad"],
+    "emoji": "🎧"
+  },
+  {
+    "id": 44,
+    "city": "Mendoza",
+    "headline": {
+      "es": "Observatorio Astronómico Abre Noches Gratuitas al Público",
+      "en": "Astronomical Observatory Opens Free Public Nights"
+    },
+    "summary": {
+      "es": "Familias mendocinas disfrutan del cielo estrellado con telescopios profesionales y charlas sobre el universo.",
+      "en": "Mendoza families enjoy the starry sky with professional telescopes and talks about the universe."
+    },
+    "category": "Ciencia",
+    "date": "2026-04-26",
+    "moodAffinity": "medium",
+    "moodTags": ["asombro", "curiosidad", "conexión"],
+    "emoji": "🔭"
+  },
+  {
+    "id": 45,
+    "city": "Mendoza",
+    "headline": {
+      "es": "Terapia Termal Gratuita para Adultos Mayores en Cacheuta",
+      "en": "Free Thermal Therapy for Seniors in Cacheuta"
+    },
+    "summary": {
+      "es": "Programa municipal ofrece acceso gratuito a aguas termales para personas mayores, promoviendo salud y bienestar.",
+      "en": "Municipal program offers free access to hot springs for seniors, promoting health and wellness."
+    },
+    "category": "Bienestar",
+    "date": "2026-05-02",
+    "moodAffinity": "low",
+    "moodTags": ["bienestar", "cuidado", "serenidad"],
+    "emoji": "♨️"
   }
 ]
