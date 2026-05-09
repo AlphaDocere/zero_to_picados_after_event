@@ -2,6 +2,7 @@
 
 import { Slider } from "@/components/ui/slider"
 import { useTranslation } from "@/contexts/LanguageContext"
+import { useMood } from "@/contexts/MoodContext"
 
 interface MoodSliderProps {
   value: number
@@ -51,6 +52,12 @@ const getMoodBg = (value: number) => {
 
 export function MoodSlider({ value, onChange }: MoodSliderProps) {
   const { t } = useTranslation()
+  const { setMood } = useMood()
+
+  const handleChange = (v: number) => {
+    setMood(Math.min(100, v))
+    onChange(v)
+  }
   
   return (
     <div className="space-y-8">
@@ -83,7 +90,7 @@ export function MoodSlider({ value, onChange }: MoodSliderProps) {
           <div className={`absolute inset-0 h-3 rounded-full bg-gradient-to-r ${getMoodGradient(value)} opacity-20 blur-xl`} />
           <Slider
             value={[value]}
-            onValueChange={(vals) => onChange(vals[0])}
+            onValueChange={(vals) => handleChange(vals[0])}
             max={200}
             min={0}
             step={1}

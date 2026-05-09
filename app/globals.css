@@ -3,6 +3,47 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Hide native cursor on desktop — MoodAtmosphere renders the custom one */
+@media (hover: hover) {
+  html, body, * { cursor: none !important; }
+}
+
+/* Mood-driven typography and shape — variables injected by MoodAtmosphere */
+body {
+  font-weight: var(--mood-font-weight, 400);
+  letter-spacing: var(--mood-tracking, 0em);
+  line-height: var(--mood-line-height, 1.65);
+  transition:
+    background-color 1.2s ease,
+    color 1.2s ease,
+    font-weight 1.2s ease,
+    letter-spacing 1.2s ease,
+    line-height 1.2s ease;
+}
+
+/* Propagate background transition to key containers */
+.bg-background,
+.bg-card,
+[class*="bg-card"],
+[class*="bg-background"] {
+  transition: background-color 1.2s ease, border-color 1.2s ease;
+}
+
+/* Smooth color transitions on buttons and interactive elements */
+button, a, [role="button"] {
+  transition:
+    background-color 0.8s ease,
+    border-color 0.8s ease,
+    color 0.8s ease,
+    box-shadow 0.8s ease;
+}
+
+/* Border radius driven by mood */
+.rounded-2xl { border-radius: calc(var(--radius, 16px) * 1.25) !important; }
+.rounded-3xl { border-radius: calc(var(--radius, 16px) * 1.75) !important; }
+.rounded-xl  { border-radius: var(--radius, 12px) !important; }
+.rounded-lg  { border-radius: calc(var(--radius, 8px) * 0.75) !important; }
+
 :root {
   --lightningcss-light: initial;
   --lightningcss-dark: ;

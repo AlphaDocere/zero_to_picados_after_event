@@ -3,6 +3,8 @@ import { Nunito } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { RootNav } from '@/components/root-nav'
 import { LanguageProvider } from '@/contexts/LanguageContext'
+import { MoodProvider } from '@/contexts/MoodContext'
+import { MoodAtmosphere } from '@/components/mood-atmosphere'
 import './globals.css'
 
 const nunito = Nunito({ 
@@ -48,12 +50,15 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="bg-background dark" style={{ backgroundColor: '#0a0e17' }}>
-      <body className={`${nunito.variable} font-sans antialiased bg-background`} style={{ backgroundColor: '#0a0e17' }}>
-        <LanguageProvider>
-          <RootNav />
-          {children}
-        </LanguageProvider>
+    <html lang="en" className="bg-background dark">
+      <body className={`${nunito.variable} font-sans antialiased bg-background`}>
+        <MoodProvider>
+          <MoodAtmosphere />
+          <LanguageProvider>
+            <RootNav />
+            {children}
+          </LanguageProvider>
+        </MoodProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
