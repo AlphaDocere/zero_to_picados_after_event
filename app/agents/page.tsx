@@ -32,7 +32,7 @@ export default function AgentsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center p-6">
+      <div className="min-h-screen bg-transparent flex items-center justify-center p-6">
         <div className="text-center space-y-4">
           <Sparkles className="w-12 h-12 text-primary mx-auto animate-pulse" />
           <p className="text-muted-foreground">{t('common.next')}...</p>
@@ -42,7 +42,7 @@ export default function AgentsPage() {
   }
 
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-transparent">
       {/* Hero Section with Character System Overview */}
       <section className="relative overflow-hidden px-6 py-16 border-b border-border/50">
         {/* Background gradient elements */}
