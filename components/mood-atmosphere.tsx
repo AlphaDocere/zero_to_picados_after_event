@@ -21,32 +21,37 @@ type Theme = {
   primary: string; accent: string; foreground: string; muted: string; border: string
   fontWeight: number; letterSpacing: string; lineHeight: number; radius: number
   cursorSize: number; glowSize: number; cursorSpeed: number; glowColor: string
+  cursorRadius: number; cursorRotation: number;
 }
 
 const THEMES: Record<string, Theme> = {
   low: {
-    bg: '#03060f', bgCard: '#070c1a', bgSecondary: '#0a1020',
-    primary: '#4a7fe0', accent: '#3a6abf', foreground: '#a8b8d0', muted: '#4a5a72', border: '#1a2540',
+    bg: '#01040a', bgCard: '#050914', bgSecondary: '#080d1f',
+    primary: '#2563eb', accent: '#1d4ed8', foreground: '#bfdbfe', muted: '#3b82f6', border: '#1e3a8a',
     fontWeight: 300, letterSpacing: '0.04em', lineHeight: 1.8, radius: 8,
-    cursorSize: 8, glowSize: 20, cursorSpeed: 0.04, glowColor: '#4a7fe0',
+    cursorSize: 8, glowSize: 20, cursorSpeed: 0.04, glowColor: '#3b82f6',
+    cursorRadius: 2, cursorRotation: 45,
   },
   neutral: {
-    bg: '#0a0e17', bgCard: '#111827', bgSecondary: '#1a1f32',
-    primary: '#9b6dff', accent: '#7c3aed', foreground: '#e0e4f0', muted: '#6b7280', border: '#252d42',
+    bg: '#09090b', bgCard: '#0f111a', bgSecondary: '#16192b',
+    primary: '#8b5cf6', accent: '#7c3aed', foreground: '#e0e4f0', muted: '#6b7280', border: '#2e224d',
     fontWeight: 400, letterSpacing: '0em', lineHeight: 1.65, radius: 16,
-    cursorSize: 12, glowSize: 30, cursorSpeed: 0.1, glowColor: '#9b6dff',
+    cursorSize: 12, glowSize: 30, cursorSpeed: 0.1, glowColor: '#a78bfa',
+    cursorRadius: 10, cursorRotation: 0,
   },
   good: {
-    bg: '#0d0a16', bgCard: '#150f22', bgSecondary: '#1e1530',
-    primary: '#e040fb', accent: '#c026d3', foreground: '#f0e8ff', muted: '#8b6fa0', border: '#3d2060',
+    bg: '#170514', bgCard: '#21071d', bgSecondary: '#2e0a29',
+    primary: '#d946ef', accent: '#c026d3', foreground: '#fdf4ff', muted: '#a21caf', border: '#701a75',
     fontWeight: 500, letterSpacing: '-0.01em', lineHeight: 1.55, radius: 20,
-    cursorSize: 16, glowSize: 42, cursorSpeed: 0.16, glowColor: '#e040fb',
+    cursorSize: 16, glowSize: 42, cursorSpeed: 0.16, glowColor: '#e879f9',
+    cursorRadius: 100, cursorRotation: 0,
   },
   high: {
-    bg: '#0f0900', bgCard: '#1a1000', bgSecondary: '#261800',
-    primary: '#f59e0b', accent: '#fb923c', foreground: '#fff8e8', muted: '#92763a', border: '#4a3300',
+    bg: '#1a0d00', bgCard: '#261400', bgSecondary: '#331a00',
+    primary: '#f59e0b', accent: '#ea580c', foreground: '#fffbeb', muted: '#b45309', border: '#78350f',
     fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1.4, radius: 28,
-    cursorSize: 22, glowSize: 58, cursorSpeed: 0.28, glowColor: '#f59e0b',
+    cursorSize: 22, glowSize: 58, cursorSpeed: 0.28, glowColor: '#fbbf24',
+    cursorRadius: 100, cursorRotation: 90,
   },
 }
 
@@ -64,6 +69,13 @@ function getTheme(mood: number): Theme {
   const t = (mood - 75) / 25; return interp(THEMES.good, THEMES.high, t)
 }
 
+function getOpacities(mood: number) {
+  if (mood <= 25) return { low: 1, neutral: 0, good: 0, high: 0 }
+  if (mood <= 50) { const t = (mood - 25) / 25; return { low: 1 - t, neutral: t, good: 0, high: 0 } }
+  if (mood <= 75) { const t = (mood - 50) / 25; return { low: 0, neutral: 1 - t, good: t, high: 0 } }
+  const t = (mood - 75) / 25; return { low: 0, neutral: 0, good: 1 - t, high: t }
+}
+
 function interp(a: Theme, b: Theme, t: number): Theme {
   return {
     bg: lerpHex(a.bg, b.bg, t), bgCard: lerpHex(a.bgCard, b.bgCard, t), bgSecondary: lerpHex(a.bgSecondary, b.bgSecondary, t),
@@ -75,6 +87,8 @@ function interp(a: Theme, b: Theme, t: number): Theme {
     radius: lerp(a.radius, b.radius, t),
     cursorSize: lerp(a.cursorSize, b.cursorSize, t), glowSize: lerp(a.glowSize, b.glowSize, t),
     cursorSpeed: lerp(a.cursorSpeed, b.cursorSpeed, t), glowColor: lerpHex(a.glowColor, b.glowColor, t),
+    cursorRadius: lerp(a.cursorRadius, b.cursorRadius, t),
+    cursorRotation: lerp(a.cursorRotation, b.cursorRotation, t),
   }
 }
 
@@ -94,7 +108,7 @@ function injectTheme(theme: Theme) {
   r.style.setProperty('--mood-tracking', theme.letterSpacing)
   r.style.setProperty('--mood-line-height', String(theme.lineHeight))
   r.style.setProperty('--radius', `${theme.radius}px`)
-  document.body.style.backgroundColor = theme.bg
+  document.body.style.backgroundColor = 'transparent'
 }
 
 export function MoodAtmosphere() {
@@ -143,8 +157,28 @@ export function MoodAtmosphere() {
     ? (AGENT_OVERLAYS[agentState.agentId]?.[agentState.forecast] ?? null)
     : null
 
+  let bgOpacities = getOpacities(mood)
+  
+  if (agentState) {
+    // Si hay recomendación del agente, anulamos el fondo del slider por un fondo sanador/adecuado
+    if (agentState.forecast === 'needs-care') bgOpacities = { low: 0, neutral: 1, good: 0, high: 0 } // Bosque brumoso (sanación)
+    else if (agentState.forecast === 'stable') bgOpacities = { low: 0, neutral: 0, good: 1, high: 0 } // Pradera (calma enfocada)
+    else if (agentState.forecast === 'improving') bgOpacities = { low: 0, neutral: 0, good: 0, high: 1 } // Cañón (energía)
+  }
+
   return (
     <>
+      {/* Hyperrealistic Background Images Layer */}
+      <div className="pointer-events-none fixed inset-0 z-[-20] overflow-hidden bg-black">
+        <img src="/bgs/low_mood_bg_1778357170577.png" alt="Tormenta" className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out" style={{ opacity: bgOpacities.low }} />
+        <img src="/bgs/neutral_mood_bg_1778357187390.png" alt="Bosque" className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out" style={{ opacity: bgOpacities.neutral }} />
+        <img src="/bgs/good_mood_bg_1778357201438.png" alt="Pradera" className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out" style={{ opacity: bgOpacities.good }} />
+        <img src="/bgs/high_mood_bg_1778357219507.png" alt="Cañón" className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out" style={{ opacity: bgOpacities.high }} />
+      </div>
+
+      {/* Dark Overlay with Theme Color to keep Text Readable */}
+      <div className="pointer-events-none fixed inset-0 z-[-10]" style={{ backgroundColor: theme.bg, opacity: 0.75, transition: 'background-color 1.2s ease' }} />
+
       {/* Mood top glow */}
       <div aria-hidden className="pointer-events-none fixed top-0 left-0 right-0 z-[1]"
         style={{
@@ -180,22 +214,22 @@ export function MoodAtmosphere() {
       <div className="hidden md:block">
         <div aria-hidden className="pointer-events-none fixed z-[9999]"
           style={{
-            width: theme.glowSize, height: theme.glowSize, borderRadius: '50%',
+            width: theme.glowSize, height: theme.glowSize, borderRadius: `${theme.cursorRadius}px`,
             border: `1px solid ${theme.glowColor}55`,
             background: `radial-gradient(circle, ${theme.glowColor}22 0%, transparent 70%)`,
-            transform: `translate(${pos.x - theme.glowSize / 2}px, ${pos.y - theme.glowSize / 2}px)`,
+            transform: `translate(${pos.x - theme.glowSize / 2}px, ${pos.y - theme.glowSize / 2}px) rotate(${theme.cursorRotation}deg)`,
             opacity: active ? 1 : 0,
-            transition: 'opacity 400ms, border-color 800ms ease, background 800ms ease, width 600ms ease, height 600ms ease',
+            transition: 'opacity 400ms, border-color 800ms ease, background 800ms ease, width 600ms ease, height 600ms ease, border-radius 600ms ease',
           }}
         />
-        <div aria-hidden className="pointer-events-none fixed z-[9999] rounded-full"
+        <div aria-hidden className="pointer-events-none fixed z-[9999]"
           style={{
-            width: theme.cursorSize, height: theme.cursorSize, borderRadius: '50%',
+            width: theme.cursorSize, height: theme.cursorSize, borderRadius: `${theme.cursorRadius}px`,
             background: theme.glowColor,
             boxShadow: `0 0 ${theme.cursorSize * 1.5}px ${theme.glowColor}cc`,
-            transform: `translate(${pos.x - theme.cursorSize / 2}px, ${pos.y - theme.cursorSize / 2}px)`,
+            transform: `translate(${pos.x - theme.cursorSize / 2}px, ${pos.y - theme.cursorSize / 2}px) rotate(${theme.cursorRotation}deg)`,
             opacity: active ? 1 : 0,
-            transition: 'opacity 400ms, background 800ms ease, box-shadow 800ms ease, width 600ms ease, height 600ms ease',
+            transition: 'opacity 400ms, background 800ms ease, box-shadow 800ms ease, width 600ms ease, height 600ms ease, border-radius 600ms ease',
           }}
         />
       </div>

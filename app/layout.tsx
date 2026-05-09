@@ -50,8 +50,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="bg-background dark">
-      <body className={`${nunito.variable} font-sans antialiased bg-background`}>
+    <html lang="en" className="dark">
+      <body className={`${nunito.variable} font-sans antialiased`}>
         <MoodProvider>
           <MoodAtmosphere />
           <LanguageProvider>
