@@ -121,7 +121,7 @@ export default function HarvestPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20 pb-12">
+    <div className="min-h-screen bg-transparent pb-12">
       <header className="sticky top-0 z-10 bg-background/80 backdrop-blur-xl border-b border-border px-6 py-4">
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <div>
