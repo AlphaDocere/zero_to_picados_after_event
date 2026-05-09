@@ -32,6 +32,37 @@ export default function DashboardPage() {
     return isNaN(num) ? defaultVal : num
   }
 
+  // Format date safely
+  const formatDate = (dateVal: any) => {
+    if (!dateVal) return 'Fecha no disponible'
+    try {
+      const date = new Date(dateVal)
+      if (isNaN(date.getTime())) return 'Fecha no disponible'
+      return date.toLocaleDateString('es-ES', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      })
+    } catch {
+      return 'Fecha no disponible'
+    }
+  }
+
+  // Format time safely
+  const formatTime = (dateVal: any) => {
+    if (!dateVal) return '00:00'
+    try {
+      const date = new Date(dateVal)
+      if (isNaN(date.getTime())) return '00:00'
+      return date.toLocaleTimeString('es-ES', {
+        hour: '2-digit',
+        minute: '2-digit',
+      })
+    } catch {
+      return '00:00'
+    }
+  }
+
   const avgInitialMood = sessions.length
     ? Math.round(
         sessions.reduce((sum, s) => sum + getSafeNumber(s.initialMood, 0), 0) / sessions.length
@@ -133,13 +164,7 @@ export default function DashboardPage() {
                             {session.city}
                           </p>
                           <p className="text-sm text-muted-foreground">
-                            {new Date(session.createdAt).toLocaleDateString('es-ES', {
-                              year: 'numeric',
-                              month: 'long',
-                              day: 'numeric',
-                              hour: '2-digit',
-                              minute: '2-digit',
-                            })}
+                            {formatDate(session.createdAt)} a las {formatTime(session.createdAt)}
                           </p>
                         </div>
                       </div>
