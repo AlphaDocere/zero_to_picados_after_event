@@ -19,6 +19,7 @@ import { AgentSelector } from "./agent-selector"
 import { ResponseCard } from "./response-card"
 import { AgentFollowUp } from "./agent-follow-up"
 import { StepIndicator } from "./step-indicator"
+import { CheckInWeb3Recorder } from "@/components/solana/check-in-web3-recorder"
 
 const TOTAL_STEPS = 9
 
@@ -344,6 +345,20 @@ export function CheckInForm() {
                   {finalMood}/100 ({finalMood > initialMood ? "+" : ""}{finalMood - initialMood})
                 </span>
               </div>
+            </div>
+
+            <div className="pt-4">
+              <CheckInWeb3Recorder
+                checkInData={{
+                  city,
+                  initialMood,
+                  finalMood,
+                  moodShift: finalMood - initialMood,
+                  agentUsed: selectedAgent as 'compassionate' | 'analytical' | 'reflective',
+                  sentiment: session?.opinion || '',
+                }}
+                autoRecord={true}
+              />
             </div>
           </div>
         )
