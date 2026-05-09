@@ -16,7 +16,18 @@ export function CityComparator({ cities }: CityComparatorProps) {
 
   if (!city1 || !city2) return null
 
-  const similarity = Math.round((1 - (Math.abs(city1.avgMood - city2.avgMood) + Math.abs(city1.avgChange - city2.avgChange)) / 200) * 100)
+  // Sanitize values to prevent NaN display
+  const getSafeValue = (val: any, defaultVal: number = 0) => {
+    const num = Number(val)
+    return isNaN(num) ? defaultVal : num
+  }
+
+  const avgMood1 = getSafeValue(city1.avgMood, 0)
+  const avgMood2 = getSafeValue(city2.avgMood, 0)
+  const avgChange1 = getSafeValue(city1.avgChange, 0)
+  const avgChange2 = getSafeValue(city2.avgChange, 0)
+
+  const similarity = Math.round((1 - (Math.abs(avgMood1 - avgMood2) + Math.abs(avgChange1 - avgChange2)) / 200) * 100)
 
   return (
     <div className="w-full space-y-4">
@@ -47,17 +58,17 @@ export function CityComparator({ cities }: CityComparatorProps) {
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Ánimo promedio:</span>
-                <span className="font-semibold">{city1.avgMood}/100</span>
+                <span className="font-semibold">{avgMood1}/100</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Cambio:</span>
-                <span className={`font-semibold ${city1.avgChange > 0 ? 'text-green-500' : 'text-red-500'}`}>
-                  {city1.avgChange > 0 ? '+' : ''}{city1.avgChange}
+                <span className={`font-semibold ${avgChange1 > 0 ? 'text-green-500' : 'text-red-500'}`}>
+                  {avgChange1 > 0 ? '+' : ''}{avgChange1}
                 </span>
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Check-ins:</span>
-                <span>{city1.count}</span>
+                <span>{city1.count || 0}</span>
               </div>
             </div>
           </div>
@@ -69,17 +80,17 @@ export function CityComparator({ cities }: CityComparatorProps) {
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Ánimo promedio:</span>
-                <span className="font-semibold">{city2.avgMood}/100</span>
+                <span className="font-semibold">{avgMood2}/100</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Cambio:</span>
-                <span className={`font-semibold ${city2.avgChange > 0 ? 'text-green-500' : 'text-red-500'}`}>
-                  {city2.avgChange > 0 ? '+' : ''}{city2.avgChange}
+                <span className={`font-semibold ${avgChange2 > 0 ? 'text-green-500' : 'text-red-500'}`}>
+                  {avgChange2 > 0 ? '+' : ''}{avgChange2}
                 </span>
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Check-ins:</span>
-                <span>{city2.count}</span>
+                <span>{city2.count || 0}</span>
               </div>
             </div>
           </div>

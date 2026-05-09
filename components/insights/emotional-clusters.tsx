@@ -13,6 +13,12 @@ export function EmotionalClusters({ clusters }: EmotionalClustersProps) {
     reflective: 'Phoenix - Reflexiva'
   }
 
+  // Sanitize values to prevent NaN display
+  const getSafeValue = (val: any, defaultVal: number = 0) => {
+    const num = Number(val)
+    return isNaN(num) ? defaultVal : num
+  }
+
   return (
     <div className="w-full space-y-4">
       <div>
@@ -32,12 +38,12 @@ export function EmotionalClusters({ clusters }: EmotionalClustersProps) {
               <div key={city.city} className="text-sm">
                 <div className="flex justify-between mb-1">
                   <span className="font-medium text-foreground">{city.city}</span>
-                  <span className="text-green-600 dark:text-green-400 font-bold">+{city.avgChange}</span>
+                  <span className="text-green-600 dark:text-green-400 font-bold">+{getSafeValue(city.avgChange)}</span>
                 </div>
                 <div className="w-full bg-secondary rounded-full h-1.5">
                   <div 
                     className="bg-green-500 h-1.5 rounded-full"
-                    style={{ width: `${(city.avgMood / 100) * 100}%` }}
+                    style={{ width: `${(getSafeValue(city.avgMood) / 100) * 100}%` }}
                   ></div>
                 </div>
               </div>
@@ -56,12 +62,12 @@ export function EmotionalClusters({ clusters }: EmotionalClustersProps) {
               <div key={city.city} className="text-sm">
                 <div className="flex justify-between mb-1">
                   <span className="font-medium text-foreground">{city.city}</span>
-                  <span className="text-blue-600 dark:text-blue-400 font-bold">{city.avgChange}</span>
+                  <span className="text-blue-600 dark:text-blue-400 font-bold">{getSafeValue(city.avgChange)}</span>
                 </div>
                 <div className="w-full bg-secondary rounded-full h-1.5">
                   <div 
                     className="bg-blue-500 h-1.5 rounded-full"
-                    style={{ width: `${(city.avgMood / 100) * 100}%` }}
+                    style={{ width: `${(getSafeValue(city.avgMood) / 100) * 100}%` }}
                   ></div>
                 </div>
               </div>
@@ -80,12 +86,12 @@ export function EmotionalClusters({ clusters }: EmotionalClustersProps) {
               <div key={city.city} className="text-sm">
                 <div className="flex justify-between mb-1">
                   <span className="font-medium text-foreground">{city.city}</span>
-                  <span className="text-red-600 dark:text-red-400 font-bold">{city.avgChange}</span>
+                  <span className="text-red-600 dark:text-red-400 font-bold">{getSafeValue(city.avgChange)}</span>
                 </div>
                 <div className="w-full bg-secondary rounded-full h-1.5">
                   <div 
                     className="bg-red-500 h-1.5 rounded-full"
-                    style={{ width: `${(city.avgMood / 100) * 100}%` }}
+                    style={{ width: `${(getSafeValue(city.avgMood) / 100) * 100}%` }}
                   ></div>
                 </div>
               </div>

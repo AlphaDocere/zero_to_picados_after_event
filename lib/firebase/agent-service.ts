@@ -1,27 +1,5 @@
-import { initializeApp } from 'firebase/app'
-import { getDatabase, ref, get } from 'firebase/database'
-
-const firebaseConfig = {
-  apiKey: "AIzaSyCwgAbtOuFB9AcOkV3v4zcY1LLJspV0ymA",
-  authDomain: "zero-to-agent-interface.firebaseapp.com",
-  databaseURL: "https://zero-to-agent-interface-default-rtdb.firebaseio.com",
-  projectId: "zero-to-agent-interface",
-  storageBucket: "zero-to-agent-interface.firebasestorage.app",
-  messagingSenderId: "304353011330",
-  appId: "1:304353011330:web:61e9ac08abbf9479c2f69b",
-  measurementId: "G-2EDRCN2F3N"
-}
-
-let app: any = null
-let db: any = null
-
-function initFirebase() {
-  if (!app) {
-    app = initializeApp(firebaseConfig)
-    db = getDatabase(app)
-  }
-  return db
-}
+import { ref, get } from 'firebase/database'
+import { getFirebaseDatabase } from '../firebase-init'
 
 export interface CheckInSession {
   id: string
@@ -46,7 +24,7 @@ export interface CheckInSession {
 export async function fetchCheckInsByAgent(agentId: string): Promise<CheckInSession[]> {
   try {
     console.log('[v0] Fetching real CheckIn sessions for agent:', agentId)
-    const database = initFirebase()
+    const database = getFirebaseDatabase()
     const sessionsRef = ref(database, 'check-in-sessions')
     
     const snapshot = await get(sessionsRef)
