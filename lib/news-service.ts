@@ -62,7 +62,7 @@ export async function getNewsForCity(cityName: string): Promise<News[]> {
 /**
  * Agrega una nueva noticia a una ciudad
  */
-export async function addNewsToCi ty(cityName: string, news: Omit<News, 'id'>): Promise<string | null> {
+export async function addNewsToCity(cityName: string, news: Omit<News, 'id'>): Promise<string | null> {
   try {
     const db = getFirebaseDb()
     const newsRef = ref(db, `cities/${cityName}/news`)
