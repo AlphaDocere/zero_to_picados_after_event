@@ -13,7 +13,7 @@ import { ONBOARDING_STEPS } from "@/lib/onboarding-content"
 
 import { MoodSlider } from "./mood-slider"
 import { CitySelector } from "./city-selector"
-import { NewsCard } from "./news-card"
+import { MoodAdaptiveNews } from "./mood-adaptive-news"
 import { OpinionInput } from "./opinion-input"
 import { AgentSelector } from "./agent-selector"
 import { ResponseCard } from "./response-card"
@@ -282,7 +282,7 @@ export function CheckInForm() {
       case 1:
         return <CitySelector value={city} onChange={handleCityChange} agentId={selectedAgent} />
       case 2:
-        return <NewsCard city={city} />
+        return <MoodAdaptiveNews city={city} mood={initialMood} />
       case 3:
         return <OpinionInput value={opinion} onChange={handleOpinionChange} />
       case 4:
