@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { BarChart3, Heart, Sprout, Globe, Sparkles, Zap } from 'lucide-react'
+import { BarChart3, Heart, Sprout, Globe, Sparkles, Zap, MapPin } from 'lucide-react'
 import { LanguageToggle } from './LanguageToggle'
 
 export function RootNav() {
@@ -50,6 +50,14 @@ export function RootNav() {
           >
             <Zap className="w-4 h-4" />
             Testamento
+          </Link>
+
+          <Link
+            href="/solicita-tu-ciudad"
+            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-500/10 hover:bg-blue-500/20 text-blue-600 dark:text-blue-400 font-medium transition-all duration-300 text-sm"
+          >
+            <MapPin className="w-4 h-4" />
+            Tu Ciudad
           </Link>
           
           <Link
