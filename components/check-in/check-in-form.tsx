@@ -19,7 +19,6 @@ import { AgentSelector } from "./agent-selector"
 import { ResponseCard } from "./response-card"
 import { AgentFollowUp } from "./agent-follow-up"
 import { StepIndicator } from "./step-indicator"
-import { SolanaCheckInButton } from "./solana-check-in-button"
 
 const TOTAL_STEPS = 9
 
@@ -346,14 +345,6 @@ export function CheckInForm() {
                 </span>
               </div>
             </div>
-
-            <SolanaCheckInButton
-              city={city}
-              initialMood={initialMood}
-              finalMood={finalMood}
-              agent={selectedAgent}
-              sentiment={emotion}
-            />
           </div>
         )
       default:
