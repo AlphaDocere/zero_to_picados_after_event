@@ -61,7 +61,7 @@ export default function InsightsPage() {
 
   if (loading) {
     return (
-      <main className="min-h-screen bg-background">
+      <main className="min-h-screen bg-transparent">
         <div className="max-w-7xl mx-auto px-6 py-12 flex items-center justify-center h-96">
           <div className="text-center space-y-4">
             <Globe className="w-12 h-12 text-primary mx-auto animate-spin" />
@@ -74,7 +74,7 @@ export default function InsightsPage() {
 
   if (cityPatterns.length === 0) {
     return (
-      <main className="min-h-screen bg-background">
+      <main className="min-h-screen bg-transparent">
         <div className="max-w-7xl mx-auto px-6 py-12 flex items-center justify-center h-96">
           <div className="text-center space-y-4">
             <Globe className="w-12 h-12 text-muted-foreground mx-auto" />
@@ -86,7 +86,7 @@ export default function InsightsPage() {
   }
 
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-transparent">
       <div className="max-w-7xl mx-auto px-6 py-12 space-y-12">
         {/* Header */}
         <div className="space-y-4">

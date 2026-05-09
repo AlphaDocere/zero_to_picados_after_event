@@ -1,6 +1,26 @@
-import { getCheckInSession } from '@/lib/firebase'
+import { createGroq } from '@ai-sdk/groq'
+import { generateText } from 'ai'
 import { getAgent } from '@/lib/agents.config'
 import { NextRequest, NextResponse } from 'next/server'
+
+const groq = createGroq({ apiKey: process.env.GROQ_API_KEY })
+
+export type AgentAction = {
+  label: string
+  description: string
+  type: 'reflect' | 'share' | 'breathe' | 'write' | 'connect'
+}
+
+export type AgentGenerativeResponse = {
+  insight: string
+  emotionalValidation: string
+  actions: AgentAction[]
+  moodForecast: 'improving' | 'stable' | 'needs-care'
+  communityInsight: string
+  agentName: string
+  agentId: string
+  tone: string
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -8,60 +28,48 @@ export async function POST(request: NextRequest) {
     const { sessionId, agentId, initialMood, opinion, city } = body
 
     if (!sessionId || !agentId) {
-      return NextResponse.json(
-        { error: 'Missing required fields' },
-        { status: 400 }
-      )
+      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
 
-    // Get the session to validate
-    const session = await getCheckInSession(sessionId)
-    if (!session) {
-      return NextResponse.json(
-        { error: 'Session not found' },
-        { status: 404 }
-      )
-    }
-
-    // Get agent configuration
     const agent = getAgent(agentId)
+    const moodLabel = initialMood < 35 ? 'bajo' : initialMood < 65 ? 'neutral' : 'alto'
 
-    // Generate personalized response based on agent personality
-    const response = generateAgentResponse(agent.id, {
-      initialMood,
-      opinion,
-      city: city || 'una ciudad del mundo'
-    })
+    const { text } = await generateText({
+      model: groq('llama-3.3-70b-versatile'),
+      system: agent.systemPrompt,
+      prompt: `El usuario está en ${city} con estado emocional ${initialMood}/100 (${moodLabel}).
+Su reflexión: "${opinion}"
 
-    return NextResponse.json({
-      response,
-      agentName: agent.name,
-      agentId: agent.id,
-      tone: agent.tone
-    })
-  } catch (error) {
-    console.error('[v0] Agent response error:', error)
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    )
-  }
+Responde ÚNICAMENTE con un JSON válido (sin markdown, sin texto extra) con esta estructura exacta:
+{
+  "insight": "reflexión personal de 2-3 oraciones como ${agent.name}",
+  "emotionalValidation": "validación breve del estado emocional en 1 oración",
+  "actions": [
+    {"label": "máx 4 palabras", "description": "1 oración", "type": "reflect"},
+    {"label": "máx 4 palabras", "description": "1 oración", "type": "breathe"},
+    {"label": "máx 4 palabras", "description": "1 oración", "type": "connect"}
+  ],
+  "moodForecast": "improving",
+  "communityInsight": "frase poderosa de máx 15 palabras para compartir"
 }
 
-function generateAgentResponse(
-  agentId: string,
-  context: { initialMood: number; opinion: string; city: string }
-): string {
-  const { initialMood, opinion, city } = context
-  const moodContext = initialMood < 40 ? 'difícil' : initialMood < 70 ? 'reflexiva' : 'positiva'
+Tipos válidos para actions: reflect, share, breathe, write, connect
+Valores válidos para moodForecast: improving, stable, needs-care
+Responde en español.`,
+    })
 
-  const responses: Record<string, string> = {
-    amplifier: `Nova aquí. Tu reflexión desde ${city} me inspira. He sentido la energía detrás de tu opinión y tu estado inicial de ${initialMood} me dice mucho sobre dónde estás ahora. Lo que compartiste es poderoso - es exactamente el tipo de autenticidad que necesita ser amplificada. Tu voz importa en esta comunidad global de Zero to Agent.`,
+    // Parse JSON — strip markdown fences if model added them
+    const clean = text.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim()
+    const parsed = JSON.parse(clean)
 
-    documentarian: `Atlas aquí. Documentando tu perspectiva de ${city} como parte del archivo vivo de Zero to Agent. Tu reflexión, con un estado emocional ${moodContext}, añade una capa importante a nuestra comprensión colectiva. Lo que expresaste no es solo un momento - es un testimonio que perdurará. Eres parte de una narrativa global de transformación.`,
-
-    visionary: `Phoenix aquí. Viendo el potencial en tu viaje desde ${city}. Tu estado actual de ${initialMood} es el punto de partida de algo mayor. La reflexión que compartiste es semilla de transformación. Zero to Agent no es solo un evento que viviste - es el comienzo de tu metamorfosis. Visualizo un futuro donde esta experiencia cataliza cambio tangible en ti y en tu comunidad.`
+    return NextResponse.json({
+      ...parsed,
+      agentName: agent.name,
+      agentId: agent.id,
+      tone: agent.tone,
+    } satisfies AgentGenerativeResponse)
+  } catch (error) {
+    console.error('[generative-ui] Error:', error)
+    return NextResponse.json({ error: 'Error generando respuesta' }, { status: 500 })
   }
-
-  return responses[agentId] || responses.amplifier
 }
