@@ -4,6 +4,8 @@ import { Analytics } from '@vercel/analytics/next'
 import { RootNav } from '@/components/root-nav'
 import { LanguageProvider } from '@/contexts/LanguageContext'
 import { SolanaWalletProvider } from '@/components/solana/solana-wallet-provider'
+import { MoodProvider } from '@/contexts/MoodContext'
+import { MoodAtmosphere } from '@/components/mood-atmosphere'
 import './globals.css'
 
 const nunito = Nunito({ 
@@ -49,14 +51,17 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="bg-background dark" style={{ backgroundColor: '#0a0e17' }}>
-      <body className={`${nunito.variable} font-sans antialiased bg-background`} style={{ backgroundColor: '#0a0e17' }}>
-        <SolanaWalletProvider>
+    <html lang="en" className="dark">
+      <body className={`${nunito.variable} font-sans antialiased`}>
+        <MoodProvider>
+          <MoodAtmosphere />
+          <SolanaWalletProvider>
           <LanguageProvider>
             <RootNav />
             {children}
           </LanguageProvider>
         </SolanaWalletProvider>
+        </MoodProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
