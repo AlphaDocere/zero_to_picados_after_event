@@ -1,167 +1,376 @@
-# Reflect - Emotional Check-in Platform
+# Reflect - Zero to Picados After Event
 
-Transform self-awareness through guided reflections with personalized AI companions.
+Una aplicación de check-in emocional con integración Web3 en Solana Devnet, gestión dinámica de ciudades y noticias, todo potenciado por IA.
 
-## Overview
+## Características Principales
 
-**Reflect** is an innovative emotional intelligence platform that combines guided check-ins with AI agents to help users understand and track their emotional journey. Built with modern web technologies and powered by Firebase, Reflect creates a safe space for meaningful self-reflection while building a collaborative community.
+### 🎯 Check-in Emocional (9 Pasos)
+- Deslizador de ánimo inicial (0-100)
+- Selector de ciudad con solicitud de nuevas ciudades
+- Noticias random por ciudad
+- Input de opinión personalizado
+- Selector de agente IA (Nova, Atlas, Phoenix)
+- Respuesta del agente
+- Preguntas de seguimiento
+- Resumen final con cambio de ánimo
+- Registro en Solana blockchain
 
-## Features
+### 🔗 Web3 Solana Integration
+- **Testamento Colectivo**: Registro inmutable de check-ins
+- **Validador de Transacciones**: Verifica firmas en Solana Devnet
+- **Transacciones Reales**: Check-ins como Memos en blockchain
+- API endpoint: `/api/actions/check-in-memo`
 
-### Core Check-in Experience
-- **Guided Reflections**: Step-by-step emotional check-in flow with thoughtful prompts
-- **AI Companions**: Multiple specialized AI agents (Psychologist, Life Coach, Therapist, Friend) provide personalized guidance
-- **Real-time Mood Tracking**: Visual mood progression from initial state to final reflection
-- **Mood Shift Detection**: Intelligent analysis of emotional changes during the session
+### 🌍 Sistema de Ciudades Dinámico
+- Página "Solicita tu Ciudad"
+- Firebase Realtime Database
+- Noticias random por ciudad
+- Múltiples noticias por ubicación
+- Soporte para buenas y malas noticias
 
-### Collaborative Features
-- **Mood Harvesting**: Aggregate anonymized mood data to visualize collective emotional patterns
-- **Community Insights**: See how your emotional journey compares with the broader community
-- **Shared Wisdom**: Benefit from collective emotional intelligence
-
-### Technical Excellence
-- **Firebase Integration**: Secure, scalable real-time database with Realtime Database
-- **AI-Powered Responses**: Dynamic responses cached for performance
-- **Optimized Performance**: Response caching, mood shift schema optimization, pre-configured Firebase indexes
-- **Modern UI**: AIWeekend-inspired dark theme with vibrant purple/pink gradients and neon accents
+### 🤖 Agentes IA Personalizados
+- **Nova (Compassionate)**: Empática y comprensiva
+- **Atlas (Analytical)**: Lógica y datos
+- **Phoenix (Reflective)**: Reflexión profunda
 
 ## Tech Stack
 
-- **Framework**: Next.js 16 (App Router)
-- **UI**: React 19 with shadcn/ui components
-- **Styling**: Tailwind CSS v4
+- **Frontend**: Next.js 16, React 19, TypeScript
+- **Styling**: Tailwind CSS v4, shadcn/ui
+- **Web3**: Solana Web3.js, Phantom Wallet
+- **Backend**: Next.js Route Handlers
 - **Database**: Firebase Realtime Database
-- **Backend**: Firebase Functions (optional)
-- **Analytics**: Vercel Analytics
-- **Icons**: Lucide React
+- **AI**: Vercel AI SDK con modelo de tu elección
+- **Deployment**: Vercel
 
-## Project Structure
+## Setup Local
+
+### Requisitos Previos
+```bash
+Node.js 18+ 
+pnpm (recomendado) o npm
+Git
+```
+
+### 1. Clonar Repositorio
+```bash
+git clone https://github.com/AlphaDocere/zero_to_picados_after_event.git
+cd zero_to_picados_after_event
+```
+
+### 2. Instalar Dependencias
+```bash
+pnpm install
+# o
+npm install
+```
+
+### 3. Variables de Entorno
+
+Crea un archivo `.env.local` en la raíz del proyecto con:
+
+```bash
+# Firebase Realtime Database
+NEXT_PUBLIC_FIREBASE_API_KEY=tu_api_key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=tu_auth_domain
+NEXT_PUBLIC_FIREBASE_DATABASE_URL=tu_database_url
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=tu_project_id
+NEXT_PUBLIC_FIREBASE_APP_ID=tu_app_id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=tu_storage_bucket
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=tu_sender_id
+NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=tu_measurement_id
+
+# Solana (opcional para dev, necesario para Solana features)
+NEXT_PUBLIC_SOLANA_NETWORK=devnet
+NEXT_PUBLIC_SOLANA_RPC_URL=https://api.devnet.solana.com
+
+# AI Model - Vercel AI Gateway (opcional)
+AI_GATEWAY_API_KEY=tu_api_key_opcional
+```
+
+### 4. Ejecutar en Desarrollo
+```bash
+pnpm dev
+# o
+npm run dev
+```
+
+Abre [http://localhost:3000](http://localhost:3000)
+
+El servidor se reinicia automáticamente con cada cambio.
+
+### 5. Build para Producción
+```bash
+pnpm build
+pnpm start
+# o
+npm run build
+npm start
+```
+
+## Variables de Entorno Detalladas
+
+### Firebase (REQUERIDO)
+Necesitas una base de datos Firebase Realtime:
+
+1. Ve a [Firebase Console](https://console.firebase.google.com)
+2. Crea un nuevo proyecto
+3. Habilita Realtime Database
+4. Copia las credenciales en `.env.local`
+
+**Estructura Firebase necesaria:**
+```
+cities/
+  - ciudadNombre/news (array de noticias)
+city_requests/
+  - timestamp (solicitudes de nuevas ciudades)
+check-in-sessions/
+  - sessionId (sesiones guardadas)
+```
+
+### Solana (Para Web3 features)
+- **Devnet RPC**: `https://api.devnet.solana.com` (gratuito, para testing)
+- **Mainnet RPC**: `https://api.mainnet-beta.solana.com` (producción)
+- Necesitas **Phantom Wallet** instalado para firmar transacciones
+
+### AI Gateway (Opcional)
+Vercel AI Gateway permite acceso a múltiples modelos:
+- OpenAI GPT-4
+- Anthropic Claude
+- Google Gemini
+- Y más...
+
+Si no configuras, usará modelos por defecto.
+
+## Estructura del Proyecto
 
 ```
 ├── app/
-│   ├── layout.tsx          # Root layout with metadata
-│   ├── page.tsx            # Home page
-│   ├── globals.css         # Theme tokens & styles
-│   └── harvest/            # Mood harvesting page
+│   ├── page.tsx                    # Home
+│   ├── layout.tsx                  # Root layout
+│   ├── globals.css                 # Estilos globales y temas
+│   ├── check-in/
+│   │   └── page.tsx               # Flow de 9 pasos
+│   ├── testament/
+│   │   └── page.tsx               # Testamento Colectivo + Validador
+│   ├── solicita-tu-ciudad/
+│   │   └── page.tsx               # Solicitud de ciudades
+│   ├── api/
+│   │   └── actions/
+│   │       └── check-in-memo/
+│   │           └── route.ts       # Endpoint Solana
+│   └── dashboard/ (opcional)
 ├── components/
-│   ├── check-in/           # Check-in flow components
-│   │   ├── check-in-form.tsx      # Main form controller
-│   │   ├── mood-input.tsx         # Mood slider
-│   │   ├── opinion-input.tsx      # Opinion text input
-│   │   ├── agent-selector.tsx     # AI agent selection
-│   │   ├── agent-follow-up.tsx    # Follow-up prompts
-│   │   ├── response-card.tsx      # AI response display
-│   │   └── step-indicator.tsx     # Progress indicator
-│   ├── harvest/            # Harvest page components
-│   ├── root-nav.tsx        # Navigation
-│   └── ui/                 # shadcn/ui components
+│   ├── check-in/
+│   │   ├── check-in-form.tsx      # Controlador principal
+│   │   ├── mood-slider.tsx
+│   │   ├── city-selector.tsx
+│   │   ├── news-card.tsx
+│   │   ├── opinion-input.tsx
+│   │   ├── agent-selector.tsx
+│   │   ├── response-card.tsx
+│   │   └── agent-follow-up.tsx
+│   ├── solana/
+│   │   ├── web3-testament.tsx
+│   │   ├── solana-tx-validator.tsx
+│   │   ├── check-in-web3-recorder.tsx
+│   │   └── solana-register-button.tsx
+│   ├── city/
+│   │   └── request-city-form.tsx
+│   ├── ui/                        # shadcn/ui components
+│   └── root-nav.tsx
 ├── lib/
-│   ├── firebase.ts         # Firebase configuration
-│   ├── db.ts               # Database operations
-│   └── utils.ts            # Utilities
-└── public/                 # Static assets
+│   ├── firebase-init.ts           # Singleton Firebase (USE THIS!)
+│   ├── firebase.ts                # Firebase helpers
+│   ├── news-service.ts            # Gestión de noticias
+│   ├── solana/
+│   │   ├── check-in-recorder.ts
+│   │   └── solana-validator.ts
+│   └── utils.ts
+├── hooks/
+│   ├── use-check-in-solana.ts
+│   └── use-*
+├── BRANCHES.md                    # Guía de ramas
+├── FIREBASE_SETUP.md              # Setup Firebase
+└── README.md                       # Este archivo
 ```
 
-## Getting Started
+## Ramas Disponibles
 
-### Prerequisites
-- Node.js 18+ (pnpm recommended)
-- Firebase project with Realtime Database enabled
-- Environment variables configured
+```
+master (producción)
+  ├── feat/solana-web3-integration      # MVP Testamento
+  ├── feat/solana-real-transactions     # Transacciones reales
+  ├── feat/solicita-tu-ciudad           # Sistema de ciudades
+  ├── backup/production                 # Documentación backup
+  └── fix/firebase-singleton            # Centralización Firebase
+```
 
-### Installation
-
+Para cambiar de rama:
 ```bash
-# Clone the repository
-git clone <repository-url>
-cd reflect
+git checkout nombre-rama
+```
 
-# Install dependencies
+## Deployment en Vercel
+
+### Opción 1: Automático desde GitHub
+1. Push a master: `git push origin master`
+2. Vercel detecta automáticamente el cambio
+3. Build y deploy automático
+4. Agrega variables de entorno en Vercel Settings
+
+### Opción 2: Vercel CLI
+```bash
+npm install -g vercel
+vercel --prod
+```
+
+## Documentación Adicional
+
+- **[BRANCHES.md](./BRANCHES.md)** - Guía completa de ramas y features
+- **[FIREBASE_SETUP.md](./FIREBASE_SETUP.md)** - Configuración Firebase detallada
+- **GitHub Issues** - Para reportar bugs
+- **GitHub Discussions** - Para preguntas y sugerencias
+
+## Troubleshooting
+
+### Error: "Firebase multiple initializations"
+**Solución**: Asegúrate de usar siempre:
+```typescript
+import { getFirebaseDb } from '@/lib/firebase'
+const db = getFirebaseDb()
+```
+NO hagas `initializeApp()` directo en componentes.
+
+### Error: "Wallet not found" (Solana)
+**Solución**: 
+1. Instala [Phantom Wallet](https://phantom.app/)
+2. Crea una wallet de prueba
+3. Abre la app en un navegador con la extensión
+
+### Error: "Firebase config invalid"
+**Solución**: 
+1. Verifica `.env.local` existe
+2. Asegúrate que todas las variables están presentes
+3. Reinicia el servidor: `pnpm dev`
+
+### Build errors
+```bash
+# Limpia todo
+pnpm clean
+rm -rf .next node_modules pnpm-lock.yaml
+
+# Reinstala
 pnpm install
 
-# Set up environment variables
-# Create .env.local with Firebase credentials:
-# NEXT_PUBLIC_FIREBASE_API_KEY=...
-# NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=...
-# etc.
-
-# Run development server
-pnpm dev
+# Prueba build
+pnpm build
 ```
 
-Visit `http://localhost:3000` to start reflecting.
+## Cómo Colaborar
 
-## Environment Variables
+### Para Desarrolladores del Equipo
 
+1. **Crea una rama desde master**:
+   ```bash
+   git checkout master
+   git pull origin master
+   git checkout -b feat/tu-feature
+   ```
+
+2. **Código**:
+   - Usa `lib/firebase-init.ts` para Firebase
+   - Usa `console.log("[v0] ...")` para debug
+   - Sigue la estructura de carpetas
+
+3. **Commit y Push**:
+   ```bash
+   git add .
+   git commit -m "feat: descripción de cambios"
+   git push origin feat/tu-feature
+   ```
+
+4. **Pull Request a master**:
+   - En GitHub, abre un PR
+   - Describe qué cambios hiciste
+   - Espera review
+
+### Guías de Código
+
+**Firebase - DO's:**
+```typescript
+// ✅ CORRECTO
+import { getFirebaseDb } from '@/lib/firebase'
+
+export async function miServicio() {
+  const db = getFirebaseDb()
+  // usar db...
+}
 ```
-NEXT_PUBLIC_FIREBASE_API_KEY
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
-NEXT_PUBLIC_FIREBASE_DATABASE_URL
-NEXT_PUBLIC_FIREBASE_PROJECT_ID
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
-NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
-NEXT_PUBLIC_FIREBASE_APP_ID
-NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
+
+**Firebase - DON'Ts:**
+```typescript
+// ❌ INCORRECTO
+import { initializeApp } from 'firebase/app'
+
+export async function miServicio() {
+  const app = initializeApp(config)  // NO HAGAS ESTO
+  // ...
+}
 ```
 
-## How It Works
+**Debug:**
+```typescript
+// ✅ CORRECTO
+console.log("[v0] Estado:", state)
+console.log("[v0] Error:", error)
 
-1. **Start Check-in**: User begins their emotional reflection
-2. **Initial Mood**: Set baseline emotional state (0-100)
-3. **Pick an Agent**: Choose from 4 specialized AI companions
-4. **Share Opinion**: Express what's on their mind
-5. **Get Guidance**: Receive personalized AI response with follow-up prompt
-6. **Final Reflection**: Conclude with final mood state
-7. **View Results**: See emotional journey and mood change
-8. **Join Harvest**: Contribute anonymized data to collective insights
+// ❌ INCORRECTO
+console.log("debug stuff")  // Sin prefijo [v0]
+```
 
-## Performance Optimizations (v1.2.1)
+## URLs Importantes
 
-- Response caching for faster AI interactions
-- MoodShift schema optimization for efficient mood tracking
-- Pre-configured Firebase indexes for query performance
-- Tailwind CSS v4 for optimized CSS generation
-- React Compiler ready for improved performance
+- **App en Vivo**: https://v0-zero-to-picados-after-event.vercel.app/
+- **Testamento**: https://v0-zero-to-picados-after-event.vercel.app/testament
+- **Solicita tu Ciudad**: https://v0-zero-to-picados-after-event.vercel.app/solicita-tu-ciudad
+- **Repositorio GitHub**: https://github.com/AlphaDocere/zero_to_picados_after_event
+- **Issues**: https://github.com/AlphaDocere/zero_to_picados_after_event/issues
 
-## Design System
+## Scripts Útiles
 
-### Color Palette (AIWeekend Theme)
-- **Background**: Deep Navy/Black (`#0a0e17`)
-- **Primary**: Soft Purple (`#a78bfa`)
-- **Accent**: Neon Green (`#10b981`)
-- **Gradient**: Purple → Pink → Purple (`#9333ea` → `#ec4899`)
+```bash
+# Desarrollo
+pnpm dev                 # Servidor dev con hot reload
 
-### Typography
-- **Font**: Nunito Sans (multiple weights)
-- **Headlines**: Bold, clear, and prominent
-- **Body**: Clean and readable
+# Build
+pnpm build              # Build para producción
+pnpm start              # Corre build de producción
 
-## Firebase Schema
+# Lint
+pnpm lint               # Verifica código
 
-### Collections
-- `sessions/`: User emotional check-in sessions
-  - `id`: Unique session identifier
-  - `initialMood`: Starting emotional state (0-100)
-  - `finalMood`: Ending emotional state (0-100)
-  - `agent`: Selected AI companion
-  - `opinion`: User's emotional narrative
-  - `response`: AI-generated guidance
-  - `createdAt`: Session timestamp
-  - `updatedAt`: Last update timestamp
+# Type check
+pnpm type-check         # Verifica tipos TypeScript
 
-## Contributing
+# Limpieza
+pnpm clean              # Limpia caché
+```
 
-This project welcomes contributions. Please ensure code follows the existing patterns and includes appropriate testing.
-
-## License
+## Licencia
 
 MIT
 
-## Support
+## Contacto
 
-For issues, questions, or feedback, please open an issue on GitHub or contact the team.
+- **Repo**: https://github.com/AlphaDocere/zero_to_picados_after_event
+- **Issues**: GitHub Issues
+- **Discussions**: GitHub Discussions
 
 ---
 
-**Reflect** - Where self-awareness meets artificial intelligence. 💜
+**Built with ❤️ by the Reflect team**
+
+¡Feliz contributing! 🚀
+
 
