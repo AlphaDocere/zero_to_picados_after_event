@@ -55,6 +55,11 @@ export function getFirebaseDb() {
   return getFirebaseDatabase()
 }
 
+export interface CheckInSessionMetadata {
+  source?: string
+  lang?: 'es' | 'en'
+}
+
 export interface CheckInSession {
   id?: string
   initialMood: number
@@ -80,6 +85,7 @@ export interface CheckInSession {
     misses: number
     avgLatency: number
   }
+  metadata?: CheckInSessionMetadata
 }
 
 export async function createCheckInSession(): Promise<string> {
@@ -103,6 +109,47 @@ export async function createCheckInSession(): Promise<string> {
     currentStep: 0
   }
   
+  await set(newSessionRef, session)
+  return newSessionRef.key || ''
+}
+
+export async function saveCheckInSession(
+  data: Omit<CheckInSession, 'id' | 'createdAt' | 'updatedAt' | 'status' | 'currentStep'> & {
+    status?: CheckInSession['status']
+    currentStep?: number
+    metadata?: CheckInSessionMetadata
+  }
+): Promise<string> {
+  const db = getFirebaseDb()
+  const sessionsRef = ref(db, 'check-in-sessions')
+  const newSessionRef = push(sessionsRef)
+  const now = Date.now()
+
+  const moodShift = data.finalMood - data.initialMood
+  let emotionalTransform: CheckInSession['emotionalTransform']
+  if (moodShift > 5) emotionalTransform = 'improved'
+  else if (moodShift < -5) emotionalTransform = 'declined'
+  else emotionalTransform = 'stable'
+
+  const session: CheckInSession = {
+    initialMood: data.initialMood,
+    city: data.city,
+    news: data.news,
+    opinion: data.opinion,
+    selectedAgent: data.selectedAgent,
+    agentResponse: data.agentResponse,
+    agentQuestion: data.agentQuestion,
+    followUpResponse: data.followUpResponse,
+    finalMood: data.finalMood,
+    moodShift,
+    emotionalTransform,
+    createdAt: now,
+    updatedAt: now,
+    status: data.status ?? 'completed',
+    currentStep: data.currentStep ?? 4,
+    ...(data.metadata ? { metadata: data.metadata } : {}),
+  }
+
   await set(newSessionRef, session)
   return newSessionRef.key || ''
 }
