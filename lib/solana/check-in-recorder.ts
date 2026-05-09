@@ -1,6 +1,6 @@
 /**
  * Solana Check-In Recorder - MVP Version
- * Almacena datos localmente y está listo para blockchain después
+ * Almacena firmas reales de Solana
  */
 
 export interface CheckInRecord {
@@ -8,7 +8,7 @@ export interface CheckInRecord {
   initialMood: number
   finalMood: number
   moodShift: number
-  agentUsed: 'compassionate' | 'analytical' | 'reflective'
+  agentUsed: string
   sentiment: string
   timestamp: number
 }
@@ -18,20 +18,20 @@ export interface CheckInEntry extends CheckInRecord {
   recordedAt: string
 }
 
-const STORAGE_KEY = 'reflect_web3_check_ins'
+const STORAGE_KEY = 'reflect_solana_signatures'
 
 /**
- * Guarda un check-in en localStorage (MVP)
- * Listo para migrar a Solana blockchain después
+ * Guarda una firma real de Solana
  */
-export function recordCheckInLocally(
+export function saveSolanaSignature(
+  signature: string,
   checkInData: Omit<CheckInRecord, 'timestamp'>
 ): CheckInEntry {
   const entry: CheckInEntry = {
     ...checkInData,
     timestamp: Date.now(),
     recordedAt: new Date().toISOString(),
-    signature: generateSignature(),
+    signature,
   }
 
   // Guardar en localStorage
@@ -44,7 +44,7 @@ export function recordCheckInLocally(
 }
 
 /**
- * Obtiene el historial de check-ins
+ * Obtiene el historial de firmas de Solana
  */
 export function getCheckInHistory(): CheckInEntry[] {
   if (typeof window === 'undefined') return []
