@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { BarChart3, Heart, Sprout, Globe, Sparkles, Zap, MapPin, Gamepad2 } from 'lucide-react'
+import { BarChart3, Heart, Sprout, Globe, Sparkles, Zap, MapPin } from 'lucide-react'
 import { LanguageToggle } from './LanguageToggle'
 
 export function RootNav() {
@@ -58,14 +58,6 @@ export function RootNav() {
           >
             <MapPin className="w-4 h-4" />
             Tu Ciudad
-          </Link>
-
-          <Link
-            href="/game"
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-orange-500/10 hover:bg-orange-500/20 text-orange-600 dark:text-orange-400 font-medium transition-all duration-300 text-sm"
-          >
-            <Gamepad2 className="w-4 h-4" />
-            Ruleta
           </Link>
           
           <Link
