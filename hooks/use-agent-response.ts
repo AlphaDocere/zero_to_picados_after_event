@@ -163,9 +163,9 @@ export function useAgentResponse() {
       console.log('[v0] Cache MISS and stored: agentId=%s, key=%s, latency=%dms', 
         agentId, cacheKey, latency)
 
-      // Save to agent memory if requested
+      // Save to agent memory if requested (fire-and-forget, no bloquear al usuario)
       if (saveToMemory && data.response) {
-        await fetch('/api/agent-memory/save', {
+        fetch('/api/agent-memory/save', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

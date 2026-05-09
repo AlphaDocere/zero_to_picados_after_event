@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { BarChart3, Heart, Sprout, Globe, Sparkles } from 'lucide-react'
+import { BarChart3, Heart, Sprout, Globe, Sparkles, Dices } from 'lucide-react'
 import { LanguageToggle } from './LanguageToggle'
 
 export function RootNav() {
@@ -26,6 +26,14 @@ export function RootNav() {
           >
             <Sparkles className="w-4 h-4" />
             Agentes
+          </Link>
+
+          <Link
+            href="/game"
+            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-yellow-500/10 hover:bg-yellow-500/20 text-yellow-600 dark:text-yellow-400 font-medium transition-all duration-300 text-sm"
+          >
+            <Dices className="w-4 h-4" />
+            Ruleta
           </Link>
           
           <Link

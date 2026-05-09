@@ -1,3 +1,6 @@
+// Bypass corporate SSL inspection for API calls in dev
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   typescript: {

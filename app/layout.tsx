@@ -3,6 +3,8 @@ import { Nunito } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { RootNav } from '@/components/root-nav'
 import { LanguageProvider } from '@/contexts/LanguageContext'
+import { CopilotKit } from '@copilotkit/react-core'
+import '@copilotkit/react-ui/styles.css'
 import './globals.css'
 
 const nunito = Nunito({ 
@@ -50,10 +52,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-background dark" style={{ backgroundColor: '#0a0e17' }}>
       <body className={`${nunito.variable} font-sans antialiased bg-background`} style={{ backgroundColor: '#0a0e17' }}>
-        <LanguageProvider>
-          <RootNav />
-          {children}
-        </LanguageProvider>
+        <CopilotKit runtimeUrl="/api/copilotkit">
+          <LanguageProvider>
+            <RootNav />
+            {children}
+          </LanguageProvider>
+        </CopilotKit>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

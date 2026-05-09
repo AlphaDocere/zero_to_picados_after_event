@@ -1,4 +1,4 @@
-import { initializeApp } from 'firebase/app'
+import { initializeApp, getApps, getApp } from 'firebase/app'
 import { getDatabase, ref, set, get, push, update, Database } from 'firebase/database'
 
 const firebaseConfig = {
@@ -41,7 +41,7 @@ export function initFirebase() {
   }
   
   try {
-    const app = initializeApp(firebaseConfig)
+    const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig)
     db = getDatabase(app)
     console.log('[v0] Firebase initialized successfully')
     return db
@@ -62,6 +62,7 @@ export function getFirebaseDb() {
 
 export interface CheckInSession {
   id?: string
+  source?: 'checkin' | 'ruleta'  // marca del origen
   initialMood: number
   city: string
   news: {
@@ -74,7 +75,7 @@ export interface CheckInSession {
   agentQuestion: string
   followUpResponse: string
   finalMood: number
-  moodShift?: number // finalMood - initialMood
+  moodShift?: number
   emotionalTransform?: 'improved' | 'declined' | 'stable'
   createdAt: number
   updatedAt: number
@@ -84,6 +85,13 @@ export interface CheckInSession {
     hits: number
     misses: number
     avgLatency: number
+  }
+  gameData?: {
+    challenge: string
+    gameScore: number
+    gameWon: boolean
+    habits: string[]
+    motivation: string
   }
 }
 
@@ -158,6 +166,56 @@ export async function completeCheckInSession(sessionId: string, finalMood: numbe
       updatedAt: Date.now()
     })
   }
+}
+
+export interface RuletaSessionInput {
+  initialMood: number
+  finalMood: number
+  challenge: string
+  gameScore: number
+  gameWon: boolean
+  habits: string[]
+  motivation: string
+}
+
+export async function saveRuletaSession(data: RuletaSessionInput): Promise<string> {
+  const db = getFirebaseDb()
+  const sessionsRef = ref(db, 'check-in-sessions')
+  const newRef = push(sessionsRef)
+
+  const moodShift = data.finalMood - data.initialMood
+  const emotionalTransform: 'improved' | 'declined' | 'stable' =
+    moodShift > 5 ? 'improved' : moodShift < -5 ? 'declined' : 'stable'
+
+  const session: CheckInSession = {
+    source: 'ruleta',
+    initialMood: data.initialMood,
+    finalMood: data.finalMood,
+    moodShift,
+    emotionalTransform,
+    // campos compartidos vacíos para no romper queries comunes
+    city: '',
+    news: { title: '', description: '' },
+    opinion: data.motivation,
+    selectedAgent: 'ruleta-ia',
+    agentResponse: data.challenge,
+    agentQuestion: '',
+    followUpResponse: '',
+    status: 'completed',
+    currentStep: 4,
+    createdAt: Date.now(),
+    updatedAt: Date.now(),
+    gameData: {
+      challenge: data.challenge,
+      gameScore: data.gameScore,
+      gameWon: data.gameWon,
+      habits: data.habits,
+      motivation: data.motivation,
+    },
+  }
+
+  await set(newRef, session)
+  return newRef.key || ''
 }
 
 export async function getAllSessions(): Promise<CheckInSession[]> {

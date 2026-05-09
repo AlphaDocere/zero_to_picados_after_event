@@ -1,4 +1,3 @@
-import { getCheckInSession } from '@/lib/firebase'
 import { getAgent } from '@/lib/agents.config'
 import { NextRequest, NextResponse } from 'next/server'
 
@@ -11,15 +10,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
-      )
-    }
-
-    // Get the session to validate
-    const session = await getCheckInSession(sessionId)
-    if (!session) {
-      return NextResponse.json(
-        { error: 'Session not found' },
-        { status: 404 }
       )
     }
 
