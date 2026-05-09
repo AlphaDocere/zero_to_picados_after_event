@@ -1,5 +1,5 @@
-import { initializeApp } from 'firebase/app'
 import { getDatabase, ref, set, get, push, update, Database } from 'firebase/database'
+import { getFirebaseDatabase } from './firebase-init'
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || "",
@@ -24,7 +24,6 @@ const isFirebaseConfigValid = () => {
   return true
 }
 
-let db: Database | null = null
 let initError: string | null = null
 
 export function initFirebase() {
@@ -41,9 +40,8 @@ export function initFirebase() {
   }
   
   try {
-    const app = initializeApp(firebaseConfig)
-    db = getDatabase(app)
-    console.log('[v0] Firebase initialized successfully')
+    const db = getFirebaseDatabase()
+    console.log('[v0] Firebase initialized successfully (singleton)')
     return db
   } catch (err) {
     const message = err instanceof Error ? err.message : 'Error initializing Firebase'
@@ -54,10 +52,7 @@ export function initFirebase() {
 }
 
 export function getFirebaseDb() {
-  if (!db) {
-    return initFirebase()
-  }
-  return db
+  return getFirebaseDatabase()
 }
 
 export interface CheckInSession {
