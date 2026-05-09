@@ -88,14 +88,24 @@ export function MoodAdaptiveNews({ city, mood, onEmotionsReady }: MoodAdaptiveNe
     
     if (cityNews.length === 0) return []
 
-    // Prioritize matching mood affinity, then include others
-    const prioritized = cityNews.sort((a, b) => {
-      const aMatch = a.moodAffinity === moodCategory ? 1 : 0
-      const bMatch = b.moodAffinity === moodCategory ? 1 : 0
-      return bMatch - aMatch
-    })
+    // Shuffle helper
+    const shuffle = <T,>(arr: T[]): T[] => {
+      const copy = [...arr]
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]]
+      }
+      return copy
+    }
 
-    return prioritized.slice(0, 3) // Show max 3 news items
+    // Separate matching vs non-matching mood
+    const matching = shuffle(cityNews.filter(n => n.moodAffinity === moodCategory))
+    const others = shuffle(cityNews.filter(n => n.moodAffinity !== moodCategory))
+
+    // Pick up to 2 matching + fill rest with others, max 3 total
+    const selected = [...matching.slice(0, 2), ...others].slice(0, 3)
+    return selected
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [city, moodCategory])
 
   const currentNews = filteredNews[currentIndex]
