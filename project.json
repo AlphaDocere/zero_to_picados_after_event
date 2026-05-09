@@ -1,0 +1,41 @@
+{
+  "name": "Reflect",
+  "version": "1.2.1",
+  "tagline": "Emotional Check-in Platform powered by AI agents",
+  "description": "Transform self-awareness through guided reflections with personalized AI companions. Check in with your emotions, receive personalized guidance, and join our collaborative mood harvesting community.",
+  "keywords": [
+    "emotional intelligence",
+    "mood tracking",
+    "AI companions",
+    "mental health",
+    "self-reflection",
+    "wellbeing",
+    "mindfulness"
+  ],
+  "colors": {
+    "theme": "AIWeekend Dark",
+    "background": "#0a0e17",
+    "primary": "#a78bfa",
+    "accent": "#10b981",
+    "gradient": "purple-to-pink"
+  },
+  "features": [
+    "Guided emotional check-ins",
+    "AI companion selection",
+    "Personalized responses",
+    "Real-time mood tracking",
+    "Mood change visualization",
+    "Collaborative harvesting",
+    "Community insights"
+  ],
+  "tech": {
+    "framework": "Next.js 16",
+    "language": "TypeScript",
+    "styling": "Tailwind CSS v4",
+    "ui": "shadcn/ui + Radix UI",
+    "database": "Firebase Realtime Database",
+    "hosting": "Vercel"
+  },
+  "author": "Built with v0",
+  "created": "2025-05-03"
+}

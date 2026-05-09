@@ -1,0 +1,228 @@
+{
+  "common": {
+    "next": "Siguiente",
+    "skip": "Saltar",
+    "done": "Listo",
+    "back": "Atrás",
+    "close": "Cerrar",
+    "help": "Ayuda"
+  },
+  "nav": {
+    "checkin": "Check-in",
+    "harvest": "Cosecha",
+    "insights": "Insights",
+    "analytics": "Analytics"
+  },
+  "checkin": {
+    "title": "Reflect - Check-in Emocional",
+    "step": "Paso",
+    "of": "de",
+    "mood": {
+      "title": "¿Cómo te sientes?",
+      "description": "Mueve el slider para indicar tu estado emocional actual (0 = muy mal, 100 = excelente)",
+      "label": "Mi ánimo actual:",
+      "terrible": "Terrible",
+      "bad": "Mal",
+      "neutral": "Neutral",
+      "good": "Bien",
+      "excellent": "Excelente"
+    },
+    "city": {
+      "title": "Selecciona tu ciudad",
+      "description": "Esto nos ayuda a entender el contexto de tu reflexión",
+      "placeholder": "Buscar ciudad...",
+      "noResults": "No encontramos esa ciudad"
+    },
+    "news": {
+      "title": "Noticia relevante",
+      "description": "Te compartimos una noticia de tu zona"
+    },
+    "opinion": {
+      "title": "¿Cuál es tu opinión?",
+      "placeholder": "Cuéntanos cómo te sientes sobre esto o cualquier cosa que esté en tu mente...",
+      "characterCount": "caracteres"
+    },
+    "agent": {
+      "title": "Elige tu compañero de reflexión",
+      "description": "Cada agente tiene un estilo diferente para ayudarte",
+      "psychologist": "Psicólogo",
+      "psychologistDesc": "Analítico y profundo",
+      "lifeCoach": "Coach de Vida",
+      "lifeCoachDesc": "Motivador y práctico",
+      "therapist": "Terapeuta",
+      "therapistDesc": "Empático y comprensivo",
+      "friend": "Amigo",
+      "friendDesc": "Casual y cercano"
+    },
+    "response": {
+      "title": "Reflexión de tu compañero",
+      "loading": "Pensando tu respuesta...",
+      "error": "Hubo un error. Intenta de nuevo."
+    },
+    "followUp": {
+      "title": "Una pregunta más",
+      "placeholder": "Escribe tu respuesta..."
+    },
+    "finalMood": {
+      "title": "¿Cómo te sientes ahora?",
+      "description": "Después de reflexionar, ¿ha cambiado tu estado emocional?",
+      "improvementLabel": "Mejora emocional:"
+    },
+    "summary": {
+      "title": "Resumen de tu reflexión",
+      "initialMood": "Ánimo inicial",
+      "finalMood": "Ánimo final",
+      "improvement": "Mejora",
+      "noImprovement": "Sin cambios",
+      "declined": "Disminución",
+      "shareHarvest": "Compartir en Cosecha",
+      "newSession": "Nueva reflexión",
+      "successMessage": "¡Gracias por reflexionar! Tu entrada ha sido guardada."
+    },
+    "buttons": {
+      "continue": "Continuar",
+      "submit": "Enviar",
+      "complete": "Completar Check-in"
+    }
+  },
+  "harvest": {
+    "title": "Cosecha de Emociones",
+    "subtitle": "Visualiza las emociones compartidas de nuestra comunidad",
+    "description": "Aquí se recopilan las emociones de usuarios como tú para entender patrones emocionales colectivos.",
+    "sections": {
+      "globalMood": "Ánimo Global",
+      "moodDistribution": "Distribución de Emociones",
+      "topCities": "Ciudades Principales",
+      "stats": "Estadísticas"
+    },
+    "labels": {
+      "totalParticipants": "Participantes totales",
+      "averageMood": "Ánimo promedio",
+      "latestEntries": "Entradas recientes",
+      "moodTrend": "Tendencia de ánimo"
+    },
+    "empty": "Aún no hay datos de cosecha. ¡Sé el primero en contribuir!",
+    "noPermission": "Necesitas completar un check-in para contribuir a la cosecha."
+  },
+  "insights": {
+    "title": "Insights de Bienestar",
+    "subtitle": "Descubre patrones en el bienestar emocional",
+    "description": "Análisis de datos para entender cómo las emociones varían por ciudad, hora y contexto.",
+    "sections": {
+      "patterns": "Patrones Detectados",
+      "trends": "Tendencias",
+      "recommendations": "Recomendaciones"
+    },
+    "labels": {
+      "cityAnalysis": "Análisis por Ciudad",
+      "timeAnalysis": "Análisis por Hora",
+      "agentComparison": "Comparación de Agentes"
+    },
+    "empty": "No hay suficientes datos para mostrar insights."
+  },
+  "dashboard": {
+    "title": "Dashboard Personal",
+    "subtitle": "Tu historial de reflexiones",
+    "sections": {
+      "statistics": "Estadísticas",
+      "history": "Historial",
+      "progress": "Progreso"
+    },
+    "labels": {
+      "totalSessions": "Sesiones totales",
+      "averageMoodChange": "Cambio de ánimo promedio",
+      "currentStreak": "Rachas activas",
+      "lastSession": "Última sesión"
+    },
+    "empty": "Aún no tienes sesiones. ¡Comienza tu primera reflexión!"
+  },
+  "agents": {
+    "title": "Nuestros Agentes",
+    "subtitle": "Conoce a los guardianes de tu bienestar emocional",
+    "description": "Cada agente tiene un propósito único en tu viaje emocional",
+    "nova": {
+      "name": "Nova",
+      "title": "El Amplificador",
+      "description": "Amplifica tus emociones y conecta historias de todo el mundo",
+      "role": "Amplificador Social",
+      "stats": {
+        "conversations": "Conversaciones",
+        "avgSentiment": "Sentimiento Promedio",
+        "lastActive": "Última Actividad",
+        "theme": "Tema Principal"
+      }
+    },
+    "atlas": {
+      "name": "Atlas",
+      "title": "El Documentalista",
+      "description": "Archiva y contextualiza tus perspectivas emocionales",
+      "role": "Custodio de Narrativas",
+      "stats": {
+        "conversations": "Conversaciones",
+        "avgSentiment": "Sentimiento Promedio",
+        "lastActive": "Última Actividad",
+        "theme": "Tema Principal"
+      }
+    },
+    "phoenix": {
+      "name": "Phoenix",
+      "title": "El Visionario",
+      "description": "Imagina el potencial transformador de tus experiencias",
+      "role": "Catalizador de Transformación",
+      "stats": {
+        "conversations": "Conversaciones",
+        "avgSentiment": "Sentimiento Promedio",
+        "lastActive": "Última Actividad",
+        "theme": "Tema Principal"
+      }
+    },
+    "games": {
+      "echoChamber": {
+        "title": "Cámara de Eco",
+        "description": "Ve cómo tus emociones resuenan en otras ciudades"
+      },
+      "memoryQuest": {
+        "title": "Búsqueda de Memoria",
+        "description": "¿Puedes reconocer los patrones de conversaciones?"
+      },
+      "futureVision": {
+        "title": "Visión del Futuro",
+        "description": "Explora dónde podría llevarte tu sentimiento"
+      }
+    },
+    "memory": {
+      "title": "Memoria",
+      "noConversations": "Aún no hay conversaciones"
+    },
+    "analytics": {
+      "title": "Análisis",
+      "noData": "Datos insuficientes"
+    }
+  },
+  "onboarding": {
+    "home": {
+      "mood": {
+        "title": "Bienvenido a Reflect",
+        "description": "Comienza indicando tu estado emocional actual con el slider"
+      },
+      "agent": {
+        "title": "Elige tu compañero",
+        "description": "Selecciona el agente que mejor se ajuste a tu estilo de reflexión"
+      },
+      "opinion": {
+        "title": "Comparte tu opinión",
+        "description": "Cuéntale al agente lo que está en tu mente"
+      }
+    },
+    "harvest": {
+      "intro": {
+        "title": "Cosecha Comunitaria",
+        "description": "Aquí ves cómo se sienten otros usuarios como tú"
+      },
+      "contribute": {
+        "title": "Contribuye a la comunidad",
+        "description": "Al compartir, ayudas a otros a entender patrones emocionales"
+      }
+    }
+  }
+}

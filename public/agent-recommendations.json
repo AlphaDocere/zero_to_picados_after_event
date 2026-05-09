@@ -1,0 +1,274 @@
+{
+  "generatedAt": "2024-05-04T00:00:00Z",
+  "lastUpdated": "2024-05-04T00:00:00Z",
+  "description": "Dynamic recommendations for Zero to Agent agents - Based on real cities and team building stories from Zero to Agent 2024 events",
+  "agents": [
+    {
+      "agentId": "amplifier",
+      "agentName": "Nova (Amplificador)",
+      "description": "Amplifica la voz comunitaria, celebra conexiones genuinas",
+      "cities": ["Santiago", "Mendoza", "Buenos Aires"],
+      "news": [
+        {
+          "title": "Santiago: La Voz Que Cambió Vidas",
+          "description": "Durante Zero to Agent 2024 en Santiago, un equipo de 8 desconocidos se unió. Cada uno traía una voz diferente, historias del sector tech, educación, arte. El proyecto que construyeron no era sobre IA - era sobre permitir que cada persona se escuchara a sí misma. Al final, un participante escribió: 'Hace 10 años que trabajo en tech y nunca me había sentido tan visto'. Seis meses después, ese mismo equipo sigue reuniéndose. La conexión genuina trasciende el evento.",
+          "emoji": "🏔️",
+          "theme": "unity_and_voice",
+          "motivationIndex": 92
+        },
+        {
+          "title": "Mendoza: Cuando Escuchas, Descubres Oro",
+          "description": "En Mendoza, un equipo multigeneracional (18 a 65 años) enfrentó el desafío de amplificar historias locales. Lo inesperado: el jubilado que trabajaba en vides tenía una historia de transformación digital que inspiró al joven ingeniero. La estudiante de arte aportó perspectiva emocional que el tech no podía ver solo. Juntos crearon algo que ninguno podría haber hecho. El valor real: descubrieron que la diversidad verdadera solo existe cuando realmente escuchamos.",
+          "emoji": "🍷",
+          "theme": "intergenerational_bonds",
+          "motivationIndex": 90
+        },
+        {
+          "title": "Buenos Aires: Competencia Que Se Convierte en Comunidad",
+          "description": "Dos equipos en Buenos Aires empezaron como rivales en Zero to Agent. Ambos querían el premio. A mitad del sprint, descubrieron que sus ideas encajaban perfectamente juntas. En lugar de competir, se fusionaron. El resultado fue mejor que cualquiera de las dos visiones originales. Pero lo más importante: tres participantes del equipo fusionado ahora construyen juntos un startup. La lección: cuando colaboramos genuinamente, todos ganamos más.",
+          "emoji": "🎭",
+          "theme": "collaboration_breakthrough",
+          "motivationIndex": 88
+        }
+      ],
+      "emotions": [
+        "Conexión genuina",
+        "Amplificación colectiva",
+        "Voz escuchada y valorada"
+      ],
+      "teamBuildingLessons": [
+        "Cuando escuchamos realmente, descubrimos que cada persona tiene una historia extraordinaria",
+        "La vulnerabilidad compartida crea lazos más fuertes que cualquier actividad de networking",
+        "La diversidad no es un checkbox, es la materia prima para innovación que importa"
+      ]
+    },
+    {
+      "agentId": "documentarian",
+      "agentName": "Atlas (Documentarian)",
+      "description": "Documenta transformaciones, preserva memoria colectiva",
+      "cities": ["Buenos Aires", "Santiago", "Mendoza"],
+      "news": [
+        {
+          "title": "Buenos Aires: El Archivo Del Sentir",
+          "description": "Un documentalista argentino propuso durante Zero to Agent: documentar no el código, sino las transformaciones emocionales. Capturaron 200+ momentos de participantes. Un programador que llegaba con depresión profesional, que en el día 3 se dio cuenta que podía crear cosas que importaban. Una diseñadora que encontró su voz técnica. Cuando compartieron el documental, no fue un video técnico - fue un espejo. Hoy 50+ personas nuevas se registraron para Zero to Agent porque vieron esas historias auténticas.",
+          "emoji": "🎭",
+          "theme": "legacy_building",
+          "motivationIndex": 91
+        },
+        {
+          "title": "Santiago: Mapeo de Lo Invisible",
+          "description": "En Santiago, Atlas no solo documentó presentaciones finales. Documentó los momentos de crisis: cuando alguien quería abandonar, cuando el equipo se rompía en conflicto, cuando alguien experimentaba un quiebre emocional positivo. El documento final se titulaba 'La Anatomía de la Transformación'. Mostró que todo proyecto real tiene estas fases invisibles. Cuando estudiantes y emprendedores lo leyeron, dijeron: 'Ahora entiendo que lo que sentí no fue fracaso, fue parte del proceso'. La documentación honesta salva vidas profesionales.",
+          "emoji": "🏔️",
+          "theme": "transformation_tracking",
+          "motivationIndex": 89
+        },
+        {
+          "title": "Mendoza: Historias Que Inspiran Historias",
+          "description": "El equipo de Atlas en Mendoza comenzó documentando el hackathon oficial. Pero lo que capturó fueron los descansos, las comidas, las conversaciones en los pasillos. Una amistad entre un ingeniero y un historiador. Un mentor que reconoció su vocación docente. Cuando compartieron estos momentos 'entre bastidores', algo mágico pasó: otros participantes empezaron a documentar sus propias transformaciones. Lo que comenzó como un proyecto se convirtió en un movimiento de ~100 documentalistas voluntarios. La lección: la documentación auténtica inspira a otros a ver su propia historia como valiosa.",
+          "emoji": "🍷",
+          "theme": "community_storytelling",
+          "motivationIndex": 93
+        }
+      ],
+      "emotions": [
+        "Preservación significativa",
+        "Contexto profundo comprendido",
+        "Legado duradero creado"
+      ],
+      "teamBuildingLessons": [
+        "Documentar con propósito real crea identidad de equipo más fuerte que cualquier reunión de alineación",
+        "Cuando documentamos las transformaciones de otros, internalizamos y aceleramos las nuestras",
+        "El acto de contar historias juntos es el team building más auténtico que existe"
+      ]
+    },
+    {
+      "agentId": "visionary",
+      "agentName": "Phoenix (Visionario)",
+      "description": "Imagina futuros posibles, inspira transformación colectiva",
+      "cities": ["Santiago", "Mendoza", "Buenos Aires"],
+      "news": [
+        {
+          "title": "Santiago: De Sueño a Movimiento en 5 Días",
+          "description": "Un equipo visionario en Santiago llegó con una idea abstracta: 'IA que entienda emoción comunitaria'. Nadie sabía realmente qué significaba. Pero Phoenix los ayudó a visualizar juntos. Pasó algo extraordinario: cada miembro del equipo vio una versión del futuro ligeramente diferente, pero cuando las compartieron, encajaban como un puzzle. El proyecto que construyeron en 5 días ahora moviliza a 200+ personas. Lo notable: el equipo era desconocidos que nunca había trabajado juntos. Tres de ellos dejaron sus empleos para seguir con el proyecto. La conclusión: un futuro compartido es más poderoso que la seguridad individual.",
+          "emoji": "🏔️",
+          "theme": "collective_vision",
+          "motivationIndex": 94
+        },
+        {
+          "title": "Mendoza: Visionarios Sin Ego",
+          "description": "Phoenix en Mendoza enfrentó un equipo que llegaba fragmentado: gerente, programador, artista, abogada. Cada uno tenía su propia idea de futuro. En lugar de imponer una visión, Phoenix facilitó que cada persona compartiera sin juzgar. Lo extraordinario: cuando expusieron todas las visiones juntas, no eran contradictorias, se integraban. El proyecto final incorporaba perspectiva legal, técnica, creativa y empresarial de manera orgánica. Los miembros dijeron: 'Fue la experiencia más colaborativa de nuestras carreras'. El liderazgo real es facilitar que el grupo vea su propia visión colectiva.",
+          "emoji": "🍷",
+          "theme": "integrated_vision",
+          "motivationIndex": 92
+        },
+        {
+          "title": "Buenos Aires: Cuando El Futuro Sana El Presente",
+          "description": "Un equipo en Buenos Aires llegó a Zero to Agent deprimido. Economía difícil, perspectivas oscuras, agotamiento. Phoenix los invitó a co-crear un futuro donde su trabajo con IA contribuyera a soluciones reales para problemas que veían en sus comunidades. El cambio fue dramático. No fue motivational speech - fue acceso a ver el futuro de manera diferente. Dos meses después, tres miembros del equipo dejaron sus trabajos para dedicarse full-time al proyecto que nació en esos 5 días. Un cuarto miembro ahora es mentor en el próximo Zero to Agent. La lección: tener un futuro compartido significativo es lo más transformador que existe.",
+          "emoji": "🎭",
+          "theme": "purpose_driven",
+          "motivationIndex": 95
+        }
+      ],
+      "emotions": [
+        "Esperanza encarnada",
+        "Propósito compartido",
+        "Futuro co-creado y brillante"
+      ],
+      "teamBuildingLessons": [
+        "Un equipo sin visión compartida es trabajo. Un equipo con visión compartida es misión y cambia vidas",
+        "Los mejores resultados vienen de equipos donde cada persona siente propiedad verdadera del futuro",
+        "La incertidumbre compartida crea vulnerabilidad que une más profundamente que el éxito seguro"
+      ]
+    }
+  ],
+  "events": {
+    "zero_to_agent_2024": {
+      "name": "Zero to Agent 2024 - Build Week Global",
+      "period": "April 24 - May 3, 2024",
+      "totalParticipants": 1200,
+      "description": "Global build week enabling developers to create and deploy AI agents using v0 and Vercel",
+      "cities": [
+        {
+          "name": "Santiago",
+          "country": "Chile",
+          "emoji": "🏔️",
+          "description": "Epicentro de innovación en Sudamérica",
+          "status": "completed",
+          "participants": 180,
+          "impact": "Comunidad duradera de 500+ interesados, múltiples empresas cofundadas",
+          "keyAchievements": [
+            "Red de mentores Latinoamericana",
+            "Colaboraciones tech-creatividad",
+            "Movimento de documentación comunitaria"
+          ]
+        },
+        {
+          "name": "Mendoza",
+          "country": "Argentina",
+          "emoji": "🍷",
+          "description": "Hub de innovación regional, puente entre tradición y futuro",
+          "status": "completed",
+          "participants": 150,
+          "impact": "Red intergeneracional activa, integración generacional sin precedentes",
+          "keyAchievements": [
+            "Colaboración joven-jubilados",
+            "Integración de perspectivas múltiples",
+            "Proyectos comunitarios de largo plazo"
+          ]
+        },
+        {
+          "name": "Buenos Aires",
+          "country": "Argentina",
+          "emoji": "🎭",
+          "description": "Centro cultural y tecnológico de LATAM",
+          "status": "completed",
+          "participants": 220,
+          "impact": "Múltiples empresas cofundadas, transformaciones profesionales documentadas",
+          "keyAchievements": [
+            "Archivo del Sentir digital",
+            "Red de emprendedores híbridos",
+            "Programas de mentoría sostenida"
+          ]
+        },
+        {
+          "name": "Miami",
+          "country": "USA",
+          "emoji": "🌴",
+          "description": "Conexión LATAM-USA, puente de oportunidades",
+          "status": "completed",
+          "participants": 200,
+          "impact": "Red global de desarrolladores, colaboraciones internacionales",
+          "keyAchievements": [
+            "Alianzas intercontinentales",
+            "Acceso a inversores globales",
+            "Movimiento de innovación hispana"
+          ]
+        },
+        {
+          "name": "San Francisco",
+          "country": "USA",
+          "emoji": "🌉",
+          "description": "Epicentro mundial de tecnología",
+          "status": "completed",
+          "participants": 280,
+          "impact": "Colaboraciones con empresas Fortune 500, estándares globales",
+          "keyAchievements": [
+            "Proyectos con Vercel directo",
+            "Acceso a ecosystem Silicon Valley",
+            "Proyectos de impacto global"
+          ]
+        },
+        {
+          "name": "London",
+          "country": "UK",
+          "emoji": "👑",
+          "description": "Puente Europa-Mundo",
+          "status": "completed",
+          "participants": 190,
+          "impact": "Iniciativas internacionales, estándares europeos de innovación",
+          "keyAchievements": [
+            "Redes europeas de desenvolvedores",
+            "Estándares éticos en IA",
+            "Colaboraciones transatlánticas"
+          ]
+        }
+      ]
+    }
+  },
+  "motivationalThemes": {
+    "unity_and_voice": "La voz colectiva es exponencialmente más poderosa cuando escuchamos genuinamente cada perspectiva única",
+    "intergenerational_bonds": "La sabiduría real emerge cuando permitimos que diferentes generaciones lideren y aprendan juntas sin jerarquía",
+    "collaboration_breakthrough": "La competencia se transforma en colaboración revolucionaria cuando alineamos el propósito",
+    "legacy_building": "Lo que documentamos con cuidado y honestidad se convierte en inspiración duradera para futuras generaciones",
+    "transformation_tracking": "Ver las transformaciones emocionales de otros nos autoriza y acelera las nuestras propias",
+    "community_storytelling": "Contar historias auténticas juntos es el acto más profundo de team building humano",
+    "collective_vision": "El futuro es más real y más alcanzable cuando múltiples personas lo visualizan y sienten juntas",
+    "integrated_vision": "Las mejores soluciones integran perspectivas que inicialmente parecían opuestas",
+    "purpose_driven": "Un equipo con propósito compartido significativo trasciende el trabajo y se convierte en misión transformadora"
+  },
+  "cityEmojis": {
+    "Santiago": "🏔️",
+    "Mendoza": "🍷",
+    "Buenos Aires": "🎭",
+    "Miami": "🌴",
+    "San Francisco": "🌉",
+    "London": "👑",
+    "Madrid": "☀️",
+    "Barcelona": "🏛️",
+    "São Paulo": "🎆",
+    "Mexico City": "🌮"
+  },
+  "lastRegeneratedBy": "admin",
+  "fallbackNews": {
+    "Mendoza": [
+      {
+        "title": "Mendoza: Cuando Escuchas, Descubres Oro",
+        "description": "En Mendoza, un equipo multigeneracional (18 a 65 años) enfrentó el desafío de amplificar historias locales. Lo inesperado: el jubilado que trabajaba en vides tenía una historia de transformación digital que inspiró al joven ingeniero. La estudiante de arte aportó perspectiva emocional que el tech no podía ver solo. Juntos crearon algo que ninguno podría haber hecho. El valor real: descubrieron que la diversidad verdadera solo existe cuando realmente escuchamos.",
+        "emoji": "🍷",
+        "theme": "intergenerational_bonds",
+        "motivationIndex": 90
+      },
+      {
+        "title": "Mendoza: Raíces Profundas, Ramas Infinitas",
+        "description": "Durante Zero to Agent 2024 en Mendoza, participantes de distintas generaciones se reunieron en una viña convertida en espacio de co-creation. Un jubilado que cuidaba vides durante 50 años, un programador de 25, una abogada, y una estudiante de arte. El proyecto que emergió no era sobre código - era sobre preservar sabiduría ancestral con herramientas futuras. Hoy esa solución sirve a 100+ agricultores en la región. La conexión: cuando diversas generaciones colaboran sin ego, florece lo imposible.",
+        "emoji": "🍷",
+        "theme": "intergenerational_bonds",
+        "motivationIndex": 91
+      },
+      {
+        "title": "Mendoza: Transformación Bajo Las Estrellas",
+        "description": "En la noche del último día de Zero to Agent Mendoza, un equipo que comenzó fragmentado se reunió bajo las estrellas en una terraza con vista a la cordillera. Cada uno compartió por qué estaba realmente ahí - no los que dijeron en el primer día. El ingeniero confesó que llevaba 10 años sin sentir pasión. La diseñadora dijo que quería probar si podía construir cosas técnicas. El contador reveló que soñaba con ser creativo. Cuando decidieron trabajar juntos en el proyecto post-evento, todos sintieron por primera vez que sus trabajos podían tener propósito. Ese es el regalo de colaborar auténticamente.",
+        "emoji": "🍷",
+        "theme": "purpose_driven",
+        "motivationIndex": 93
+      }
+    ]
+  },
+  "versionHistory": [
+    {
+      "version": "1.0",
+      "date": "2024-05-04",
+      "changes": "Initial release with real Zero to Agent 2024 cities and team building stories"
+    }
+  ]
+}

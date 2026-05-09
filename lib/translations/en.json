@@ -1,0 +1,228 @@
+{
+  "common": {
+    "next": "Next",
+    "skip": "Skip",
+    "done": "Done",
+    "back": "Back",
+    "close": "Close",
+    "help": "Help"
+  },
+  "nav": {
+    "checkin": "Check-in",
+    "harvest": "Harvest",
+    "insights": "Insights",
+    "analytics": "Analytics"
+  },
+  "checkin": {
+    "title": "Reflect - Emotional Check-in",
+    "step": "Step",
+    "of": "of",
+    "mood": {
+      "title": "How are you feeling?",
+      "description": "Move the slider to indicate your current emotional state (0 = terrible, 100 = excellent)",
+      "label": "My current mood:",
+      "terrible": "Terrible",
+      "bad": "Bad",
+      "neutral": "Neutral",
+      "good": "Good",
+      "excellent": "Excellent"
+    },
+    "city": {
+      "title": "Select your city",
+      "description": "This helps us understand the context of your reflection",
+      "placeholder": "Search city...",
+      "noResults": "We couldn't find that city"
+    },
+    "news": {
+      "title": "Relevant news",
+      "description": "We're sharing a story from your area"
+    },
+    "opinion": {
+      "title": "What's your opinion?",
+      "placeholder": "Tell us how you feel about this or anything on your mind...",
+      "characterCount": "characters"
+    },
+    "agent": {
+      "title": "Choose your reflection companion",
+      "description": "Each agent has a different style to help you",
+      "psychologist": "Psychologist",
+      "psychologistDesc": "Analytical and deep",
+      "lifeCoach": "Life Coach",
+      "lifeCoachDesc": "Motivating and practical",
+      "therapist": "Therapist",
+      "therapistDesc": "Empathetic and understanding",
+      "friend": "Friend",
+      "friendDesc": "Casual and close"
+    },
+    "response": {
+      "title": "Your companion's reflection",
+      "loading": "Thinking of a response...",
+      "error": "There was an error. Try again."
+    },
+    "followUp": {
+      "title": "One more question",
+      "placeholder": "Write your answer..."
+    },
+    "finalMood": {
+      "title": "How are you feeling now?",
+      "description": "After reflecting, has your emotional state changed?",
+      "improvementLabel": "Emotional improvement:"
+    },
+    "summary": {
+      "title": "Your reflection summary",
+      "initialMood": "Initial mood",
+      "finalMood": "Final mood",
+      "improvement": "Improvement",
+      "noImprovement": "No change",
+      "declined": "Declined",
+      "shareHarvest": "Share to Harvest",
+      "newSession": "New reflection",
+      "successMessage": "Thank you for reflecting! Your entry has been saved."
+    },
+    "buttons": {
+      "continue": "Continue",
+      "submit": "Submit",
+      "complete": "Complete Check-in"
+    }
+  },
+  "harvest": {
+    "title": "Emotion Harvest",
+    "subtitle": "Visualize the shared emotions of our community",
+    "description": "Here we collect emotions from users like you to understand collective emotional patterns.",
+    "sections": {
+      "globalMood": "Global Mood",
+      "moodDistribution": "Emotion Distribution",
+      "topCities": "Top Cities",
+      "stats": "Statistics"
+    },
+    "labels": {
+      "totalParticipants": "Total participants",
+      "averageMood": "Average mood",
+      "latestEntries": "Latest entries",
+      "moodTrend": "Mood trend"
+    },
+    "empty": "No harvest data yet. Be the first to contribute!",
+    "noPermission": "Complete a check-in to contribute to the harvest."
+  },
+  "insights": {
+    "title": "Wellness Insights",
+    "subtitle": "Discover patterns in emotional wellbeing",
+    "description": "Data analysis to understand how emotions vary by city, time, and context.",
+    "sections": {
+      "patterns": "Detected Patterns",
+      "trends": "Trends",
+      "recommendations": "Recommendations"
+    },
+    "labels": {
+      "cityAnalysis": "City Analysis",
+      "timeAnalysis": "Time Analysis",
+      "agentComparison": "Agent Comparison"
+    },
+    "empty": "Not enough data to show insights."
+  },
+  "dashboard": {
+    "title": "Personal Dashboard",
+    "subtitle": "Your reflection history",
+    "sections": {
+      "statistics": "Statistics",
+      "history": "History",
+      "progress": "Progress"
+    },
+    "labels": {
+      "totalSessions": "Total sessions",
+      "averageMoodChange": "Average mood change",
+      "currentStreak": "Active streaks",
+      "lastSession": "Last session"
+    },
+    "empty": "You don't have any sessions yet. Start your first reflection!"
+  },
+  "agents": {
+    "title": "Our Agents",
+    "subtitle": "Meet the guardians of your emotional wellbeing",
+    "description": "Each agent has a unique purpose in your emotional journey",
+    "nova": {
+      "name": "Nova",
+      "title": "The Amplifier",
+      "description": "Amplifies your emotions and connects stories from around the world",
+      "role": "Social Amplifier",
+      "stats": {
+        "conversations": "Conversations",
+        "avgSentiment": "Average Sentiment",
+        "lastActive": "Last Active",
+        "theme": "Main Theme"
+      }
+    },
+    "atlas": {
+      "name": "Atlas",
+      "title": "The Documentarian",
+      "description": "Archives and contextualizes your emotional perspectives",
+      "role": "Guardian of Narratives",
+      "stats": {
+        "conversations": "Conversations",
+        "avgSentiment": "Average Sentiment",
+        "lastActive": "Last Active",
+        "theme": "Main Theme"
+      }
+    },
+    "phoenix": {
+      "name": "Phoenix",
+      "title": "The Visionary",
+      "description": "Imagine the transformative potential of your experiences",
+      "role": "Catalyst of Transformation",
+      "stats": {
+        "conversations": "Conversations",
+        "avgSentiment": "Average Sentiment",
+        "lastActive": "Last Active",
+        "theme": "Main Theme"
+      }
+    },
+    "games": {
+      "echoChamber": {
+        "title": "Echo Chamber",
+        "description": "See how your emotions resonate in other cities"
+      },
+      "memoryQuest": {
+        "title": "Memory Quest",
+        "description": "Can you recognize the patterns in conversations?"
+      },
+      "futureVision": {
+        "title": "Future Vision",
+        "description": "Explore where your sentiment could lead"
+      }
+    },
+    "memory": {
+      "title": "Memory",
+      "noConversations": "No conversations yet"
+    },
+    "analytics": {
+      "title": "Analytics",
+      "noData": "Insufficient data"
+    }
+  },
+  "onboarding": {
+    "home": {
+      "mood": {
+        "title": "Welcome to Reflect",
+        "description": "Start by indicating your current emotional state with the slider"
+      },
+      "agent": {
+        "title": "Choose your companion",
+        "description": "Select the agent that best fits your reflection style"
+      },
+      "opinion": {
+        "title": "Share your opinion",
+        "description": "Tell the agent what's on your mind"
+      }
+    },
+    "harvest": {
+      "intro": {
+        "title": "Community Harvest",
+        "description": "Here you see how other users like you are feeling"
+      },
+      "contribute": {
+        "title": "Contribute to the community",
+        "description": "By sharing, you help others understand emotional patterns"
+      }
+    }
+  }
+}
