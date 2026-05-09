@@ -62,6 +62,31 @@ const AGENT_OVERLAYS: Record<string, Record<string, string>> = {
   visionary:    { improving: '#f59e0b55', stable: '#14b8a633', 'needs-care': '#14b8a644' },
 }
 
+type BgOpacities = { low: number; neutral: number; good: number; high: number }
+
+// Agent × forecast → specific landscape
+// Each agent has a distinct visual personality regardless of the mood slider
+const AGENT_SCENE_MAP: Record<string, Record<string, BgOpacities>> = {
+  // Nova / Amplifier — emotion & energy. Storm for catharsis, prairie for warmth, canyon for peak state
+  amplifier: {
+    'needs-care': { low: 1,   neutral: 0, good: 0, high: 0 }, // Tormenta oceánica — catarsis emocional
+    'stable':     { low: 0,   neutral: 0, good: 1, high: 0 }, // Pradera — calidez equilibrada
+    'improving':  { low: 0,   neutral: 0, good: 0, high: 1 }, // Cañón dorado — energía en ascenso
+  },
+  // Atlas / Documentarian — memory & reflection. Forest for all states, shifting intensity
+  documentarian: {
+    'needs-care': { low: 0,   neutral: 1, good: 0, high: 0 }, // Bosque — introspección profunda
+    'stable':     { low: 0,   neutral: 1, good: 0, high: 0 }, // Bosque — contemplación serena
+    'improving':  { low: 0,   neutral: 0, good: 1, high: 0 }, // Pradera — claridad mental, horizonte
+  },
+  // Phoenix / Visionary — growth & possibility. Canyon for ambition, prairie for openness, forest for roots
+  visionary: {
+    'needs-care': { low: 0,   neutral: 1, good: 0, high: 0 }, // Bosque — volver a las raíces
+    'stable':     { low: 0,   neutral: 0, good: 1, high: 0 }, // Pradera — horizonte abierto
+    'improving':  { low: 0,   neutral: 0, good: 0, high: 1 }, // Cañón — grandeza posible
+  },
+}
+
 function getTheme(mood: number): Theme {
   if (mood <= 25) return THEMES.low
   if (mood <= 50) { const t = (mood - 25) / 25; return interp(THEMES.low, THEMES.neutral, t) }
@@ -158,12 +183,11 @@ export function MoodAtmosphere() {
     : null
 
   let bgOpacities = getOpacities(mood)
-  
+
   if (agentState) {
-    // Si hay recomendación del agente, anulamos el fondo del slider por un fondo sanador/adecuado
-    if (agentState.forecast === 'needs-care') bgOpacities = { low: 0, neutral: 1, good: 0, high: 0 } // Bosque brumoso (sanación)
-    else if (agentState.forecast === 'stable') bgOpacities = { low: 0, neutral: 0, good: 1, high: 0 } // Pradera (calma enfocada)
-    else if (agentState.forecast === 'improving') bgOpacities = { low: 0, neutral: 0, good: 0, high: 1 } // Cañón (energía)
+    // After recommendation: each agent selects a specific landscape based on its forecast
+    const agentScene = AGENT_SCENE_MAP[agentState.agentId]?.[agentState.forecast]
+    if (agentScene) bgOpacities = agentScene
   }
 
   return (
