@@ -1,6 +1,55 @@
 import { getFirebaseDb } from './firebase'
 import { ref, get, set, push } from 'firebase/database'
 
+// ─── Tipos para el formato enriquecido (news.json) ───────────────────────────
+
+export interface MoodNews {
+  id: number
+  city: string
+  headline: { es: string; en: string }
+  summary: { es: string; en: string }
+  category: string
+  date: string
+  moodAffinity: 'low' | 'medium' | 'high'
+  moodTags: string[]
+  emoji: string
+}
+
+/**
+ * Obtiene todas las noticias de una ciudad desde Firebase (/news/{city}).
+ * Si Firebase no está disponible, cae al archivo local data/news.json.
+ */
+export async function getMoodNewsForCity(cityName: string): Promise<MoodNews[]> {
+  // 1. Intentar desde Firebase
+  try {
+    const db = getFirebaseDb()
+    const newsRef = ref(db, `news/${cityName}`)
+    const snapshot = await get(newsRef)
+
+    if (snapshot.exists()) {
+      const data = snapshot.val()
+      const items: MoodNews[] = Object.values(data) as MoodNews[]
+      console.log(`[news-service] Firebase: ${items.length} noticias para ${cityName}`)
+      return items
+    }
+  } catch (err) {
+    console.warn('[news-service] Firebase no disponible, usando datos locales:', err)
+  }
+
+  // 2. Fallback: leer desde data/news.json (solo en Node/SSR)
+  //    En el cliente, el import dinámico carga el JSON directamente.
+  try {
+    const allNews: MoodNews[] = (await import('@/data/news.json')).default as MoodNews[]
+    const filtered = allNews.filter((n) => n.city === cityName)
+    console.log(`[news-service] Local JSON: ${filtered.length} noticias para ${cityName}`)
+    return filtered
+  } catch (err) {
+    console.error('[news-service] Error cargando datos locales:', err)
+  }
+
+  return []
+}
+
 export interface News {
   id?: string
   title: string
