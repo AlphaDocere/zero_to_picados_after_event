@@ -8,7 +8,7 @@ const nextConfig = {
   },
   // Allow Vercel preview deployment to access dev resources
   allowedDevOrigins: [
-    'vm-7feszmh7skg7rpv3h6qnbdch.vusercontent.net',
+    'vm-7kzva3c7mnjspirnsn6dpzu0.vusercontent.net',
     'localhost',
     '127.0.0.1',
   ],
