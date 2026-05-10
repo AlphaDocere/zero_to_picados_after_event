@@ -26,33 +26,25 @@ export function SolanaRegisterButton({
   const { registerCheckIn, loading, signature, error } = useCheckInSolana()
 
   useEffect(() => {
-    // Detectar si Phantom está disponible usando Standard Wallet API
     const checkPhantom = async () => {
       try {
         if (typeof window === 'undefined') return
 
         const solana = window.solana as any
-        console.log('[v0] Checking Phantom availability:', !!solana?.isPhantom)
+        console.log('[v0] Phantom wallet available:', !!solana?.isPhantom)
 
         if (solana?.isPhantom) {
           try {
-            // Usar el método correcto del Standard Wallet API
-            if (solana.connect && typeof solana.connect === 'function') {
-              console.log('[v0] Phantom supports connect method')
-            }
-            
-            // Intentar obtener las cuentas conectadas
-            const result = await solana.connect({ onlyIfTrusted: true })
-            console.log('[v0] Phantom connected (trusted):', result.publicKey?.toBase58?.())
-            if (result.publicKey) {
-              setWalletAddress(result.publicKey.toBase58?.() || result.publicKey.toString())
+            // Verificar si hay una conexión existente
+            const accounts = await solana.request({ method: 'getAccounts' })
+            if (accounts && accounts.length > 0) {
+              console.log('[v0] Wallet already connected:', accounts[0].address)
+              setWalletAddress(accounts[0].address)
               setWalletConnected(true)
             }
           } catch (err: any) {
-            console.log('[v0] Phantom not connected yet (onlyIfTrusted):', err.message)
+            console.log('[v0] No existing connection:', err.message)
           }
-        } else {
-          console.warn('[v0] Phantom wallet not detected')
         }
       } catch (error) {
         console.error('[v0] Error checking Phantom:', error)
@@ -64,37 +56,32 @@ export function SolanaRegisterButton({
   const handleConnectWallet = async () => {
     try {
       if (typeof window === 'undefined') {
-        console.error('[v0] Cannot connect wallet on server side')
+        console.error('[v0] Cannot connect on server')
         return
       }
 
       const solana = window.solana as any
-      console.log('[v0] Attempting to connect Phantom wallet using Standard API...')
+      console.log('[v0] Connecting Phantom wallet...')
 
       if (!solana?.isPhantom) {
-        console.error('[v0] Phantom wallet not found')
-        alert('Por favor instala la extensión Phantom Wallet')
+        alert('Por favor instala Phantom Wallet')
         return
       }
 
-      // Usar el método correcto del Standard Wallet API
-      if (typeof solana.connect !== 'function') {
-        console.error('[v0] Phantom connect method not available')
-        alert('Error: Phantom connect not available')
-        return
+      // Usar el método request de Phantom para conectar
+      const accounts = await solana.request({
+        method: 'requestAccounts',
+      })
+      
+      console.log('[v0] Connection successful, accounts:', accounts.length)
+      if (accounts && accounts.length > 0) {
+        setWalletAddress(accounts[0].address)
+        setWalletConnected(true)
+        console.log('[v0] Connected address:', accounts[0].address)
       }
-
-      const result = await solana.connect()
-      console.log('[v0] Phantom connection successful')
-      
-      const address = result.publicKey?.toBase58?.() || result.publicKey?.toString()
-      console.log('[v0] Connected wallet address:', address)
-      
-      setWalletAddress(address)
-      setWalletConnected(true)
     } catch (err: any) {
-      console.error('[v0] Error connecting Phantom:', err.message)
-      alert(`Error al conectar Phantom: ${err.message}`)
+      console.error('[v0] Connection error:', err.message)
+      alert(`Error: ${err.message}`)
     }
   }
 
