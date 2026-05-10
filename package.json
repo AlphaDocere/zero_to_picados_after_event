@@ -3,6 +3,7 @@
   "version": "1.2.1",
   "description": "Reflect - Emotional Check-in Platform powered by AI agents. Transform self-awareness through guided reflections with personalized AI companions, collaborative mood harvesting, and real-time emotional tracking.",
   "private": true,
+  "packageManager": "pnpm@10.33.0",
   "scripts": {
     "dev": "next dev",
     "build": "node -r tsx scripts/translate-external-content.ts && next build",
