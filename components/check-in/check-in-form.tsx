@@ -13,7 +13,7 @@ import { ONBOARDING_STEPS } from "@/lib/onboarding-content"
 
 import { MoodSlider } from "./mood-slider"
 import { CitySelector } from "./city-selector"
-import { NewsCard } from "./news-card"
+import { MoodAdaptiveNews } from "./mood-adaptive-news"
 import { OpinionInput } from "./opinion-input"
 import { AgentSelector } from "./agent-selector"
 import { ResponseCard } from "./response-card"
@@ -33,6 +33,7 @@ export function CheckInForm() {
   // Local state for immediate UI feedback
   const [localOpinion, setLocalOpinion] = useState("")
   const [localFollowUp, setLocalFollowUp] = useState("")
+  const [dynamicEmotions, setDynamicEmotions] = useState<{ label: string; emoji: string }[]>([])
   
   const { sessionId, session, loading, error, initializeSession, updateSession, completeWorkflow } = useCheckInWorkflow()
   const { currentStep, isComplete, currentStepIndex, skip: skipOnboarding, next: nextOnboarding, reset: resetOnboarding, mounted } = useOnboarding('home')
@@ -284,9 +285,9 @@ export function CheckInForm() {
       case 1:
         return <CitySelector value={city} onChange={handleCityChange} agentId={selectedAgent} />
       case 2:
-        return <NewsCard city={city} />
+        return <MoodAdaptiveNews city={city} mood={initialMood} onEmotionsReady={setDynamicEmotions} />
       case 3:
-        return <OpinionInput value={opinion} onChange={handleOpinionChange} />
+        return <OpinionInput value={opinion} onChange={handleOpinionChange} dynamicEmotions={dynamicEmotions} />
       case 4:
         return <AgentSelector value={selectedAgent} onChange={handleAgentChange} />
       case 5:
