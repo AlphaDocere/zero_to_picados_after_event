@@ -11,7 +11,7 @@ export function CityMap({ cities }: CityMapProps) {
     .sort((a, b) => b.avgChange - a.avgChange)
     .slice(0, 12)
     .map(city => ({
-      city: city.city.split(' ')[0],
+      city: city.city?.split(' ')[0] || 'Unknown',
       mood: city.avgMood,
       change: city.avgChange > 0 ? city.avgChange : 0,
       decline: city.avgChange < 0 ? Math.abs(city.avgChange) : 0
