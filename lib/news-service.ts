@@ -129,6 +129,7 @@ export async function addNewsToCity(cityName: string, news: Omit<News, 'id'>): P
  */
 export async function requestNewCity(
   cityName: string,
+  country: string,
   email: string,
   message: string
 ): Promise<boolean> {
@@ -137,6 +138,7 @@ export async function requestNewCity(
     const requestRef = ref(db, `city_requests/${Date.now()}`)
     await set(requestRef, {
       cityName,
+      country,
       email,
       message,
       timestamp: new Date().toISOString(),
