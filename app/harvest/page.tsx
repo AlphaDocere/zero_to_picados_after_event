@@ -109,7 +109,11 @@ export default function HarvestPage() {
     const agentNames: Record<string, string> = {
       compassionate: 'Nova',
       analytical: 'Atlas',
-      reflective: 'Phoenix'
+      reflective: 'Phoenix',
+      amplifier: 'Nova',
+      documentarian: 'Atlas',
+      visionary: 'Phoenix',
+      motivational: 'Phoenix'
     }
 
     const agentName = agentNames[session.selectedAgent] || session.selectedAgent
@@ -257,7 +261,12 @@ export default function HarvestPage() {
 
                   <div className="flex items-center justify-between pt-4 border-t border-border">
                     <div className="text-xs text-muted-foreground capitalize font-medium">
-                      Guía: {session.selectedAgent === 'compassionate' ? 'Nova' : session.selectedAgent === 'analytical' ? 'Atlas' : 'Phoenix'}
+                      Guía: {(() => {
+                        const lower = (session.selectedAgent || '').toLowerCase()
+                        if (lower === "amplifier" || lower === "compassionate" || lower === "nova") return "Nova"
+                        if (lower === "documentarian" || lower === "analytical" || lower === "atlas") return "Atlas"
+                        return "Phoenix"
+                      })()}
                     </div>
                     {sharedSessionIds.has(session.id) ? (
                       <div className="flex items-center gap-1 text-xs text-emerald-500 font-medium">

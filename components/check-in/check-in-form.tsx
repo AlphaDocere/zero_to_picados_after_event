@@ -335,7 +335,14 @@ export function CheckInForm() {
               </div>
               <div className="flex justify-between items-center py-4 border-b border-border">
                 <span className="text-sm text-muted-foreground">Guia</span>
-                <span className="font-bold text-foreground capitalize">{selectedAgent === "compassionate" ? "Nova" : selectedAgent === "analytical" ? "Atlas" : "Phoenix"}</span>
+                <span className="font-bold text-foreground capitalize">
+                  {(() => {
+                    const lower = (selectedAgent || '').toLowerCase()
+                    if (lower === "amplifier" || lower === "compassionate" || lower === "nova") return "Nova"
+                    if (lower === "documentarian" || lower === "analytical" || lower === "atlas") return "Atlas"
+                    return "Phoenix"
+                  })()}
+                </span>
               </div>
               <div className="flex justify-between items-center py-4">
                 <span className="text-sm text-muted-foreground">Animo final</span>
