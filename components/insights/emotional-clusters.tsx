@@ -34,7 +34,7 @@ export function EmotionalClusters({ clusters }: EmotionalClustersProps) {
             <h4 className="font-bold text-foreground">En Ascenso</h4>
           </div>
           <div className="space-y-2">
-            {clusters.rising.map((city: any) => (
+            {clusters?.rising?.filter((city: any) => city && city.city).map((city: any) => (
               <div key={city.city} className="text-sm">
                 <div className="flex justify-between mb-1">
                   <span className="font-medium text-foreground">{city.city}</span>
@@ -42,8 +42,8 @@ export function EmotionalClusters({ clusters }: EmotionalClustersProps) {
                 </div>
                 <div className="w-full bg-secondary rounded-full h-1.5">
                   <div 
-                    className="bg-green-500 h-1.5 rounded-full"
-                    style={{ width: `${(getSafeValue(city.avgMood) / 100) * 100}%` }}
+                     className="bg-green-500 h-1.5 rounded-full"
+                     style={{ width: `${(getSafeValue(city.avgMood) / 100) * 100}%` }}
                   ></div>
                 </div>
               </div>
@@ -58,7 +58,7 @@ export function EmotionalClusters({ clusters }: EmotionalClustersProps) {
             <h4 className="font-bold text-foreground">Estables</h4>
           </div>
           <div className="space-y-2">
-            {clusters.stable.map((city: any) => (
+            {clusters?.stable?.filter((city: any) => city && city.city).map((city: any) => (
               <div key={city.city} className="text-sm">
                 <div className="flex justify-between mb-1">
                   <span className="font-medium text-foreground">{city.city}</span>
@@ -66,8 +66,8 @@ export function EmotionalClusters({ clusters }: EmotionalClustersProps) {
                 </div>
                 <div className="w-full bg-secondary rounded-full h-1.5">
                   <div 
-                    className="bg-blue-500 h-1.5 rounded-full"
-                    style={{ width: `${(getSafeValue(city.avgMood) / 100) * 100}%` }}
+                     className="bg-blue-500 h-1.5 rounded-full"
+                     style={{ width: `${(getSafeValue(city.avgMood) / 100) * 100}%` }}
                   ></div>
                 </div>
               </div>
@@ -82,7 +82,7 @@ export function EmotionalClusters({ clusters }: EmotionalClustersProps) {
             <h4 className="font-bold text-foreground">En Declive</h4>
           </div>
           <div className="space-y-2">
-            {clusters.declining.map((city: any) => (
+            {clusters?.declining?.filter((city: any) => city && city.city).map((city: any) => (
               <div key={city.city} className="text-sm">
                 <div className="flex justify-between mb-1">
                   <span className="font-medium text-foreground">{city.city}</span>
@@ -90,8 +90,8 @@ export function EmotionalClusters({ clusters }: EmotionalClustersProps) {
                 </div>
                 <div className="w-full bg-secondary rounded-full h-1.5">
                   <div 
-                    className="bg-red-500 h-1.5 rounded-full"
-                    style={{ width: `${(getSafeValue(city.avgMood) / 100) * 100}%` }}
+                     className="bg-red-500 h-1.5 rounded-full"
+                     style={{ width: `${(getSafeValue(city.avgMood) / 100) * 100}%` }}
                   ></div>
                 </div>
               </div>
