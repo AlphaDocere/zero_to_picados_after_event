@@ -36,7 +36,14 @@ export default function DashboardPage() {
   const formatDate = (dateVal: any) => {
     if (!dateVal) return 'Fecha no disponible'
     try {
-      const date = new Date(dateVal)
+      let parsedVal = dateVal
+      if (typeof dateVal === 'string' && /^\d+$/.test(dateVal)) {
+        parsedVal = parseInt(dateVal, 10)
+      }
+      if (typeof parsedVal === 'number' && parsedVal < 1000000000000) {
+        parsedVal = parsedVal * 1000
+      }
+      const date = new Date(parsedVal)
       if (isNaN(date.getTime())) return 'Fecha no disponible'
       return date.toLocaleDateString('es-ES', {
         year: 'numeric',
@@ -52,7 +59,14 @@ export default function DashboardPage() {
   const formatTime = (dateVal: any) => {
     if (!dateVal) return '00:00'
     try {
-      const date = new Date(dateVal)
+      let parsedVal = dateVal
+      if (typeof dateVal === 'string' && /^\d+$/.test(dateVal)) {
+        parsedVal = parseInt(dateVal, 10)
+      }
+      if (typeof parsedVal === 'number' && parsedVal < 1000000000000) {
+        parsedVal = parsedVal * 1000
+      }
+      const date = new Date(parsedVal)
       if (isNaN(date.getTime())) return '00:00'
       return date.toLocaleTimeString('es-ES', {
         hour: '2-digit',
