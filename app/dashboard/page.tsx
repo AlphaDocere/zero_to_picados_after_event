@@ -178,7 +178,13 @@ export default function DashboardPage() {
                             {session.city}
                           </p>
                           <p className="text-sm text-muted-foreground">
-                            {formatDate(session.createdAt)} a las {formatTime(session.createdAt)}
+                            {(() => {
+                              const dateStr = formatDate(session.createdAt)
+                              if (dateStr === 'Fecha no disponible') {
+                                return 'Fecha no disponible'
+                              }
+                              return `${dateStr} a las ${formatTime(session.createdAt)}`
+                            })()}
                           </p>
                         </div>
                       </div>
