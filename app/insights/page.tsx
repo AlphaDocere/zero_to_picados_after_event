@@ -29,15 +29,18 @@ export default function InsightsPage() {
     async function loadInsights() {
       try {
         console.log('[v0] Loading insights from Firebase...')
-        const sessions = await getAllSessions()
-        console.log('[v0] Loaded sessions:', sessions.length)
+        const allSessions = await getAllSessions()
+        console.log('[v0] Loaded all sessions:', allSessions.length)
 
-        if (sessions.length > 0) {
-          const patterns = analyzeCityPatterns(sessions)
+        const completedSessions = allSessions.filter(s => s.status === 'completed')
+        console.log('[v0] Completed sessions:', completedSessions.length)
+
+        if (completedSessions.length > 0) {
+          const patterns = analyzeCityPatterns(completedSessions)
           setCityPatterns(patterns)
-          setTotalReflections(sessions.length)
+          setTotalReflections(completedSessions.length)
 
-          const allOpinions = sessions.map(s => s.opinion).filter(Boolean)
+          const allOpinions = completedSessions.map(s => s.opinion).filter(Boolean)
           const extractedThemes = extractThemes(allOpinions)
           setThemes(extractedThemes)
 

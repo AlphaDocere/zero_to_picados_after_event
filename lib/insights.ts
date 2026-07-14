@@ -3,6 +3,13 @@ export function analyzeCityPatterns(sessions: any[]) {
   const cityData: Record<string, any> = {}
 
   sessions.forEach(session => {
+    // Skip sessions that don't have a valid city or are not completed
+    if (!session.city || session.status !== 'completed') return
+
+    const initial = Number(session.initialMood)
+    const final = Number(session.finalMood)
+    if (isNaN(initial) || isNaN(final)) return
+
     if (!cityData[session.city]) {
       cityData[session.city] = {
         city: session.city,
@@ -14,24 +21,38 @@ export function analyzeCityPatterns(sessions: any[]) {
       }
     }
 
-    cityData[session.city].moods.push(session.initialMood)
-    cityData[session.city].opinions.push(session.opinion)
-    cityData[session.city].changes.push(session.finalMood - session.initialMood)
-    cityData[session.city].agents[session.selectedAgent] = 
-      (cityData[session.city].agents[session.selectedAgent] || 0) + 1
+    cityData[session.city].moods.push(initial)
+    if (session.opinion) {
+      cityData[session.city].opinions.push(session.opinion)
+    }
+    cityData[session.city].changes.push(final - initial)
+    
+    if (session.selectedAgent) {
+      cityData[session.city].agents[session.selectedAgent] = 
+        (cityData[session.city].agents[session.selectedAgent] || 0) + 1
+    }
     cityData[session.city].count++
   })
 
   // Calculate aggregates
-  return Object.entries(cityData).map(([_, data]: any) => ({
-    city: data.city,
-    avgMood: Math.round(data.moods.reduce((a: number, b: number) => a + b, 0) / data.moods.length),
-    avgChange: Math.round(data.changes.reduce((a: number, b: number) => a + b, 0) / data.changes.length * 10) / 10,
-    count: data.count,
-    topAgent: Object.entries(data.agents).sort((a: any, b: any) => b[1] - a[1])[0]?.[0],
-    opinions: data.opinions,
-    changes: data.changes
-  }))
+  return Object.entries(cityData).map(([_, data]: any) => {
+    const avgMood = data.moods.length > 0 
+      ? Math.round(data.moods.reduce((a: number, b: number) => a + b, 0) / data.moods.length)
+      : 0
+    const avgChange = data.changes.length > 0
+      ? Math.round(data.changes.reduce((a: number, b: number) => a + b, 0) / data.changes.length * 10) / 10
+      : 0
+
+    return {
+      city: data.city,
+      avgMood,
+      avgChange,
+      count: data.count,
+      topAgent: Object.entries(data.agents).sort((a: any, b: any) => b[1] - a[1])[0]?.[0] || 'none',
+      opinions: data.opinions,
+      changes: data.changes
+    }
+  })
 }
 
 // Extract keywords and themes from opinions
