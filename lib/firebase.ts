@@ -62,6 +62,7 @@ export interface CheckInSessionMetadata {
 
 export interface CheckInSession {
   id?: string
+  userId?: string
   initialMood: number
   city: string
   news: {
@@ -88,12 +89,13 @@ export interface CheckInSession {
   metadata?: CheckInSessionMetadata
 }
 
-export async function createCheckInSession(): Promise<string> {
+export async function createCheckInSession(userId: string): Promise<string> {
   const db = getFirebaseDb()
   const sessionsRef = ref(db, 'check-in-sessions')
   const newSessionRef = push(sessionsRef)
   
   const session: CheckInSession = {
+    userId,
     initialMood: 0,
     city: '',
     news: { title: '', description: '' },
@@ -118,6 +120,7 @@ export async function saveCheckInSession(
     status?: CheckInSession['status']
     currentStep?: number
     metadata?: CheckInSessionMetadata
+    userId?: string
   }
 ): Promise<string> {
   const db = getFirebaseDb()
@@ -132,6 +135,7 @@ export async function saveCheckInSession(
   else emotionalTransform = 'stable'
 
   const session: CheckInSession = {
+    userId: data.userId,
     initialMood: data.initialMood,
     city: data.city,
     news: data.news,

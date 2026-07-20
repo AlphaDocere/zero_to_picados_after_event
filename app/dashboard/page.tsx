@@ -13,9 +13,15 @@ export default function DashboardPage() {
   useEffect(() => {
     const loadSessions = async () => {
       try {
-        const response = await fetch('/api/get-sessions')
+        const uId = typeof window !== 'undefined' ? localStorage.getItem('reflect_user_id') : null
+        if (!uId) {
+          setSessions([])
+          setLoading(false)
+          return
+        }
+        const response = await fetch(`/api/get-sessions?userId=${uId}`)
         const data = await response.json()
-        setSessions(data)
+        setSessions(Array.isArray(data) ? data : [])
       } catch (error) {
         console.error('[v0] Error loading sessions:', error)
       } finally {
