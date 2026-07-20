@@ -249,7 +249,7 @@ export default function HarvestPage() {
                       <Button 
                         size="sm" 
                         variant="ghost" 
-                        className="gap-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                        className="gap-1 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:group-focus-within:opacity-100 focus-visible:opacity-100 transition-opacity"
                         onClick={() => handleShare(session)}
                         disabled={shareLoading}
                       >
