@@ -19,6 +19,11 @@ export function SolanaTxValidator() {
       return
     }
 
+    if (signature.trim().length < 43) {
+      setError('La firma Solana debe tener al menos 43 caracteres')
+      return
+    }
+
     setLoading(true)
     setError(null)
     setResult(null)
