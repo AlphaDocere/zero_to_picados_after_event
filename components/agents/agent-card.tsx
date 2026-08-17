@@ -43,55 +43,56 @@ export function AgentCard({ agent, index }: AgentCardProps) {
 
   return (
     <div
-      className={`relative group animate-in fade-in slide-in-from-bottom-4 duration-500`}
+      className={`relative group animate-in fade-in slide-in-from-bottom-4 duration-500 flex flex-col h-full`}
       style={{ animationDelay: `${index * 100}ms` }}
     >
       {/* Glow background */}
       <div
-        className="absolute inset-0 rounded-3xl blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-300"
+        className="absolute inset-0 rounded-3xl blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-300 pointer-events-none"
         style={{ background: `radial-gradient(circle, ${theme.colors.primary} 0%, transparent 70%)` }}
       ></div>
 
       {/* Card content */}
       <div
-        className={`relative bg-gradient-to-br ${theme.bgGradient} border-2 ${theme.border} rounded-3xl p-8 space-y-6 ${theme.textColor} backdrop-blur-md hover:shadow-lg transition-all duration-300 group-hover:border-opacity-100 border-opacity-70`}
+        className={`relative flex flex-col justify-between h-full bg-gradient-to-br ${theme.bgGradient} border-2 ${theme.border} rounded-3xl p-6 sm:p-7 space-y-6 ${theme.textColor} backdrop-blur-md hover:shadow-xl transition-all duration-300 group-hover:border-opacity-100 border-opacity-70`}
       >
         {/* Header with character image */}
         <div className="space-y-4">
-          <div className="flex items-start justify-between gap-6">
+          <div className="flex items-center gap-4">
             {/* Character Image */}
-            <div className="relative w-40 h-40 flex-shrink-0 rounded-2xl overflow-hidden border-2" style={{ borderColor: theme.colors.primary + '80' }}>
+            <div className="relative w-24 h-24 sm:w-28 sm:h-28 flex-shrink-0 rounded-2xl overflow-hidden border-2" style={{ borderColor: theme.colors.primary + '80' }}>
               <Image
                 src={agentImage}
                 alt={theme.name}
                 fill
                 className="object-cover"
-                sizes="(max-width: 768px) 100px, 160px"
+                sizes="(max-width: 768px) 100px, 120px"
               />
               {/* Image overlay shine effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent pointer-events-none"></div>
             </div>
 
             {/* Character Info */}
-            <div className="flex-1 space-y-2">
-              <div>
-                <h2 className="text-3xl font-bold">{theme.name}</h2>
-                <p className="text-sm font-medium opacity-80">{theme.displayName[language as keyof typeof theme.displayName]}</p>
+            <div className="flex-1 min-w-0 space-y-1">
+              <div className="flex items-center gap-2">
+                <h2 className="text-2xl font-bold truncate">{theme.name}</h2>
               </div>
-              <p className="text-base font-semibold opacity-90">{getTranslatedTitle()}</p>
-              <p className="text-sm leading-relaxed opacity-90">{getTranslatedDescription()}</p>
+              <p className="text-xs font-semibold opacity-75">{theme.displayName[language as keyof typeof theme.displayName]}</p>
+              <p className="text-sm font-semibold opacity-90 truncate">{getTranslatedTitle()}</p>
             </div>
           </div>
 
+          <p className="text-xs sm:text-sm leading-relaxed opacity-85 line-clamp-3">{getTranslatedDescription()}</p>
+
           {/* Personality & Role */}
-          <div className="grid grid-cols-2 gap-3 py-2">
+          <div className="grid grid-cols-2 gap-2.5 p-3 rounded-2xl bg-black/20 border border-white/10">
             <div className="text-xs">
-              <span className="opacity-60">{language === 'es' ? 'Personalidad' : 'Personality'}</span>
-              <p className="font-medium">{theme.personality[language as keyof typeof theme.personality]}</p>
+              <span className="opacity-60 text-[11px] block">{language === 'es' ? 'Personalidad' : 'Personality'}</span>
+              <p className="font-semibold text-xs mt-0.5 truncate">{theme.personality[language as keyof typeof theme.personality]}</p>
             </div>
             <div className="text-xs">
-              <span className="opacity-60">{language === 'es' ? 'Rol' : 'Role'}</span>
-              <p className="font-medium">{theme.role[language as keyof typeof theme.role]}</p>
+              <span className="opacity-60 text-[11px] block">{language === 'es' ? 'Rol' : 'Role'}</span>
+              <p className="font-semibold text-xs mt-0.5 truncate">{theme.role[language as keyof typeof theme.role]}</p>
             </div>
           </div>
         </div>
