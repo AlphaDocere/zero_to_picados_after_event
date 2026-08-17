@@ -36,7 +36,7 @@ export function CheckInForm() {
   const [dynamicEmotions, setDynamicEmotions] = useState<{ label: string; emoji: string }[]>([])
   
   const { sessionId, session, loading, error, initializeSession, updateSession, completeWorkflow } = useCheckInWorkflow()
-  const { currentStep, isComplete, currentStepIndex, skip: skipOnboarding, next: nextOnboarding, reset: resetOnboarding, mounted } = useOnboarding('home')
+  const { currentStep, isOpen: isHelpOpen, currentStepIndex, skip: skipOnboarding, next: nextOnboarding, prev: prevOnboarding, toggleHelp, mounted } = useOnboarding('home', step)
   
   // Debounce text inputs to avoid constant Firebase updates
   const debouncedOpinion = useDebounce(localOpinion, 500)
@@ -391,9 +391,10 @@ export function CheckInForm() {
           </div>
 
           <button
-            onClick={resetOnboarding}
+            onClick={() => toggleHelp(step)}
             className="w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300 font-bold bg-purple-900/40 hover:bg-purple-700/60 text-purple-300 hover:text-purple-100 border border-purple-500/30 hover:border-purple-500/60 active:scale-95"
-            title="Show help"
+            title="Ver ayuda de este paso"
+            aria-label="Ver ayuda de este paso"
           >
             <HelpCircle className="w-5 h-5" />
           </button>
@@ -408,14 +409,15 @@ export function CheckInForm() {
         </div>
       </main>
 
-      {/* Onboarding Tooltip */}
-      {mounted && !isComplete && currentStep && (
+      {/* Onboarding & Help Modal */}
+      {mounted && isHelpOpen && currentStep && (
         <Tooltip
           step={currentStep}
           onNext={nextOnboarding}
+          onPrev={prevOnboarding}
           onSkip={skipOnboarding}
           stepNumber={currentStepIndex}
-          totalSteps={currentStep && ONBOARDING_STEPS['home']?.length}
+          totalSteps={ONBOARDING_STEPS['home']?.length || TOTAL_STEPS}
         />
       )}
 
