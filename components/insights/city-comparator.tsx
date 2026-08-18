@@ -37,7 +37,7 @@ export function CityComparator({ cities }: CityComparatorProps) {
           onChange={(e) => setSelected([e.target.value, selected[1]])}
           className="flex-1 px-4 py-2 rounded-xl border border-border bg-background text-foreground"
         >
-          {cities.map(c => <option key={c.city} value={c.city}>{c.city}</option>)}
+          {cities.map((c, idx) => <option key={`cmp-city-1-${c.city || idx}`} value={c.city}>{c.city}</option>)}
         </select>
 
         <div className="flex items-center justify-center px-4 font-bold text-foreground">vs</div>
@@ -47,7 +47,7 @@ export function CityComparator({ cities }: CityComparatorProps) {
           onChange={(e) => setSelected([selected[0], e.target.value])}
           className="flex-1 px-4 py-2 rounded-xl border border-border bg-background text-foreground"
         >
-          {cities.map(c => <option key={c.city} value={c.city}>{c.city}</option>)}
+          {cities.map((c, idx) => <option key={`cmp-city-2-${c.city || idx}`} value={c.city}>{c.city}</option>)}
         </select>
       </div>
 
