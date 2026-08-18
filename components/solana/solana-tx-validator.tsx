@@ -14,8 +14,14 @@ export function SolanaTxValidator() {
   const [error, setError] = useState<string | null>(null)
 
   const handleValidate = async () => {
-    if (!signature.trim()) {
+    const trimmed = signature.trim()
+    if (!trimmed) {
       setError('Por favor ingresa una firma de transacción')
+      return
+    }
+
+    if (trimmed.length < 43) {
+      setError('La firma Solana debe tener al menos 43 caracteres (habitualmente 87-88 base-58)')
       return
     }
 
@@ -24,9 +30,9 @@ export function SolanaTxValidator() {
     setResult(null)
 
     try {
-      const tx = await validateSolanaTransaction(signature.trim())
+      const tx = await validateSolanaTransaction(trimmed)
       const info = formatTransactionInfo(tx)
-      setResult({ ...info, signature, tx })
+      setResult({ ...info, signature: trimmed, tx })
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error al validar transacción')
     } finally {
@@ -49,7 +55,7 @@ export function SolanaTxValidator() {
       <div className="space-y-3">
         <div className="flex gap-2">
           <Input
-            placeholder="Ingresa una firma de transacción (64 caracteres)"
+            placeholder="Ingresa una firma de transacción (87-88 caracteres base-58)"
             value={signature}
             onChange={(e) => {
               setSignature(e.target.value)
@@ -90,23 +96,23 @@ export function SolanaTxValidator() {
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <p className="text-xs text-muted-foreground mb-1">Slot</p>
-                    <p className="font-mono text-sm font-semibold text-foreground">{result.details.slot}</p>
+                    <p className="font-mono text-sm font-semibold text-foreground">{result.details?.slot ?? 'N/A'}</p>
                   </div>
                   <div>
                     <p className="text-xs text-muted-foreground mb-1">Fee</p>
-                    <p className="font-mono text-sm font-semibold text-foreground">{result.details.fee}</p>
+                    <p className="font-mono text-sm font-semibold text-foreground">{result.details?.fee ?? '0 SOL'}</p>
                   </div>
                   <div className="col-span-2">
                     <p className="text-xs text-muted-foreground mb-1">Fecha</p>
-                    <p className="font-semibold text-foreground text-sm">{result.details.blockTime}</p>
+                    <p className="font-semibold text-foreground text-sm">{result.details?.blockTime ?? 'Desconocido'}</p>
                   </div>
                   <div>
                     <p className="text-xs text-muted-foreground mb-1">Cuentas</p>
-                    <p className="font-semibold text-foreground">{result.details.accounts}</p>
+                    <p className="font-semibold text-foreground">{result.details?.accounts ?? 0}</p>
                   </div>
                   <div>
                     <p className="text-xs text-muted-foreground mb-1">Instrucciones</p>
-                    <p className="font-semibold text-foreground">{result.details.instructions}</p>
+                    <p className="font-semibold text-foreground">{result.details?.instructions ?? 0}</p>
                   </div>
                 </div>
 
@@ -139,7 +145,7 @@ export function SolanaTxValidator() {
               </div>
               <div className="px-6 py-4">
                 <p className="text-sm text-muted-foreground">
-                  Verifica que la firma sea correcta y que sea de Solana Devnet.
+                  Verifica que la firma sea correcta y que corresponda a una transacción emitida en Solana Devnet.
                 </p>
               </div>
             </div>
@@ -148,9 +154,9 @@ export function SolanaTxValidator() {
       )}
 
       <div className="bg-muted/50 rounded-lg p-4 space-y-2">
-        <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Ejemplo de firma válida</p>
+        <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Ejemplo de firma válida (87-88 caracteres)</p>
         <p className="text-xs font-mono text-foreground/60 break-all">
-          2hM8mZvVJ3oq3Zn4wVqLxL4pNvZXpzQ5qF8vK3mN6pP9rZ2xY5tU7wB4cD1eF0gJ
+          4sK9WbK1VwB8pM4yN6pP9rZ2xY5tU7wB4cD1eF0gJ2hM8mZvVJ3oq3Zn4wVqLxL4pNvZXpzQ5qF8vK3mN6pP9rZ2
         </p>
       </div>
     </div>

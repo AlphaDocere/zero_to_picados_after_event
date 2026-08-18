@@ -3,7 +3,7 @@
  * Verifica transacciones en Solana Devnet/Mainnet
  */
 
-interface SolanaTransaction {
+export interface SolanaTransaction {
   signature: string
   blockTime: number | null
   slot: number | null
@@ -22,23 +22,26 @@ interface SolanaTransaction {
     postBalances: number[]
     logMessages: string[]
   } | null
-  status: 'success' | 'error' | 'not_found'
+  status: 'success' | 'error' | 'not_found' | 'invalid'
 }
 
 const SOLANA_RPC_URL = 'https://api.devnet.solana.com'
 
 /**
- * Valida una transacción en Solana
+ * Valida una transacción en Solana Devnet
  */
 export async function validateSolanaTransaction(signature: string): Promise<SolanaTransaction> {
-  if (!signature || signature.trim() === '') {
+  const cleanSig = (signature || '').trim()
+
+  // Validar longitud básica de firma Solana base-58 (mínimo 43 caracteres)
+  if (!cleanSig || cleanSig.length < 43) {
     return {
-      signature,
+      signature: cleanSig,
       blockTime: null,
       slot: null,
       transaction: null,
       meta: null,
-      status: 'not_found',
+      status: 'invalid',
     }
   }
 
@@ -50,15 +53,39 @@ export async function validateSolanaTransaction(signature: string): Promise<Sola
         jsonrpc: '2.0',
         id: 1,
         method: 'getTransaction',
-        params: [signature, { encoding: 'json', maxSupportedTransactionVersion: 0 }],
+        params: [cleanSig, { encoding: 'json', maxSupportedTransactionVersion: 0 }],
       }),
     })
 
+    if (!response.ok) {
+      return {
+        signature: cleanSig,
+        blockTime: null,
+        slot: null,
+        transaction: null,
+        meta: null,
+        status: 'not_found',
+      }
+    }
+
     const data = await response.json()
 
-    if (data.result === null) {
+    // Si el RPC de Solana devuelve un error de formato o parámetro inválido
+    if (data?.error) {
       return {
-        signature,
+        signature: cleanSig,
+        blockTime: null,
+        slot: null,
+        transaction: null,
+        meta: null,
+        status: 'invalid',
+      }
+    }
+
+    // Si no se encuentra la transacción en Devnet
+    if (!data?.result || data.result === null) {
+      return {
+        signature: cleanSig,
         blockTime: null,
         slot: null,
         transaction: null,
@@ -68,46 +95,55 @@ export async function validateSolanaTransaction(signature: string): Promise<Sola
     }
 
     const result = data.result
-    const isSuccess = result.meta?.err === null
+    const meta = result?.meta || null
+    const isSuccess = Boolean(meta && meta.err === null)
 
     return {
-      signature,
-      blockTime: result.blockTime,
-      slot: result.slot,
-      transaction: result.transaction,
-      meta: result.meta,
-      status: isSuccess ? 'success' : 'error',
+      signature: cleanSig,
+      blockTime: typeof result.blockTime === 'number' ? result.blockTime : null,
+      slot: typeof result.slot === 'number' ? result.slot : null,
+      transaction: result.transaction || null,
+      meta: meta,
+      status: isSuccess ? 'success' : (meta?.err ? 'error' : 'not_found'),
     }
   } catch (error) {
     console.error('[v0] Error validating Solana transaction:', error)
     return {
-      signature,
+      signature: cleanSig,
       blockTime: null,
       slot: null,
       transaction: null,
       meta: null,
-      status: 'error',
+      status: 'not_found',
     }
   }
 }
 
 /**
- * Obtiene información legible de una transacción
+ * Obtiene información legible y formateada de una transacción
  */
 export function formatTransactionInfo(tx: SolanaTransaction) {
+  if (!tx || tx.status === 'invalid') {
+    return {
+      valid: false,
+      message: 'Firma inválida',
+      details: 'La firma proporcionada no cumple con el formato válido de Solana base-58 (87-88 caracteres).',
+    }
+  }
+
   if (tx.status === 'not_found') {
     return {
       valid: false,
-      message: 'Transacción no encontrada en Solana Devnet',
-      details: null,
+      message: 'Transacción no encontrada',
+      details: 'La firma no existe en Solana Devnet o aún no ha sido confirmada por los validadores.',
     }
   }
 
   if (tx.status === 'error') {
     return {
       valid: false,
-      message: 'Error al validar transacción',
-      details: tx.meta?.err ? `Error: ${JSON.stringify(tx.meta.err)}` : 'Error desconocido',
+      message: 'Transacción no encontrada o con errores',
+      details: tx.meta?.err ? `Error: ${JSON.stringify(tx.meta.err)}` : 'La transacción fue rechazada o falló en la blockchain.',
     }
   }
 
