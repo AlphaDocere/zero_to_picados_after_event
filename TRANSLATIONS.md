@@ -68,6 +68,7 @@ All components automatically support French. Users can select it from the dropdo
 - `checkin.city.description` - City selection description
 
 - `checkin.opinion.title` - "What's your opinion?" / "¿Cuál es tu opinión?"
+- `checkin.opinion.description` - "Share your thoughts freely..." / "Comparte libremente tus pensamientos..."
 - `checkin.opinion.placeholder` - Placeholder for opinion text
 
 - `checkin.agent.title` - "Choose your companion" / "Elige tu compañero"

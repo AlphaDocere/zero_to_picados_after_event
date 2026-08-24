@@ -39,6 +39,7 @@
     },
     "opinion": {
       "title": "¿Cuál es tu opinión?",
+      "description": "Comparte libremente tus pensamientos...",
       "placeholder": "Cuéntanos cómo te sientes sobre esto o cualquier cosa que esté en tu mente...",
       "characterCount": "caracteres"
     },
