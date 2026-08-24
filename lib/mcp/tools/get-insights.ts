@@ -20,7 +20,8 @@ export function registerGetInsights(server: McpServer) {
       },
     },
     async ({ topThemes, topCities }) => {
-      const sessions = await getAllSessions()
+      const allSessions = await getAllSessions()
+      const sessions = allSessions.filter((s) => s.status === 'completed')
       const cityPatterns = analyzeCityPatterns(sessions)
       const themes = extractThemes(sessions.map((s) => s.opinion).filter(Boolean))
       const clusters = getEmotionalClusters(cityPatterns)
@@ -31,7 +32,7 @@ export function registerGetInsights(server: McpServer) {
           ? 0
           : Math.round(
               (sessions.reduce(
-                (acc, s) => acc + ((s.finalMood ?? 0) - (s.initialMood ?? 0)),
+                (acc, s) => acc + (Number(s.finalMood ?? 0) - Number(s.initialMood ?? 0)),
                 0
               ) /
                 sessions.length) *
