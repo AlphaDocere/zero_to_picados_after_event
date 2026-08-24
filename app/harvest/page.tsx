@@ -36,6 +36,29 @@ export default function HarvestPage() {
     avgFinalMood: 0
   })
 
+  // Format date safely
+  const formatDate = (dateVal: any) => {
+    if (!dateVal) return 'Fecha no disponible'
+    try {
+      let parsedVal = dateVal
+      if (typeof dateVal === 'string' && /^\d+$/.test(dateVal)) {
+        parsedVal = parseInt(dateVal, 10)
+      }
+      if (typeof parsedVal === 'number' && parsedVal < 1000000000000) {
+        parsedVal = parsedVal * 1000
+      }
+      const date = new Date(parsedVal)
+      if (isNaN(date.getTime())) return 'Fecha no disponible'
+      return date.toLocaleDateString('es-ES', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+      })
+    } catch {
+      return 'Fecha no disponible'
+    }
+  }
+
   useEffect(() => {
     const fetchSessions = async () => {
       try {
@@ -200,11 +223,7 @@ export default function HarvestPage() {
                         <div>
                           <div className="font-semibold text-foreground">{session.city}</div>
                           <div className="text-xs text-muted-foreground">
-                            {new Date(session.createdAt).toLocaleDateString('es-ES', {
-                              year: 'numeric',
-                              month: 'short',
-                              day: 'numeric'
-                            })}
+                            {formatDate(session.createdAt)}
                           </div>
                         </div>
                       </div>
