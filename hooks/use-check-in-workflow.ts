@@ -8,6 +8,16 @@ import {
   CheckInSession
 } from '@/lib/firebase'
 
+function getOrCreateUserId(): string {
+  if (typeof window === 'undefined') return ''
+  let id = localStorage.getItem('reflect_user_id')
+  if (!id) {
+    id = 'user_' + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+    localStorage.setItem('reflect_user_id', id)
+  }
+  return id
+}
+
 export function useCheckInWorkflow() {
   const [sessionId, setSessionId] = useState<string | null>(null)
   const [session, setSession] = useState<CheckInSession | null>(null)
@@ -45,7 +55,8 @@ export function useCheckInWorkflow() {
       
       // Create new session
       console.log('[v0] Creating new session...')
-      const newId = await createCheckInSession()
+      const userId = getOrCreateUserId()
+      const newId = await createCheckInSession(userId)
       console.log('[v0] New session created with ID:', newId)
       
       sessionStorage.setItem('checkInSessionId', newId)
