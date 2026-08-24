@@ -24,17 +24,34 @@ interface AggregateData {
   lastUpdated: string
 }
 
+function normalizeAgentName(agentId: string): string {
+  if (!agentId) return ''
+  const lower = agentId.toLowerCase()
+  if (lower === 'nova' || lower === 'compassionate' || lower === 'amplifier') return 'Nova'
+  if (lower === 'atlas' || lower === 'analytical' || lower === 'documentarian') return 'Atlas'
+  if (lower === 'phoenix' || lower === 'reflective' || lower === 'visionary') return 'Phoenix'
+  return agentId
+}
+
 async function aggregateAgentInsights(): Promise<AggregateData> {
   try {
     const db = getFirebaseDatabase()
-    const agentSpacesRef = ref(db, 'agent-spaces')
-    const snapshot = await get(agentSpacesRef)
-
-    if (!snapshot.exists()) {
-      return getEmptyAggregateData()
+    
+    // 1. Leer todas las check-in-sessions reales
+    const checkInRef = ref(db, 'check-in-sessions')
+    const checkInSnapshot = await get(checkInRef)
+    
+    let realSessions: any[] = []
+    if (checkInSnapshot.exists()) {
+      const val = checkInSnapshot.val()
+      realSessions = typeof val === 'object' && val !== null ? Object.values(val) : []
     }
 
-    const data = snapshot.val()
+    // 2. Leer agent-spaces (para las reflexiones del agente de ser necesario)
+    const agentSpacesRef = ref(db, 'agent-spaces')
+    const snapshot = await get(agentSpacesRef)
+    const agentSpacesData = snapshot.exists() ? snapshot.val() : {}
+
     const agents = ['Nova', 'Atlas', 'Phoenix']
     const aggregated: Record<string, any> = {}
     const allCities = new Set<string>()
@@ -42,54 +59,72 @@ async function aggregateAgentInsights(): Promise<AggregateData> {
     let totalUsers = new Set<string>()
 
     for (const agent of agents) {
-      const sessions: any[] = []
+      // Filtrar sesiones reales completadas de este agente
+      const agentSessions = realSessions.filter(s => {
+        if (!s || s.status !== 'completed') return false
+        return normalizeAgentName(s.selectedAgent) === agent
+      })
+
       const users = new Set<string>()
       const cities = new Set<string>()
-      let moodShifts: number[] = []
+      const moodShifts: number[] = []
 
-      // Iterar sobre todos los usuarios
-      for (const userId in data) {
-        if (data[userId][agent]) {
-          users.add(userId)
-          totalUsers.add(userId)
+      agentSessions.forEach(s => {
+        // En check-in-sessions no siempre hay userId, usamos metadata?.userId o s.id o fallback único
+        const uId = s.metadata?.userId || s.id || Math.random().toString()
+        users.add(uId)
+        totalUsers.add(uId)
 
-          // Iterar sobre todas las sesiones del agente para este usuario
-          for (const timestamp in data[userId][agent]) {
-            const session = data[userId][agent][timestamp]
-            sessions.push(session)
-            totalSessions++
-
-            if (session.moodShift) {
-              moodShifts.push(session.moodShift)
-            }
-
-            // Inferir ciudad del contexto si existe
-            if (session.result) {
-              const cityMatch = session.result.match(/ciudad[:\s]+(\w+)/i)
-              if (cityMatch) {
-                cities.add(cityMatch[1])
-              }
-            }
-          }
+        if (s.city) {
+          cities.add(s.city)
+          allCities.add(s.city)
         }
-      }
 
-      cities.forEach(c => allCities.add(c))
+        const initial = Number(s.initialMood)
+        const final = Number(s.finalMood)
+        let shift = s.moodShift !== undefined ? Number(s.moodShift) : (final - initial)
+        if (isNaN(shift) && !isNaN(initial) && !isNaN(final)) {
+          shift = final - initial
+        }
+        if (!isNaN(shift)) {
+          moodShifts.push(shift)
+        }
+      })
+
+      totalSessions += agentSessions.length
 
       const avgMoodShift = moodShifts.length > 0 
         ? moodShifts.reduce((a, b) => a + b, 0) / moodShifts.length 
         : 0
 
+      // Intentar obtener la última reflexión del espacio del agente si existe,
+      // de lo contrario generamos una descriptiva por defecto
+      let reflection = ''
+      for (const userId in agentSpacesData) {
+        if (agentSpacesData[userId] && agentSpacesData[userId][agent]) {
+          for (const timestamp in agentSpacesData[userId][agent]) {
+            const spaceEntry = agentSpacesData[userId][agent][timestamp]
+            if (spaceEntry && spaceEntry.result) {
+              reflection = spaceEntry.result
+            }
+          }
+        }
+      }
+
+      if (!reflection) {
+        reflection = generateReflection(agent, agentSessions, Array.from(cities))
+      }
+
       aggregated[agent.toLowerCase()] = {
         agentName: agent,
-        totalSessions: sessions.length,
+        totalSessions: agentSessions.length,
         totalUsers: users.size,
         avgMoodShift: Math.round(avgMoodShift * 100) / 100,
         cities: Array.from(cities),
         topMoodShift: moodShifts.length > 0 ? Math.max(...moodShifts) : 0,
         lowestMood: moodShifts.length > 0 ? Math.min(...moodShifts) : 0,
         highestMood: moodShifts.length > 0 ? Math.max(...moodShifts) : 0,
-        reflection: generateReflection(agent, sessions, Array.from(cities))
+        reflection
       }
     }
 
