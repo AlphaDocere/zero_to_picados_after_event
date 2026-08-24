@@ -49,7 +49,7 @@ export function SolanaTxValidator() {
       <div className="space-y-3">
         <div className="flex gap-2">
           <Input
-            placeholder="Ingresa una firma de transacción (64 caracteres)"
+            placeholder="Ingresa una firma de transacción (87-88 caracteres base-58)"
             value={signature}
             onChange={(e) => {
               setSignature(e.target.value)
@@ -150,7 +150,7 @@ export function SolanaTxValidator() {
       <div className="bg-muted/50 rounded-lg p-4 space-y-2">
         <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Ejemplo de firma válida</p>
         <p className="text-xs font-mono text-foreground/60 break-all">
-          2hM8mZvVJ3oq3Zn4wVqLxL4pNvZXpzQ5qF8vK3mN6pP9rZ2xY5tU7wB4cD1eF0gJ
+          5tD2Hh78yZt4h4w4Nq8m2B5s6r8g5Z5s5Z5s5r5g5Z5s5Z5s5r5g5Z5s5Z5s5r5g5Z5s5Z5s5r5g5Z5s5Z5s5r5g
         </p>
       </div>
     </div>
