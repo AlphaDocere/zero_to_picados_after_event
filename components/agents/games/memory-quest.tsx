@@ -110,40 +110,40 @@ export function MemoryQuest({ agentId }: MemoryQuestProps) {
     <div className="space-y-6">
       {/* Stats */}
       <div className="grid grid-cols-2 gap-3">
-        <div className="bg-white/40 backdrop-blur rounded-lg p-3 text-center">
-          <p className="text-xs text-muted-foreground">{language === 'es' ? 'Movimientos' : 'Moves'}</p>
+        <div className="bg-secondary/60 border border-border rounded-xl p-3 text-center">
+          <p className="text-xs text-muted-foreground font-medium">{language === 'es' ? 'Movimientos' : 'Moves'}</p>
           <p className="text-2xl font-bold text-primary">{moves}</p>
         </div>
-        <div className="bg-white/40 backdrop-blur rounded-lg p-3 text-center">
-          <p className="text-xs text-muted-foreground">{language === 'es' ? 'Encontrados' : 'Matched'}</p>
+        <div className="bg-secondary/60 border border-border rounded-xl p-3 text-center">
+          <p className="text-xs text-muted-foreground font-medium">{language === 'es' ? 'Encontrados' : 'Matched'}</p>
           <p className="text-2xl font-bold text-accent">{matched.length / 2} / {cards.length / 2}</p>
         </div>
       </div>
 
       {/* Game Grid */}
-      <div className="grid grid-cols-3 gap-2">
+      <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
         {cards.map(card => (
           <button
             key={card.id}
             onClick={() => handleCardClick(card.id)}
             disabled={matched.includes(card.id) || gameWon}
-            className={`aspect-square rounded-lg font-bold text-sm transition-all duration-300 text-white ${
+            className={`aspect-square rounded-2xl font-bold text-sm transition-all duration-300 flex items-center justify-center p-2 shadow-sm ${
               matched.includes(card.id)
-                ? 'bg-emerald-500/60 border-2 border-emerald-300 cursor-default'
+                ? 'bg-emerald-500/20 border-2 border-emerald-500 text-emerald-400 cursor-default'
                 : flipped.includes(card.id)
-                ? 'bg-gradient-to-br from-primary to-accent text-white'
-                : 'bg-muted hover:bg-muted/80 text-muted-foreground'
+                ? 'bg-gradient-to-br from-primary to-accent text-white shadow-md'
+                : 'bg-secondary/80 hover:bg-secondary border border-border text-foreground hover:scale-105 active:scale-95'
             }`}
           >
             {flipped.includes(card.id) || matched.includes(card.id) ? (
-              <div className="space-y-1">
-                <p className="text-xs">{card.city}</p>
-                <p className="text-xs font-semibold">{card.feeling}</p>
+              <div className="space-y-1 text-center">
+                <p className="text-[11px] opacity-80 truncate">{card.city}</p>
+                <p className="text-xs font-bold leading-tight">{card.feeling}</p>
               </div>
             ) : matched.includes(card.id) ? (
-              <Check className="w-5 h-5 mx-auto" />
+              <Check className="w-6 h-6 mx-auto" />
             ) : (
-              <span>?</span>
+              <span className="text-lg text-muted-foreground">?</span>
             )}
           </button>
         ))}
@@ -151,14 +151,14 @@ export function MemoryQuest({ agentId }: MemoryQuestProps) {
 
       {/* Win State */}
       {gameWon && (
-        <div className="p-4 rounded-lg bg-emerald-500/20 border-2 border-emerald-500 text-center space-y-3">
+        <div className="p-5 rounded-2xl bg-emerald-500/15 border-2 border-emerald-500 text-center space-y-2 animate-in zoom-in-95">
           <p className="text-lg font-bold text-emerald-400">
-            {language === 'es' ? '¡Ganaste!' : 'You won!'}
+            {language === 'es' ? '¡Memoria Completada con Éxito!' : 'Memory Quest Completed!'}
           </p>
-          <p className="text-sm text-white">
+          <p className="text-sm text-foreground/90">
             {language === 'es' 
-              ? `Completado en ${moves} movimientos` 
-              : `Completed in ${moves} moves`}
+              ? `Has encontrado todos los pares en ${moves} movimientos.` 
+              : `Completed all pairs in ${moves} moves.`}
           </p>
         </div>
       )}
@@ -166,17 +166,17 @@ export function MemoryQuest({ agentId }: MemoryQuestProps) {
       {/* Reset Button */}
       <button
         onClick={handleReset}
-        className="w-full px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 font-medium transition-all flex items-center justify-center gap-2"
+        className="w-full py-3 bg-primary hover:bg-primary/90 text-white rounded-xl font-bold transition-all flex items-center justify-center gap-2 shadow-md"
       >
         <RotateCcw className="w-4 h-4" />
-        {language === 'es' ? 'Reiniciar' : 'Reset'}
+        {language === 'es' ? 'Reiniciar Partida' : 'Reset Game'}
       </button>
 
       {/* Info */}
-      <div className="p-3 rounded-lg bg-white/20 border border-white/30 text-center text-sm text-white">
+      <div className="p-3.5 rounded-xl bg-secondary/50 border border-border text-center text-xs text-muted-foreground">
         {language === 'es'
-          ? 'Encuentra los pares coincidentes de ciudades y emociones'
-          : 'Find matching pairs of cities and emotions'}
+          ? 'Encuentra los pares coincidentes de ciudades y emociones registradas por la comunidad.'
+          : 'Find matching pairs of cities and emotions recorded by the community.'}
       </div>
     </div>
   )
