@@ -1,0 +1,33 @@
+{
+  "rules": {
+    "check-in-sessions": {
+      ".read": true,
+      "$sessionId": {
+        // Permitir creación si es nueva o actualización si es en progreso
+        ".write": "!data.exists() || data.child('status').val() === 'in-progress' || (newData.child('status').val() === 'completed' && data.child('status').val() === 'in-progress')",
+        ".validate": "newData.hasChildren(['initialMood', 'status', 'createdAt'])",
+        "initialMood": {
+          ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 100"
+        },
+        "finalMood": {
+          ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 100"
+        },
+        "status": {
+          ".validate": "newData.val() === 'in-progress' || newData.val() === 'completed'"
+        }
+      }
+    },
+    "agent-spaces": {
+      // Lectura pública de reflexiones agregadas
+      ".read": true,
+      // Solo el backend o scripts autorizados deberían escribir espacios de agentes
+      ".write": false
+    },
+    "city-requests": {
+      ".read": false,
+      "$requestId": {
+        ".write": "!data.exists() && newData.hasChildren(['city', 'country', 'createdAt'])"
+      }
+    }
+  }
+}
